@@ -1,0 +1,109 @@
+<html>
+   <body>
+   <link rel="stylesheet" type="text/css" href="C:\Python27\Form51\static\style.css">
+   <script type = "text/javascript" src="C:\Python27\Form51\js\radio.js"></script> 
+
+
+
+      <form action = "{{ url_for('addrec') }}" method = "POST">
+
+
+          <script>
+    function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        document.getElementById('ifYes').style.visibility = 'visible';
+
+         var nature1code = "BC";
+    }
+    else document.getElementById('ifYes').style.visibility = 'hidden';
+
+
+    if (document.getElementById('yesCheck1').checked) {
+        document.getElementById('ifYes1').style.visibility = 'visible';
+        var nature2code = "MC";
+    }
+    else document.getElementById('ifYes1').style.visibility = 'hidden';
+
+        if (document.getElementById('yesCheck2').checked) {
+        document.getElementById('ifYes2').style.visibility = 'visible';
+        
+        var nature3code = "BP";
+    }
+    else document.getElementById('ifYes2').style.visibility = 'hidden';
+
+}
+    </script>
+
+
+         <h3>Accountable Form 51</h3>
+
+         Date<br>
+         <input type = "text" name = "CollectionDate" /></br>
+
+         Payor<br>
+         <input type = "text" name = "payor"><br>
+
+         Nature of Collection<br>
+          <input type="checkbox" onclick="javascript:yesnoCheck();" name="nature1"  id="yesCheck"  value="Birth Certificate"> Birth Certificate<br>
+
+                   <div id="ifYes" style="visibility:hidden">
+                   Collection Code: BC <br>
+                   Amount:<input type = "text" name = "nature1amt"><br>
+                   </div>
+
+          <input type="checkbox" onclick="javascript:yesnoCheck();"  name="nature2" id="yesCheck1" value="Marriage Certificate"> Marriage Certificate<br>
+
+                   <div id="ifYes1" style="visibility:hidden">
+                   Collection Code: MC  <br>               
+                   Amount:<input type = "text" name = "nature2amt"><br>
+                   </div>
+
+          <input type="checkbox" onclick="javascript:yesnoCheck();" name="nature3" id="yesCheck2" value="Business Permit"> Business Permit<br>
+
+                    <div id="ifYes2" style="visibility:hidden">
+
+                   Collection Code: BP <br>
+                   Amount:<input type = "text" name = "nature3amt"><br>
+                    </div>
+
+
+        
+         Insurance<br>
+         <input type = "text" name = "insurance"><br>
+
+         Total<br>
+         <input type = "text" name = "total"><br>
+
+         Amount in Words<br>
+         <input type = "text" name = "amtwords"><br>
+
+         Payment Method
+         <input type="radio" name="paymentmethod"  value="CASH"> Cash<br>
+         <input type="radio" name="paymentmethod"  value="CHECK"> Check<br>
+         <input type="radio" name="paymentmethod"  value="MONEY ORDER"> Money Order<br>
+
+         Drawee Bank
+         <input type = "text" name = "draweebank"><br>
+         D.Number
+         <input type = "text" name = "draweenum"><br>
+         Date
+         <input type = "text" name = "draweedate"><br>
+
+
+         Receipt No.
+         <input type = "text" name = "receiptno"><br>
+
+
+         Officer in Charge:
+         <input type = "text" name = "officer"><br>
+
+
+
+
+         <input type = "submit" value = "Submit" /><br>
+
+
+      </form>
+
+   </body>
+</html>

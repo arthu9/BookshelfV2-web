@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>AF No. 51</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="C:\Python27\Form51\static\default.css">
+    </head>
+    <body>    
+        <form action="{{ url_for('addrec') }}" class="register">
+
+
+          <script>
+    function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        document.getElementById('ifYes').style.visibility = 'visible';
+
+         var nature1code = "BC";
+    }
+    else document.getElementById('ifYes').style.visibility = 'hidden';
+
+
+    if (document.getElementById('yesCheck1').checked) {
+        document.getElementById('ifYes1').style.visibility = 'visible';
+        var nature2code = "MC";
+    }
+    else document.getElementById('ifYes1').style.visibility = 'hidden';
+
+        if (document.getElementById('yesCheck2').checked) {
+        document.getElementById('ifYes2').style.visibility = 'visible';
+        
+        var nature3code = "BP";
+    }
+    else document.getElementById('ifYes2').style.visibility = 'hidden';
+
+}
+    </script>
+
+
+
+            <h1>Accountable Form No. 51</h1>
+            <fieldset class="row1">
+                <legend>AGENCY: Kiwalan City Government
+                </legend>
+                <p>
+                    <label>Payor Full Name
+                    </label>
+                    <input type="text"/>
+                    <label>Insurance
+                    </label>
+                    <input type="text"/>
+                </p>
+
+            </fieldset>
+
+            <fieldset class="row2">
+                <legend>Nature of Collection
+                </legend>
+                <p>
+
+          <input type="checkbox" onclick="javascript:yesnoCheck();" name="nature1"  id="yesCheck"  value="Birth Certificate"> Birth Certificate<br>
+
+                   <div id="ifYes" style="visibility:hidden">
+                   Collection Code: BC <br>
+                   Amount:<input type = "text" name = "nature1amt"><br>
+                   </div>
+
+
+                </p>
+                <p>
+
+          <input type="checkbox" onclick="javascript:yesnoCheck();"  name="nature2" id="yesCheck1" value="Marriage Certificate"> Marriage Certificate<br>
+
+                   <div id="ifYes1" style="visibility:hidden">
+                   Collection Code: MC  <br>               
+                   Amount:<input type = "text" name = "nature2amt"><br>
+                   </div>
+                </p>
+                <p>
+         <input type="checkbox" onclick="javascript:yesnoCheck();" name="nature3" id="yesCheck2" value="Business Permit"> Business Permit<br>
+
+                    <div id="ifYes2" style="visibility:hidden">
+
+                   Collection Code: BP <br>
+                   Amount:<input type = "text" name = "nature3amt"><br>
+                    </div>
+
+                </p>
+
+
+
+
+
+ 
+
+            </fieldset>
+
+
+            <fieldset class="row3">
+                <legend>Further Information
+                </legend>
+                <p>
+         Payment Method<br>
+         <input type="radio" name="paymentmethod"  value="CASH"> Cash
+         <input type="radio" name="paymentmethod"  value="CHECK"> Check
+         <input type="radio" name="paymentmethod"  value="MONEY ORDER"> Money Order
+                </p>
+                <p>
+                    <label>Date of Transaction *
+                    </label>
+                    <select name = "CollectionDate" class="date">
+                        <option value="1">01
+                        </option>
+                        <option value="2">02
+                        </option>
+                        <option value="3">03
+                        </option>
+                        <option value="4">04
+                        </option>
+                        <option value="5">05
+                        </option>
+                        <option value="6">06
+                        </option>
+                        <option value="7">07
+                        </option>
+                        <option value="8">08
+                        </option>
+                        <option value="9">09
+                        </option>
+                        <option value="10">10
+                        </option>
+                        <option value="11">11
+                        </option>
+                        <option value="12">12
+                        </option>
+                        <option value="13">13
+                        </option>
+                        <option value="14">14
+                        </option>
+                        <option value="15">15
+                        </option>
+                        <option value="16">16
+                        </option>
+                        <option value="17">17
+                        </option>
+                        <option value="18">18
+                        </option>
+                        <option value="19">19
+                        </option>
+                        <option value="20">20
+                        </option>
+                        <option value="21">21
+                        </option>
+                        <option value="22">22
+                        </option>
+                        <option value="23">23
+                        </option>
+                        <option value="24">24
+                        </option>
+                        <option value="25">25
+                        </option>
+                        <option value="26">26
+                        </option>
+                        <option value="27">27
+                        </option>
+                        <option value="28">28
+                        </option>
+                        <option value="29">29
+                        </option>
+                        <option value="30">30
+                        </option>
+                        <option value="31">31
+                        </option>
+                    </select>
+                    <select>
+                        <option value="1">January
+                        </option>
+                        <option value="2">February
+                        </option>
+                        <option value="3">March
+                        </option>
+                        <option value="4">April
+                        </option>
+                        <option value="5">May
+                        </option>
+                        <option value="6">June
+                        </option>
+                        <option value="7">July
+                        </option>
+                        <option value="8">August
+                        </option>
+                        <option value="9">September
+                        </option>
+                        <option value="10">October
+                        </option>
+                        <option value="11">November
+                        </option>
+                        <option value="12">December
+                        </option>
+                    </select>
+                    <input class="year" type="text" size="4" maxlength="4"/>e.g 1976
+                </p>
+                <p>
+                    <label>Drawee Bank
+                    </label>
+                    <select name = "draweebank">
+                        <option value="0">
+                        </option>
+                        <option value="BDO">BDO
+                        </option>
+                                               <option value="BPI">BPI
+                        </option>
+                                               <option value="UNION BANK">UNION BANK
+                        </option>
+                                               <option value="China Bank">CHB
+                        </option>
+
+                    </select>
+
+<p>
+<label>Receipt No. </label>
+<select name = "receiptno">
+    
+         <input type = "text" name = "receiptno"><br>
+</select>
+</p>
+<p>
+
+<label>Officer-in-charge </label>
+<select name = "officer">
+    
+         <input type = "text" name = "officer"><br>
+</select>
+</p>
+
+
+<p>
+
+<label>Total </label>
+<select name = "total">
+    
+         <input type = "text" name = "total"><br>
+</select>
+</p>
+
+
+             
+   
+                <div class="infobox"><h4>Helpful Information</h4>
+                    <p>Here comes some explaining text, sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </fieldset>
+            <fieldset class="row4">
+                <legend>Verification
+                </legend>
+>
+      
+            </fieldset>
+            <div><button class="button">Register &raquo;</button></div>
+        </form>
+    </body>
+</html>
+
+
+
+
+
