@@ -1,0 +1,120 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    Bookshelf
+{% endblock %}
+
+
+{% block body %}
+ <!-- COLLAPSIBLE NAVBAR -->
+<div class="collapse navbar-collapse navbar-fixed-top" id="alignment-example" style="background-color: #dfe2db">
+<!-- BRAND -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#alignment-example" aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ url_for('home') }}" style="color: gray"> Bookshelf</a>
+</div>
+<!-- Links -->
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <form method="post" action="{{ url_for('home') }}" class="navbar-form navbar-right" style="padding-right: 430px">
+            <div class="form-group">
+            <span class="glyphicon glyphicon-search"></span>
+                {{ form.csrf_token }}
+                {{ wtf.form_field(form.search, **{'placeholder':'Search a book ...'}) }}
+            </div>
+</form>
+</li>
+<li><a href="/notification" style="color: gray"><span class="glyphicon glyphicon-bell" style="color: gray"></span> Notification
+            {% if count %}
+                <span class="badge pull-right">{{ count }}</span>
+            {% endif %}
+            </a></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-align-justify" style="color: gray"></span></a>
+<ul class="dropdown-menu" aria-labelledby="about-us">
+<li><a href="/profile/{{ current_user.id }}" style="color: gray"><span class="glyphicon glyphicon-user"></span> {{current_user.first_name}}</a></li>
+<li><a href="/logout" style="color: gray"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+    <br>
+          <h1 class="page-header">{{ title }}</h1>
+        <div class="container-fluid">
+         <div class="row placeholders">
+                  <div class="row">
+                  {% for bookss in book.items %}
+               <div class="col-xs-6 col-sm-3">
+                <div class="square">
+                    <img class ="img-square" src="/static/image/book.png" width="150" height="150" alt="Generic placeholder thumbnail">
+                    <h3>{{ bookss.containsbooks.title }}</h3>
+                    <span class="text-muted">Edition: {{ bookss.containsbooks.edition }}</span><br>
+                    <span class="text-muted">Owner: <a href="{{ url_for('profile', user_id= bookss.shelf_id) }}" >{{x[loop.index-1]}} {{y[loop.index-1]}}</a></span><br>
+                    <span class="text-muted">Available: {{ bookss.availability }}</span><br>
+                    <span class="text-muted">Quantity: {{ bookss.quantity }}</span><br><br>
+                    {% if bookss.quantity != 0 and bookss.shelf_id != current_user.id%}
+                                       <form action="/borrowInd/{{bookss.shelf_id}}/{{ bookss.containsbooks.book_id }}" method = "POST" style="margin-bottom: 10%">
+                                        <label for="returndate">Return Date: </label><input id="returndate" name="returndate" type="date" required/><br><br>
+                                         <input type="submit" class="btn btn-info" value="Borrow">
+                                           <a href="{{ url_for('bookshelf', user_id=bookss.shelf_id, page_num=1) }}" role="button" class="btn btn-default">View Bookshelf</a>
+                                       <br>
+                                       </form>
+                    {% elif bookss.quantity == 0 or bookss.shelf_id == current_user.id%}
+                                       <form action="/borrowInd/{{bookss.shelf_id}}/{{ bookss.containsbooks.book_id }}" method = "POST">
+                                         <input type="hidden" class="btn btn-info" value="Borrow" disabled>
+                                     </form> <a href="{{ url_for('bookshelf', user_id=bookss.shelf_id, page_num=1) }}" role="button" class="btn btn-default">View Bookshelf</a><br><br><br>
+                        <br><br>
+                   {% endif %}
+
+                </div>
+                </div>
+              {% endfor %}
+                  <div class="col-md-12 bg-success" style="padding: 3%; margin-bottom: 2%; border-radius: 5px">
+                    <h3>Overall Rating</h3>
+                  {% if rate.totalRate %}
+                    <div class="badge"><h1>{{ rate.totalRate }}</h1></div>
+                  {% endif %}
+                     <div class="square" style="margin-top: .5%;">
+                         <h2>Rate and Comment</h2>
+                                    <form action ="/rateBook/{{ id }}" method = "POST">
+                                        <input type="radio" name="rateUser" value=1 required/> 1
+                                        <input type="radio" name="rateUser" value=2 /> 2
+                                        <input type="radio" name="rateUser" value=3 /> 3
+                                        <input type="radio" name="rateUser" value=4 /> 4
+                                        <input type="radio" name="rateUser" value=5 /> 5<br>
+                                        <textarea rows="4" cols="40" name="comment" id="comment" required></textarea><br><br>
+                                        <input type="submit" class="btn btn-success" value="Rate and Comment">
+                                    </form>
+                      <br>
+                      </div>
+                      <h2>Reviews</h2>
+                      <div class="hello" style="text-align: left; padding-left: 2%;padding-right: 2%; background-color: white">
+                          {% for com in comment %}
+                              <a href="{{ url_for('profile', user_id=com.user_id) }}">{{yx[loop.index-1]}}</a>
+                              <br>Rating: {% for com in range(com.rating) %} <span class="glyphicon glyphicon-star"></span> {% endfor %}
+                          <br> <p style="text-indent: 50px">{{ com.comment }}</p>
+                          {% endfor %}
+                      </div>
+                  </div>
+          </div>
+            <div class="footer">{% for page in book.iter_pages(left_edge=3,right_edge=3,left_current=3,right_current=3) %}
+                {% if page %}
+                    <a href="{{ url_for('indibook', book_id=book_id, page_num=page) }}">{{ page }}</a>
+                {% else %}
+                    ....
+                {% endif %}
+            {% endfor %}
+            </div>
+    </div>
+    </div>
+
+{% endblock %}

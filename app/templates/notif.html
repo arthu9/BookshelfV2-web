@@ -1,0 +1,107 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Notification
+{% endblock %}
+
+
+{% block body %}
+ <!-- COLLAPSIBLE NAVBAR -->
+<div class="collapse navbar-collapse navbar-fixed-top" id="alignment-example" style="background-color: #dfe2db">
+<!-- BRAND -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#alignment-example" aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ url_for('home') }}" style="color: gray"> Bookshelf</a>
+</div>
+<!-- Links -->
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <form method="post" action="{{ url_for('home') }}" class="navbar-form navbar-right" style="padding-right: 430px">
+            <div class="form-group">
+            <span class="glyphicon glyphicon-search"></span>
+                {{ form.csrf_token }}
+                {{ wtf.form_field(form.search, **{'placeholder':'Search a book ...'}) }}
+            </div>
+</form>
+</li>
+<li><a href="/notification" style="color: gray"><span class="glyphicon glyphicon-bell" style="color: gray"></span> Notification
+            {% if count %}
+                <span class="badge pull-right">{{ count }}</span>
+            {% endif %}
+            </a></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-align-justify" style="color: gray"></span></a>
+<ul class="dropdown-menu" aria-labelledby="about-us">
+<li><a href="/profile/{{ current_user.id }}" style="color: gray"><span class="glyphicon glyphicon-user"></span> {{current_user.first_name}}</a></li>
+<li><a href="/logout" style="color: gray"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+</ul>
+</li>
+</ul>
+</div>
+   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+        <br>
+          <h1 class="page-header">Notifications</h1>
+        <p>
+            {%for pag2 in pags2.items %}
+                {% if (pag2.shelf_id == curId and (pag2.curUserReturn == 0 or pag2.otherUserReturn == 1 )and pag2.status==2) %}
+                    <a href="/profile/{{n[loop.index-1]}}"> <h3>{{m[loop.index-1]}} </h3>
+                    </a> has the {{l[loop.index-1]}} book <font color="red">due today</font>. {{pag2.returnDate}}
+                {% elif pag2.otherUserReturn == 1 and pag2.user_id == curId and pag2.status==2 %}
+                <form action="{{ url_for('returnBook',owner_id=pag2.shelf_id ,book_id=pag2.bookid) }}" method="POST">
+                    <a href="/profile/{{pag2.shelf_id}}"> <h3>{{pag2.bookshelf.owner.first_name}} {{pag2.bookshelf.owner.last_name}} </h3>
+                    </a> needs the {{l[loop.index-1]}} <font color="red">book back today</font>. {{pag2.returnDate}}
+                    <input type="hidden" name="borrower" value="{{ pag2.user_id }}">
+                    <input type="hidden" name="borrowed" value="{{ pag2.shelf_id }}">
+                    <input type="hidden" name="book" value="{{ pag2.bookid }}">
+                    <br><button type="submit" name="app" value="YES" class="btn btn-success">Return</button>
+                </form>
+                {% elif pag2.shelf_id == curId and pag2.status==3 %}
+                <form action="{{ url_for('returnBook',owner_id=pag2.shelf_id ,book_id=pag2.bookid) }}" method="POST">
+                    <a href="/profile/{{pag2.shelf_id}}"> <h3>{{pag2.bookshelf.owner.first_name}} {{pag2.bookshelf.owner.last_name}}  </h3>
+                    </a> Did {{m[loop.index-1]}} (Username: {{o[loop.index-1]}}) returned the {{l[loop.index-1]}}?. {{pag2.returnDate}}
+                    <input type="hidden" name="borrower" value="{{ pag2.user_id }}">
+                    <input type="hidden" name="borrowed" value="{{ pag2.shelf_id }}">
+                    <input type="hidden" name="book" value="{{ pag2.bookid }}">
+                    <br><button type="submit" name="app" value="YES" class="btn btn-success">YES</button>
+                    <button type="submit" name="app" value="NO" class="btn btn-danger">No</button>
+                </form>
+                {% elif pag2.otherUserReturn == 1 and pag2.user_id == curId and pag2.status==5 %}
+                <form action="{{ url_for('returnBook',owner_id=pag2.shelf_id ,book_id=pag2.bookid) }}" method="POST">
+                    <a href="/profile/{{pag2.shelf_id}}"> <h3>{{pag2.bookshelf.owner.first_name}} {{pag2.bookshelf.owner.last_name}}  </h3>
+                    </a><font color="red">Book Due</font>. You did not return the {{l[loop.index-1]}} book back on {{pag2.returnDate}}
+                    <input type="hidden" name="borrower" value="{{ pag2.user_id }}">
+                    <input type="hidden" name="borrowed" value="{{ pag2.shelf_id }}">
+                    <input type="hidden" name="book" value="{{ pag2.bookid }}">
+                    <br><button type="submit" name="app" value="YES" class="btn btn-success">Return</button>
+                </form>
+                {% endif %}
+            {% endfor %}
+
+            {%for pag in pags.items %}
+                {% if pag.status == 2 or pag.status == 3 or pag.status == 4 or pag.status == 5   %}
+                    <a href="/profile/{{i[loop.index-1]}}"> <h3>{{y[loop.index-1]}} </h3>
+                    </a> accepted your request.
+
+                {% else %}
+                <form action="#" method="post">
+                    <a href="/profile/{{ pag.user.id }}"> <h3>{{ pag.user.first_name }} {{ pag.user.last_name }} </h3>
+                    </a>( {{ pag.date }} )<br>
+                    wants to borrow <a href="/home/book/{{ pag.bookid }}/1">{{x[loop.index-1]}}</a><br>
+                    <input type="hidden" name="borrower" value="{{ pag.user_id }}">
+                    <input type="hidden" name="borrowed" value="{{ pag.shelf_id }}">
+                    <input type="hidden" name="book" value="{{ pag.bookid }}">
+                    <button type="submit" name="app" value="YES" formaction="{{ url_for('notif') }}" class="btn btn-success">Accept</button>
+                    <button type="submit" name="app" value="NO" formaction="{{ url_for('notif') }}" class="btn btn-danger">Reject</button>
+                </form>
+                {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+{% block body %}
+
+<!-- COLLAPSIBLE NAVBAR -->
+<div class="collapse navbar-collapse navbar-fixed-top" id="alignment-example" style="background-color: #dfe2db">
+<!-- BRAND -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#alignment-example" aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ url_for('home') }}" style="color: gray"> Bookshelf</a>
+</div>
+<!-- Links -->
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <form method="post" action="{{ url_for('home') }}" class="navbar-form navbar-right" style="padding-right: 430px">
+            <div class="form-group">
+            <span class="glyphicon glyphicon-search"></span>
+                {{ form.csrf_token }}
+                {{ wtf.form_field(form1.search, **{'placeholder':'Search a book ...'}) }}
+            </div>
+</form>
+</li>
+<li><a href="/notification" style="color: gray"><span class="glyphicon glyphicon-bell" style="color: gray"></span> Notification
+            {% if count %}
+                <span class="badge pull-right">{{ count }}</span>
+            {% endif %}
+            </a></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-align-justify" style="color: gray"></span></a>
+<ul class="dropdown-menu" aria-labelledby="about-us">
+<li><a href="/profile/{{ current_user.id }}" style="color: gray"><span class="glyphicon glyphicon-user"></span> {{current_user.first_name}}</a></li>
+<li><a href="/logout" style="color: gray"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+</ul>
+</li>
+</ul>
+</div>
+ <!-- side bar -->
+     <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <img class ="img-square"  src="{{ url_for('static', filename='image/default.jpg') }}" width="200" height="200" alt="Generic placeholder thumbnail">
+                </div>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="/profile/{{ current_user.id }}">Profile</a></li>
+            <li class="active"><a href="#">Bookshelf<span class="sr-only">(current)</span></a></li>
+            <li><a href="/profile/rate_and_comment/{{ current_user.id }}">Comments and rating</a></li>
+          </ul>
+        </div>
+          <!-- Contetnt -->
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <br>
+          <h1 class="page-header">Add Book</h1>
+          <div class="row placeholders">
+
+          </div>
+              <div class="row">
+                  <form method="post" action="/profile/bookshelf/add">
+                      {{ form.csrf_token }}
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.title) }}
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.edition) }}
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.year) }}
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                          <div class="col-md-6">
+                              {{ wtf.form_field(form.author_firstname) }}
+                          </div>
+                          <div class="col-md-6">
+                              {{ wtf.form_field(form.author_lastname) }}
+                          </div>
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.publisher) }}
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.isbn) }}
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.type) }}
+                      </div>
+                      <div class="col-xs-6 col-md-6">
+                      {{ wtf.form_field(form.genre) }}
+                      </div>
+                      <div class="col-md-3">
+                          <button  class="btn btn-lg btn-primary btn-block " type="submit">Add book</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+        </div>
+</div><!-- end of side bar -->
+{% endblock %}

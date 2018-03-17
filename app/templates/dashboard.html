@@ -1,0 +1,15 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block content %}
+       <a href="/logout" style="float: right;margin-right: 15px;">Log out</a>
+     <a href="/profile/{{ current_user.id }}/1" style="float: right;margin-right: 15px;">Profile</a>
+    <h1>Welcome {{ name.first_name }}, </h1>
+    <form action="/profile/1/1">
+   <input type="submit"  class="btn btn-primary" value="Example other user" />
+    </form>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<title>{% block title %}Profile{% endblock title %}</title>
+{% block styles %}
+        {{ super() }}
+        <link href="/static/design1.css" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type ="text/javascript" src="{{ url_for('static', filename = "editform.js") }}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <a href="/home" style="float: left;margin-left: 15px;">Home</a>
+    <a href="/logout" style="float: right;margin-right: 15px;">Log out</a>
+    <br><h1>Profile </h1><br>
+    <form method="POST" action="/profile/1">
+  <dl>
+    {{form.first_name}}<br><br>
+    {{form.last_name}}<br><br>
+    {{form.contact_number}}
+    </form>
+  </dl>
+  <dl>
+  <br>
+
+  <form action = "{{ url_for('searchGet',user_id = form.id ,page_num=1) }}" method = "POST">
+    <li><input type="text" name = "search"/></li><br>
+    </form>
+    <div class = "container">
+    <br>
+	<div style="width:340px; margin:0 auto;"><form action = "{{ url_for('adder') }}" method = "POST">
+    	<input type="submit" value="Add" />
+
+	</form></div>
+
+        <table  class="table table-bordered">
+	<thead>
+		<td>Rate</td>
+    	<td>Title</td>
+    	<td>Year Published</td>
+		<td>Type</td>
+		<td>Edition</td>
+		<td>ISBN</td>
+		<td>Quantity</td>
+		<td>Publisher</td>
+		<td>Author</td>
+		<td>Rating</td>
+
+	</thead>
+	{% for pag in pags.items %}
+		<tr>
+			<form action = "{{ url_for('deletefunc') }}" method = "POST">
+
+				<td><input type="radio" name="rate" value=0 checked/> None
+				<input type="radio" name="rate" value=1 /> 1
+				<input type="radio" name="rate" value=2 /> 2
+  				<input type="radio" name="rate" value=3 /> 3
+				<input type="radio" name="rate" value=4 /> 4
+				<input type="radio" name="rate" value=5 /> 5
+				<input type="submit" class="btn" formaction="{{ url_for('profile',user_id = data.id , page_num = 1) }}" value="Submit">
+                </td>
+            <td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.containsbooks.title}}</font></td>
+            <td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.containsbooks.year_published}}</font></td>
+			<td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.containsbooks.types}}</font></td>
+			<td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.containsbooks.edition}}</font></td>
+			<td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.containsbooks.isbn}}</font></td>
+			<td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.quantity}}</font></td>
+			<td bgcolor="#f9ebf2"><font color="#b97a46">{{pag.containsbooks.publisher.publisher_name}}</font></td>
+			<td bgcolor="#f9ebf2"><font color="#b97a46">{{x[loop.index-1]}} {{y[loop.index-1]}} </font></td>
+			<td><input type="hidden" name="Store" value = {{pag.bookid}}></td>
+			<td><input type ="submit" class="btn btn-primary" value ="Delete"></td>
+			<td><input type ="submit" class="btn btn-primary" formaction = "/updateBook" value ="Update"></td>
+			</form>
+		</tr>
+	{% endfor %}
+
+		{% for page in pags.iter_pages(left_edge=3,right_edge=3,left_current=3,right_current=3) %}
+
+			{% if page %}
+
+				<a href="{{ url_for('searchGetImp',user_id = form.id ,page_num=page,string1=string) }}">{{ page }}</a>
+			{% else %}
+				...
+			{% endif %}
+
+		{% endfor %}
+
+
+
+	</table>
+
+    </form>
+    </div>
+
+
+    </dl>
+{% endblock %}
+
+

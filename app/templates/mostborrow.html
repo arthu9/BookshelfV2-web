@@ -1,0 +1,82 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+    Bookshelf
+{% endblock %}
+
+
+{% block body %}
+  <!-- COLLAPSIBLE NAVBAR -->
+<div class="collapse navbar-collapse navbar-fixed-top" id="alignment-example" style="background-color: #dfe2db">
+<!-- BRAND -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#alignment-example" aria-expanded="false">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="{{ url_for('home') }}" style="color: gray"> Bookshelf</a>
+</div>
+<!-- Links -->
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <form method="post" action="{{ url_for('home') }}" class="navbar-form navbar-right" style="padding-right: 430px">
+            <div class="form-group">
+            <span class="glyphicon glyphicon-search"></span>
+                {{ form.csrf_token }}
+                {{ wtf.form_field(form.search, **{'placeholder':'Search a book ...'}) }}
+            </div>
+</form>
+</li>
+<li><a href="/notification" style="color: gray"><span class="glyphicon glyphicon-bell" style="color: gray"></span> Notification
+            {% if count %}
+                <span class="badge pull-right">{{ count }}</span>
+            {% endif %}
+            </a></li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-align-justify" style="color: gray"></span></a>
+<ul class="dropdown-menu" aria-labelledby="about-us">
+<li><a href="/profile/{{ current_user.id }}" style="color: gray"><span class="glyphicon glyphicon-user"></span> {{current_user.first_name}}</a></li>
+<li><a href="/logout" style="color: gray"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+    <br>
+<h1 class="page-header">Most Borrowed</h1>
+         <div class="row placeholders">
+               <div class="row">
+              {% for bookss in most.items %}
+               <div class="col-xs-6 col-sm-3">
+                <div class="square">
+                    <img class ="img-square" src="/static/image/book.png" width="150" height="150" alt="Generic placeholder thumbnail">
+                    <a href="{{ url_for('indibook', book_id=bookss.book_id, page_num=1) }}" ><h3>{{bookss.title}}</h3></a>
+                    <span class="text-muted">Author: {{mostauth[loop.index-1]}}</span><br>
+                    <span class="text-muted">Edition: {{bookss.edition}}</span><br>
+                    <span class="text-muted">Quantity: {{mostqnt[loop.index-1]}}</span><br>
+                    <span class="text-muted">Borrowers: {{bookss.borrowcount}}</span>
+                </div>
+                </div>
+              {% endfor %}
+          </div>
+        </div>
+    <div class="footer" style="text-align: center">
+              {% for page in most.iter_pages(left_edge=3,right_edge=3,left_current=3,right_current=3) %}
+                    {% if page %}
+                         <a href="{{ url_for('mostborrow', page_num=page) }}">{{ page }}</a>
+                    {% else %}
+                        ....
+                    {% endif %}
+              {% endfor %}
+</div>
+</div>
+
+{% block scripts %}
+    <script  src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+Welcome to Bookshelf
+{% endblock %}
+
+
+{% block body %}
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Bookshelf</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/about"><span class="glyphicon glyphicon-briefcase"></span> About Us</a></li>
+        </ul>
+      <form method="post" action="{{ url_for('index') }}" class="navbar-form navbar-right">
+        <div class="form-group">
+            <span class="glyphicon glyphicon-search"></span>
+                {{ form.csrf_token }}
+                {{ wtf.form_field(form.search,**{'placeholder':'Search a book ...'}) }}
+        </div>
+        <button type="submit" class="btn btn-default" value="submit">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+    <br>
+    {% if not book.items %}
+         <h1 class="page-header">Books</h1>
+         <div class="row placeholders">
+                  <div class="row">
+                      <h1>No book found!</h1>
+                  </div>
+         </div>
+    {% else %}
+          <h1 class="page-header">Result</h1>
+         <div class="row placeholders">
+                  <div class="row">
+              {% for bookss in book.items %}
+               <div class="col-xs-6 col-sm-3">
+                <div class="square">
+                    <img class ="img-square" src="/static/image/book.png" width="150" height="150" alt="Generic placeholder thumbnail">
+                    <h3><a href="/book/{{bookss.containsbooks.book_id}}/1">{{ bookss.containsbooks.title }}</a></h3>
+                    <span class="text-muted">Edition: {{ bookss.containsbooks.edition }}</span><br>
+                    <span class="text-muted">Author: {{y[loop.index-1]}}</span><br>
+                    <span class="<text-muted">Quantity: {{x[loop.index-1]}}</span>
+                </div>
+                </div>
+              {% endfor %}
+          </div>
+            <div class="footer">{% for page in book.iter_pages(left_edge=3,right_edge=3,left_current=3,right_current=3) %}
+                {% if page %}
+                    <a href="{{ url_for('home', page_num=page) }}">{{ page }}</a>
+                {% else %}
+                    ....
+                {% endif %}
+            {% endfor %}
+            </div>
+    </div>
+    {% endif %}
+    </div>
+{% endblock %}

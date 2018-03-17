@@ -1,0 +1,135 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block styles %}
+        {{ super() }}
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+<style>
+    body{
+          background-color: #328CC1;
+          font-family: "Josefin Sans";
+          padding:0;margin:0;
+    }
+    .panel{
+        border: 0;
+        margin-top: 5%;
+    }
+    .panel-title{
+        text-align: center;
+        font-size: large;
+    }
+    .panel > .panel-heading {
+        background-image: none;
+        background-color: #083C5D;
+        color: white;
+        font-family: "Josefin Sans";
+        font-weight: bold;
+    }
+    .panel > .panel-body {
+        color: #1D2731;
+    }
+    .btn{
+        background-image: none;
+        background-color: #1D2731;
+    }
+    .logo {
+        margin-top: 10%;
+        float: left;
+        position: absolute;
+        top: 5%;
+    }
+    footer {
+        margin-top: 5%;
+        background-color: #1D2731;
+        height: 16%;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container1">
+    <div class="col-md-5 col-md-offset-1 logdiv">
+    <a href="#"><img class=logo src="{{ url_for('static', filename='bg-photos/logo.png') }}" /></a>
+    </div>
+    <div class="row">
+       <div class="col-md-5 col-md-offset-6">
+           <div class="panel panel-default">
+            <div class="panel-heading">
+                    <h3 class="panel-title">SIGN UP TO BOOKSHELF</h3>
+                </div>
+                <div class="panel-body">
+            <form action="/signup" method="post" class="form" role="form" autocomplete="off">
+                {{ form.csrf_token }}
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    {{ wtf.form_field(form.first_name ) }}
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    {{ wtf.form_field(form.last_name) }}
+                </div>
+            </div>
+            {{ wtf.form_field(form.contact) }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.confirm) }}
+            {{ wtf.form_field(form.birth_date) }}
+            <label class="radio-inline">
+                {{ wtf.form_field(form.sex) }}
+            </label>
+            <br />
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+             <p>Already have an account? <a href="/login" class="">Log In</a></p>
+            </form>
+        </div>
+       </div>
+       </div>
+    </div>
+</div>
+<!--Footer-->
+<footer class="page-footer font-small blue pt-4 mt-4">
+
+    <!--Footer Links-->
+    <div class="container-fluid text-center text-md-left">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-6">
+                <h5 class="text-uppercase">About</h5>
+                <p>A project started by MSU-IIT students for their project.
+                Bookshelf is an online book store and rental which aims to ease the burden of every book lovers as
+                    well as students of buying expensive books. Users can sell and let their books be rent by uploading photos and details of the book</p>
+            </div>
+            <!--/.First column-->
+
+            <!--Second column-->
+            <div class="col-md-6">
+                <h5 class="text-uppercase">Links</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Support us</a>
+                    </li>
+                    <li>
+                        <a href="#!">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3 text-center">
+        © 2018 Copyright:
+        <a href="https://mdbootstrap.com/material-design-for-bootstrap/"> MDBootstrap.com </a>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends "emtp.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block styles %}
+        {{ super() }}
+    <link href="{{ url_for('static', filename='css/design.css') }}" rel="stylesheet">
+    <style>
+        /* The container */
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 0px;
+            cursor: pointer;
+            font-size: 12px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 15px;
+            width: 15px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 5px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container1">
+    <div class="row">
+       <div class="col-md-4 col-md-offset-4">
+           <div class="panel panel-default">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Sign up to BookShelf</h3>
+                </div>
+                <div class="panel-body">
+            <form action="/signup" method="post" class="form" role="form" autocomplete="off">
+                {{ form.csrf_token }}
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    {{ wtf.form_field(form.first_name ) }}
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    {{ wtf.form_field(form.last_name) }}
+                </div>
+            </div>
+            {{ wtf.form_field(form.contact) }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.confirm) }}
+            {{ wtf.form_field(form.birth_date) }}
+            Sex
+            <label class="radio-inline">
+                {{ wtf.form_field(form.sex) }}
+            </label>
+            <br/>
+            <br/>
+            Interests:
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    <label class="container" for="academics"> Academics
+                        <input type="checkbox" id="academics" name="interests" value="Academics">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="action_adventure"> Action and Adventure
+                        <input type="checkbox" id="action_adventure" name="interests" value="Action and Adventure">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container"> Art
+                        <input type="checkbox" for="art">
+                          <span class="checkmark" id="art" name="interests" value="Art"></span>
+                    </label>
+                    <label class="container" for="autobio"> Autobiography
+                        <input type="checkbox" id="autobio" name="interests" value="Autobiography">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="bio"> Biography
+                        <input type="checkbox" id="bio" name="interests" value="Biography">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="children"> Children's
+                        <input type="checkbox" id="children" name="interests" value="Children's">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="classic"> Classic
+                        <input type="checkbox" id="classic" name="interests" value="Classic">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="comics"> Comics
+                        <input type="checkbox" id="comics" name="interests" value="Comics">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="cookbook"> CookBook
+                        <input type="checkbox" id="cookbook" name="interests" value="CookBook">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="drama"> Drama
+                        <input type="checkbox" id="drama" name="interests" value="Drama">
+                          <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container" for="fantasy"> Fantasy
+                        <input type="checkbox" id="fantasy" name="interests" value="Academics">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="fiction"> Fiction
+                        <input type="checkbox" id="fiction" name="interests" value="Fiction">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container"> Health
+                        <input type="checkbox" for="health">
+                          <span class="checkmark" id="health" name="interests" value="Health"></span>
+                    </label>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <label class="container"> History
+                        <input type="checkbox" for="history">
+                          <span class="checkmark" id="history" name="interests" value="History"></span>
+                    </label>
+                    <label class="container" for="horror"> Horror
+                        <input type="checkbox">
+                          <span class="checkmark" id="horror" name="interests" value="Horror"></span>
+                    </label>
+                    <label class="container" for="math"> Math
+                        <input type="checkbox" id="math" name="interests" value="Math">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="mystery"> Mystery
+                        <input type="checkbox" id="mystery" name="interests" value="Mystery">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="nonfiction"> Nonfiction
+                        <input type="checkbox" id="nonfiction" name="interests" value="Nonfiction">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="poetry"> Poetry
+                        <input type="checkbox" id="poetry" name="interests" value="Poetry">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="religion"> Religion
+                        <input type="checkbox" id="religion" name="interests" value="Religion">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="romance"> Romance
+                        <input type="checkbox" id="romance" name="interests" value="Romance">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="satire"> Satire
+                        <input type="checkbox" id="satire" name="interests" value="Satire">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="science"> Science
+                        <input type="checkbox" id="science" name="interests" value="Science">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="scifi"> Sci-Fi
+                        <input type="checkbox" id="scifi" name="interests" value="Sci-Fi">
+                          <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="ya"> Young Adult
+                        <input type="checkbox" id="ya" name="interests" value="Young Adult">
+                          <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <br />
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+             <p>Already have an account? <a href="/login" class="">Log In</a></p>
+            </form>
+        </div>
+       </div>
+       </div>
+    </div>
+</div>
+{% endblock %}

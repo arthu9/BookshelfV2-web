@@ -1,0 +1,58 @@
+
+
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div style="width:130px; margin:0 auto; color: black; font-weight:bold;">
+        <font color="white"><h3>Update</h3></font>
+
+    </div>
+    <br><br>
+
+    <div style="width:346px; margin:0 auto;">
+        <form action="/">
+            <input type="submit" value="Home" />
+        </form>
+    </div>
+
+
+    <form action = "{{ url_for('update') }}" method = "POST">
+
+
+    <div style="width:346px; margin:0 auto; color: black; font-weight:bold;">
+        <font color="Black">
+            <div class="container">
+                {% include 'message.html' %}
+                {% block body %}{% endblock%}
+            </div>
+        </font>
+      <h3>Enter new info </h3>
+
+      {{form.titleNew}} {{form.titleNew.label}}<br><br>
+      {{form.yearNew}}  {{form.yearNew.label}}<br><br>
+      {{form.typeNew}}  {{form.typeNew.label}}<br><br>
+      {{form.editionNew}}  {{form.editionNew.label}}<br><br>
+      {{form.isbnNew}}  {{form.isbnNew.label}}<br><br>
+      {{form.publisher_id}}  {{form.publisher_id.label}}
+      {{form.authorFirstNew}}  {{form.authorFirstNew.label}}  {{form.authorLastNew}}  {{form.authorLastNew.label}}
+      {{form.submit}}
+    </div>
+
+</form>
+
+
+
+
+
+
+</body>
+</html>

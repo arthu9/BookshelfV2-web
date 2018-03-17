@@ -1,0 +1,28 @@
+input.form-control{
+    width: 20%;
+    margin-left: 40.2%;
+}
+
+select.form-control{
+    width: 9%;
+    margin-left: 45.5%;
+}
+.gobig{
+    font-size: medium;
+}
+
+input[type=text]{
+    text-align: center;
+}
+
+input[type=password]{
+    text-align: center;
+}
+
+body{
+    background-color: #f8f8f8;
+    text-align: center;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+

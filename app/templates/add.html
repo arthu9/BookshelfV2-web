@@ -1,0 +1,56 @@
+
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+ <div style="width:130px; margin:0 auto; font-weight:bold;">
+<font color="white"> <h3>Student Info</h3><br><br><br></font>
+ </div>
+
+<div class = "container">
+<div style="width:346px; margin:0 auto;">
+<form action="/">
+   <input type="submit"  class="btn btn-primary" value="Home" />
+</form>
+
+
+
+  <form action = "{{ url_for('adder') }}" method = "POST">
+
+
+
+    <div style="width:346px; margin:0 auto; color: black; font-weight:bold;">
+     <font color="Black"> <div class="container">
+          {% include 'message.html' %}
+          {% block body %}{% endblock%}
+      </div></font>
+
+        {{form.titleNew}} {{form.titleNew.label}}<br><br>
+        {{form.yearNew}}  {{form.yearNew.label}}<br><br>
+        {{form.typeNew}}  {{form.typeNew.label}}<br><br>
+        {{form.editionNew}}  {{form.editionNew.label}}<br><br>
+        {{form.isbnNew}}  {{form.isbnNew.label}}<br><br>
+        {{form.publisher_id}}  {{form.publisher_id.label}}<br><br>
+        {{form.authorFirstNew}}  {{form.authorFirstNew.label}}  {{form.authorLastNew}}  {{form.authorLastNew.label}}<br><br><br><br>
+
+        {{form.submit}}
+      </div>
+
+</form>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

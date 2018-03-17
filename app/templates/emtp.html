@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='bg-photos/bookshelf-icon.ico') }}" type="image/gif" sizes="16x16">
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/index-design.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/navbar.css') }}" rel="stylesheet">
+{% endblock %}
+</head>
+{% block styles %}
+{% endblock %}
+
+<body>
+    {% block body %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/carousel.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

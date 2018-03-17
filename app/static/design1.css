@@ -1,0 +1,10 @@
+body{
+    background-color: #f8f8f8;
+    padding: 25px;
+}
+
+input[type=text]{
+    width: 15%;
+    text-align: center;
+    border-color: transparent;
+}
