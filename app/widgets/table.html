@@ -1,0 +1,76 @@
+<div class="box">
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row" style="margin-bottom: 10px">
+                <div class="col-sm-6">
+                    <form class="form-group" data-ng-submit="refreshList()">
+                        <div class="form-group">
+                            <input class="form-control input-sm"
+                                   type="text"
+                                   ng-model="listOptions.q"
+                                   ng-if="fields.length > 0"
+                                   placeholder="Search"/>
+
+                            <select class="form-control input-sm"
+                                    ng-model="listOptions.searchField"
+                                    ng-options="field.id as field.name for field in fields"
+                                    ng-if="fields.length > 0">
+                                <option value="">-- Any Field --</option>
+                            </select>
+
+                            <a href="" ng-click="refreshList()" class="btn btn-default input-sm"
+                               ng-if="fields.length > 0">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                            <a ui-sref="{{ modelName }}.create" class="btn btn-primary input-sm"
+                               ng-hide="storage.membership.role == 'u'">New</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!--Table will be inserted here...-->
+                    <div ng-transclude></div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <div class="pull-left" style="margin:0px;"
+                             data-pagination
+                             data-boundary-links="true"
+                             data-max-size="10"
+                             data-rotate="false"
+                             data-items-per-page="listOptions.limit"
+                             data-total-items="listOptions.total"
+                             ng-model="listOptions.currentPage"
+                             ng-change="pageChanged()">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="form-group pull-right">
+                        <div class="btn-group">
+                            <button ng-repeat="max in maxRanges" type="button" class="btn btn-default"
+                                    ng-class="{active:listOptions.max==max}"
+                                    ng-click="changeLimit(max)">
+                                {{ max }}
+                            </button>
+
+                            <button disabled="disabled" type="button" class="btn btn-default">
+                                of {{ listOptions.total }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
