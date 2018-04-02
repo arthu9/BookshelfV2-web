@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bookshelf">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="css/custom.css"> -->
+    <link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.min.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="bower_components/mocha/mocha.css">
+    <!-- shop css -->
+    <link href="css/shop.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <!-- logo -->
+    <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <!-- titles -->
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i"
+          rel="stylesheet">
+    <!-- body -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet">
+
+    <title>BookShelf</title>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<div class="wrapper">
+    <div ui-view></div>
+    <div growl></div>
+
+    <footer>
+        <!-- footer -->
+        <div class="footer-bottom section">
+            <div class="container">
+                <!-- newsletter -->
+                <div class="subscribe-main section-w3layouts text-center">
+                    <h4 class="rad-txt">
+                        <span class="abtxt1">keep yourself</span>
+                        <span class="abtext">updated</span>
+                    </h4>
+                    <h5>subscribe to our newsletter to stay up-to-date with our projects.</h5>
+                    <div class="subscribe-form">
+                        <form action="#" method="post" class="subscribe_form">
+                            <div class="email-news">
+                                <input type="email" placeholder="Email" required="">
+                            </div>
+                            <div class="sub-news">
+                                <input type="submit" value="subscribe">
+                            </div>
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p>We respect your privacy.No spam ever!</p>
+                </div>
+                <!-- //newsletter ends here -->
+                <!-- footer grids-->
+                <div class="footer-cpy">
+                    <!-- footer-grid1 -->
+                    <div class="col-md-3 col-sm-6 footer-logo">
+                        <h3>
+                            <a ui-sref="index.home">Bookshelf</a>
+                        </h3>
+                        <h4>about us</h4>
+                        <p>Vallis Molestie Arcu Morbi Dapibus Suscipit Ante Sit Efficitur Eu estie Arcu Mor Anestie Ate
+                            Vesti.</p>
+                    </div>
+                    <!-- //footer-grid1 -->
+                    <!-- footer-grid2 -->
+                    <div class="col-md-3 col-sm-6 footer-nav text-center">
+                        <h4>navigation</h4>
+                        <ul>
+                            <li>
+                                <a ui-sref="index.home">Home</a>
+                            </li>
+                            <li>
+                                <a href="about.html">About us</a>
+                            </li>
+                            <li>
+                                <a href="shop.html">shop</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //footer-grid2 -->
+                    <!-- footer-grid3 -->
+                    <div class="col-md-3 col-sm-6 blog-footer">
+                        <h4>latest from blog</h4>
+                        <div class="blog1">
+                            <div class="col-md-3 col-sm-3 col-xs-2 bl1">
+                                <a href="#">
+                                    <img src="../../images/b1.jpg" alt="" class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-10 bl2">
+                                <a href="#">Dapibus Suscipit Ante Sit by instagram</a>
+                                <p>February 15, 2018</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="blog1">
+                            <div class="col-md-3 col-sm-3 col-xs-2 bl1">
+                                <a href="#">
+                                    <img src="images/b2.jpg" alt="" class="img-responsive"/>
+                                </a>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-10 bl2">
+                                <a href="#">Dapibus Suscipit Ante Sit by instagram</a>
+                                <p>February 20, 2018</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!-- //footer-grid3 -->
+                    <!-- footer-grid4 -->
+                    <div class="col-md-3 col-sm-6 contact-foot text-right">
+                        <h4>contact us</h4>
+                        <ul>
+                            <li>
+                                <span class="fa fa-home"></span>
+                                1185 Burlington
+                                <br> Canada.
+                            </li>
+                            <li>
+                                <span class="fa fa-phone"></span>
+                                +12 345 678
+                            </li>
+                            <li>
+                                <span class="fa fa-envelope"></span>
+                                <a href="mailto:info@example.com">mail@chronicle.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //footer-grid4 -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- //footer-grids -->
+                <!-- footer social -->
+                <div class="footer-social text-center">
+                    <h4>stay connected</h4>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-facebook icon_facebook"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-twitter icon_twitter"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-dribbble icon_dribbble"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-google-plus icon_g_plus"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //footer social -->
+            </div>
+            <!-- //footer container -->
+        </div>
+        <!-- //footer -->
+        <div class="cpy-right">
+            <p>© 2018 BookShelf. All rights reserved | Design by
+                <strong>Group 3</strong>
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<!-- AdminLTE App -->
+
+<!--search jQuery-->
+<script src="js/main.js"></script>
+<!--search jQuery-->
+<!-- cart-js -->
+<script src="js/minicart.js"></script>
+<script>
+    chr.render();
+
+    chr.cart.on('new_checkout', function (evt) {
+        var items, len, i;
+
+        if (this.subtotal() > 0) {
+            items = this.items();
+
+            for (i = 0, len = items.length; i < len; i++) {
+            }
+        }
+    });
+</script>
+<!-- //cart-js -->
+<!-- Scrolling Nav JavaScript -->
+<script src="js/scrolling-nav.js"></script>
+<!-- //fixed-scroll-nav-js -->
+<!-- dropdown nav -->
+<script>
+    $(document).ready(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                $(this).toggleClass('open');
+            },
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+</script>
+<!-- //dropdown nav -->
+<!-- start-smooth-scrolling -->
+<script src="js/move-top.js"></script>
+<script src="js/easing.js"></script>
+
+<script src="js/SmoothScroll.min.js"></script>
+<!-- //smooth-scrolling-of-move-up -->
+<!-- about bottom grid Numscroller -->
+<script src="js/numscroller-1.0.js"></script>
+
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-growl-v2/build/angular-growl.min.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.compat.min.js"></script>
+<script src="bower_components/angular-sweetalert/SweetAlert.min.js"></script>
+<script src="bower_components/x2js/xml2json.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-xml/angular-xml.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+<script src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="bower_components/raphael/raphael.min.js"></script>
+<script src="bower_components/morris.js/morris.min.js"></script>
+<script src="bower_components/angular-morris/angular-morris.min.js"></script>
+<script src="bower_components/mocha/mocha.js"></script>
+<script src="bower_components/eve-raphael/eve.js"></script>
+
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Sparkline -->
+<script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+
+<!-- SlimScroll -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+
+<script src="app/main.module.js"></script>
+<script src="app/main.config.js"></script>
+<script src="app/services/auth.service.js"></script>
+<script src="app/services/data.service.js"></script>
+<script src="app/services/alerts.service.js"></script>
+<script src="app/layout/nav.controller.js"></script>
+<script src="app/layout/footer.controller.js"></script>
+<script src="app/widgets/create.js"></script>
+<script src="app/widgets/table.js"></script>
+<script src="app/widgets/no-button-table.js"></script>
+<script src="app/widgets/update.js"></script>
+<script src="app/widgets/custom-update.js"></script>
+<script src="profile/profile.module.js"></script>
+<script src="profile/profile.controller.js"></script>
+<script src="profile/list.controller.js"></script>
+<script src="profile/route.config.js"></script>
+<script src="about/about.module.js"></script>
+<script src="about/about.controller.js"></script>
+<script src="about/list.controller.js"></script>
+<script src="about/route.config.js"></script>
+<script src="item-page/item-page.module.js"></script>
+<script src="item-page/item-page.controller.js"></script>
+<script src="item-page/list.controller.js"></script>
+<script src="item-page/route.config.js"></script>
+<script src="item-info/item-info.module.js"></script>
+<script src="item-info/item-info.controller.js"></script>
+<script src="item-info/list.controller.js"></script>
+<script src="item-info/route.config.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- main -->
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+</body>
+
+</html>
