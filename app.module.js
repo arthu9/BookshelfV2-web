@@ -9,10 +9,6 @@
                  * Re-usable components
                  * */
                 'app.main',
-                'app.profile',
-                'app.about',
-                'app.item-page',
-                'app.item-info',
 
                 // Auth
                 'angular-jwt',
