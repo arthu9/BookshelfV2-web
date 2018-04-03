@@ -23,18 +23,18 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.html">Dashboard</a>
                     </li>
                     <li>
-                        <a href="about.html">about us</a>
+                        <a ui-sref="about.list">about us</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
+                        <a href="" class="dropdown-toggle effect-3" data-toggle="dropdown">books
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="shop.html">List</a>
+                                <a ui-sref="item-page.list">List</a>
                             </li>
                             <li>
                                 <a href="single_product.html">Genre</a>
@@ -44,10 +44,22 @@
                     <li>
                         <a href="contact.html">Contact us</a>
                     </li>
-                    <li>
-                        <a ui-sref="index.login" title="SignIn & SignUp">
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle effect-3" data-toggle="dropdown">
                             <span class="fa fa-user nav-icon" aria-hidden="true"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a ui-sref="profile.list">Account</a>
+                            </li>
+                            <li>
+                                <a ui-sref="index.create">Sign Up</a>
+                            </li>
+                            <li>
+                                <a href="single_product.html">Log Out</a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>
