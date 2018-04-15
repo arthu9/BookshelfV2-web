@@ -1,0 +1,66 @@
+.product-men img {
+	width: 50% !important;
+}
+.btntabs{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn btn-success btntab{
+    color: #F7F5E6 !important;
+}
+.rad-txt > .nav-pills > li{
+    left: 2em;
+    top: 3em;
+    background-color: #333A56 !important;
+    color: #FFFFFF !important;
+    border: 0px;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #000;
+    background-color: #333A56;
+}
+a {
+    color: #fff
+}
+
+
+.abtext {
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    top: 20px;
+}
+h1 a.navbar-brand {
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+    color: #F7F5E6 !important;
+    padding: 14px 0 0;
+    position: relative;
+    text-transform: capitalize;
+    font-family: 'Fredericka the Great', cursive !important;
+}
+
+@media(max-width: 530px) {
+    .nav > li > a{
+        padding: 2.5px 2.5px;
+    }
+    .btn {
+        font-size: 12px;
+    }
+}
+@media(max-width: 450px) {
+    .rad-txt > .nav-pills > li{
+        top: 4em;
+    }
+    .nav > li > a{
+        padding: 0px;
+    }
+    .btn {
+        font-size: 8px;
+    }
+}
+@media(max-width: 375px) {
+    .rad-txt > .nav-pills > li{
+        top: 3em;
+    }
+}

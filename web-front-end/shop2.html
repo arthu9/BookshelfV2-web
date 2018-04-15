@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<title>Bookshelf | Shop Catalogue :: w3layouts</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	<meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 	<script>
 		addEventListener("load", function () {
@@ -44,6 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- body -->
 	<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" href="css/splitscreen_shop.css">
+    <link rel="stylesheet" href="css/notification.css">
 	<!-- //online-fonts -->
 </head>
 
@@ -52,7 +53,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div id="home">
 		<!-- header -->
 		<!-- navbar -->
-		<nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="main-nav">
                 <div class="container">
 
@@ -64,7 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <span class="icon-bar"></span>
                         </button>
                         <h1>
-                            <a class="navbar-brand" href="index.html">Bookshelf</a>
+                            <a class="navbar-brand" href="dashboard.html">Bookshelf</a>
                         </h1>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,7 +76,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a class="page-scroll" href="#page-top"></a>
                             </li>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="dashboard.html">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="genre.html">Academics</a></li>
+                                    <li><a href="#">Action and Adventure</a></li>
+                                    <li><a href="#">Autobiography</a></li>
+                                    <li><a href="#">Biography</a></li>
+                                    <li><a href="#">Children's</a></li>
+                                    <li><a href="#">Classics</a></li>
+                                    <li><a href="#">Comics</a></li>
+                                    <li><a href="#">CookBooks</a></li>
+                                    <li><a href="#">Drama</a></li>
+                                    <li><a href="#">Fantasy</a></li>
+                                    <li><a href="#">Health</a></li>
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Horror</a></li>
+                                    <li><a href="#">Math</a></li>
+                                    <li><a href="#">Mystery</a></li>
+                                    <li><a href="#">Poetry</a></li>
+                                    <li><a href="#">Religion</a></li>
+                                    <li><a href="#">Romance</a></li>
+                                    <li><a href="#">Satire</a></li>
+                                    <li><a href="#">Science</a></li>
+                                    <li><a href="#">Sci-Fi</a></li>
+                                    <li><a href="#">Young Adult</a></li>
+                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
@@ -83,16 +113,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="shop.html">Browse</a>
+                                        <a href="addbook.html">Add a book</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop2.html">Browse</a>
+                                    </li>
+                                    <li>
+                                        <a href="single_product.html">Wishlist</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="login.html" title="SignIn & SignUp">
+                                <a href="profile.html" title="Profile">
                                     <span class="fa fa-user nav-icon" aria-hidden="true"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#" title="Direct Messages">
+                                    <span class="fa fa-envelope nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <!-- nofication -->
+                            <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bell nav-icon" aria-hidden="true">
+                                  </span></a>
+                                  <ul class="dropdown-menu notify-drop">
+                                    <div class="notify-drop-title">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+                                        </div>
+                                    </div>
+                                    <!-- end notify title -->
+                                    <!-- notify content -->
+                                    <div class="drop-content">
+                                        <li>
+                                            <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                <a href="">John</a> commented on your <a href="">post</a> <a href="" class="rIcon">
+                                                <i class="fa fa-dot-circle-o"></i></a>
 
+                                            <hr>
+                                            <p class="time">Now</p>
+                                            </div>
+                                        </li>
+                                    </div>
+                                        <div class="notify-drop-footer text-center">
+                                            <a href="">View all</a>
+                                        </div>
+                                    </ul>
+                                </li>
+                            <!--/ notification -->
                         </ul>
                         <!-- search-bar -->
                         <div class="search-bar-agileits">
@@ -113,6 +184,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                         </div>
                         <!-- //search-bar ends here -->
+                        <!-- shopping cart -->
+                        <div class="cart-mainf">
+                            <div class="chrcart chrcart2 cart cart box_1">
+                                <form action="#" method="post" class="last">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="display" value="1">
+                                    <button class="top_chr_cart" type="submit" name="submit" value="">
+                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                         <!-- //shopping cart ends here -->
                     </div>
                     <!-- /.navbar-collapse -->
@@ -423,6 +506,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book1">
 											<input type="hidden" name="amount" value="100.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -489,6 +575,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book2">
 											<input type="hidden" name="amount" value="200.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -555,6 +644,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book3">
 											<input type="hidden" name="amount" value="80.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -621,6 +713,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book4">
 											<input type="hidden" name="amount" value="120.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -689,6 +784,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book5">
 											<input type="hidden" name="amount" value="125.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -755,6 +853,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book6">
 											<input type="hidden" name="amount" value="70.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -821,6 +922,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book7">
 											<input type="hidden" name="amount" value="220.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -887,6 +991,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book8">
 											<input type="hidden" name="amount" value="210.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -955,6 +1062,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book9">
 											<input type="hidden" name="amount" value="180.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -1021,6 +1131,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book10">
 											<input type="hidden" name="amount" value="330.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -1087,6 +1200,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book11">
 											<input type="hidden" name="amount" value="280.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -1153,6 +1269,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="chr_item" value="Book12">
 											<input type="hidden" name="amount" value="140.00">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
 											<button type="submit" class="chr-cart pchr-book">Rent
 												<i class="fa fa-book" aria-hidden="true"></i>
 											</button>
@@ -1214,7 +1333,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- price range (top products) -->
 	<script src="js/jquery-ui.js"></script>
 	<script>
-		//<![CDATA[ 
+		//<![CDATA[
 		$(window).load(function () {
 			$("#slider-range").slider({
 				range: true,
@@ -1279,7 +1398,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				containerID: 'toTop', // fading element id
 				containerHoverID: 'toTopHover', // fading element hover id
 				scrollSpeed: 1200,
-				easingType: 'linear' 
+				easingType: 'linear'
 				};
 			*/
 

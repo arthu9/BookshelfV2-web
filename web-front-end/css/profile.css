@@ -1,0 +1,51 @@
+.line {
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 5%;
+}
+.contact-top1 > h4 {
+    margin-bottom: 5%;
+}
+.btnprofile{
+    margin-bottom: 5%;
+}
+.btnprofile1{
+    margin-bottom: 3%;
+}
+.titlehead{
+    width: 80%;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 3%;
+}
+
+.emphasis
+{
+    border-top: 4px solid transparent;
+    }
+.emphasis:hover
+{
+    border-top: 4px solid #52658F;
+    }
+.emphasis h2
+{
+    margin-bottom:0;
+    }
+
+.follow{
+    width: 100%;
+    text-align: center;
+    margin-top: 5%;
+    box-shadow: 05px 10px 10px 0px rgba(216, 216, 216, 0.78);
+    -webkit-box-shadow: 5px 10px 10px 0px rgba(216, 216, 216, 0.78);
+    -moz-box-shadow: 5px 10px 10px 0px rgba(216, 216, 216, 0.78);
+}
+.product-men{
+    width: 23%;
+}
+.thumbnail{
+    height: 50%;
+}
+.section{
+    margin-top: 3%;
+}

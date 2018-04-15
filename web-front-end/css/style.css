@@ -7,7 +7,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: #fff;
+    background: #E8E8E8;
 }
 
 body a {
@@ -19,7 +19,6 @@ body a {
     text-decoration: none;
     outline: none;
 }
-
 h1,
 h2,
 h3,
@@ -70,11 +69,11 @@ body a:focus {
 h1 a.navbar-brand {
     font-size: 1.2em;
     letter-spacing: 0.5px;
-    color: #fff !important;
+    color: #F7F5E6 !important;
     padding: 14px 0 0;
     position: relative;
     text-transform: capitalize;
-    font-family: 'Fredericka the Great', cursive;
+    font-family: 'Fredericka the Great', cursive !important;
 }
 
 .footer-logo h3 a {
@@ -102,13 +101,13 @@ button.top_chr_cart {
 i.fa.fa-cart-arrow-down {
     width: 41px;
     height: 41px;
-    color: #fff;
+    color: #F7F5E6;
     font-size: 2em;
     line-height: 42px;
 }
 
 span.nav-icon {
-    color: #fff;
+    color: #F7F5E6;
     font-size: 2em;
     line-height: 16px;
 }
@@ -209,7 +208,7 @@ span.nav-icon {
     /* handle */
     height: 3px;
     width: 12px;
-    background: #fff;
+    background: #F7F5E6;
     bottom: 14px;
     right: 8px;
     -webkit-transform: rotate(45deg);
@@ -240,7 +239,7 @@ span.nav-icon {
     margin-top: -2px;
     left: 50%;
     margin-left: -11px;
-    background: #fff;
+    background: #F7F5E6;
     opacity: 0;
     /* Force Hardware Acceleration in WebKit */
     -webkit-transform: translateZ(0);
@@ -390,7 +389,7 @@ span.nav-icon {
 }
 
 nav.navbar.navbar-default.navbar-fixed-top {
-    background: #34c663;
+    background: #333A56;
     border: none;
     padding: 1em 0;
     -webkit-transition: .5s all;
@@ -407,7 +406,7 @@ nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse {
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: #fff;
+    color: #F7F5E6;
     font-size: 14px;
     font-weight: 500;
     text-transform: uppercase;
@@ -453,7 +452,7 @@ li.first-nav {
 }
 
 nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse {
-    background: #34c663;
+    background: #333A56;
 }
 
 nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse h1 a.navbar-brand {
@@ -484,7 +483,7 @@ h5.sec-title {
 }
 
 .dropdown-menu {
-    background: #34c663;
+    background: #333A56;
 }
 
 .navbar-default .navbar-nav>.open>a,
@@ -511,9 +510,9 @@ h5.sec-title {
 .dropdown-menu>.active>a,
 .dropdown-menu>.active>a:hover,
 .dropdown-menu>.active>a:focus {
-    color: #fff;
+    color: #F7F5E6;
     text-decoration: none;
-    background-color: #e01414;
+    background-color: #333A56;
     outline: 0;
 }
 
@@ -529,8 +528,8 @@ ul.dropdown-menu.sub-menu {
 }
 
 ul.dropdown-menu:hover a.s-menu {
-    background: #357f2a;
-    color: #fff;
+    background: #333A56;
+    color: #F7F5E6;
 }
 
 .dropdown-menu.columns-2 {
@@ -544,7 +543,6 @@ ul.dropdown-menu:hover a.s-menu {
 /*-- banner-text --*/
 
 .banner-bg-agileits {
-    background: url(../images/banner.jpg) no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -701,7 +699,7 @@ ul.dropdown-menu:hover a.s-menu {
 }
 
 h2.title {
-    color: #ffffff;
+    color: #F7F5E6;
     font-size: 6.5em;
     letter-spacing: 7px;
     border-width: 1px 0;
@@ -735,18 +733,18 @@ ul.banner-txt li {
 }
 
 ul.banner-txt li:first-child {
-    background: #e85342;
+    background: #52658F;
     border-radius: 10px;
 }
 
 ul.banner-txt li:nth-child(2) {
-    background: #f7c052;
+    background: #52658F;
     border-radius: 10px;
     margin: 0 1em;
 }
 
 ul.banner-txt li:nth-child(3) {
-    background: #34c663;
+    background: #52658F;
     border-radius: 10px;
 }
 
@@ -817,7 +815,7 @@ ul.about-list {
 
 .inner-about2 a {
     display: inline-block;
-    background: #ffffff;
+    background: #E8E8E8;
     padding: 7px 25px;
     color: #000000;
     text-transform: uppercase;
@@ -844,14 +842,14 @@ ul.about-list {
 }
 
 .inner-about2 {
-    background: #e85342;
+    background: #333A56;
     padding: 4em;
 }
 
 .inner-about2 h5 {
     color: #000;
     text-transform: capitalize;
-    background: #f7c052;
+    background: #E8E8E8;
     display: inline-block;
     padding: 10px 16px;
     font-weight: 600;
@@ -906,14 +904,14 @@ h4.title-about {
 
 h4.rad-txt span.abtxt1 {
     color: #000000;
-    background: #f7c052;
+    background: #E8E8E8;
     padding: 5px 19px;
     border-radius: 20px 0px 0 20px;
 }
 
 span.abtext {
-    color: #ffffff;
-    background: #e85342;
+    color: #F7F5E6;
+    background: #52658F;
     padding: 5px 19px;
     border-radius: 0 20px 20px 0;
 }
@@ -976,7 +974,7 @@ h4.title-about.about.text-center span {
 /*-- //stats --*/
 
 .ab1 {
-    background: #ededed;
+    background: #E8E8E8;
     padding: 30px;
     margin: 1em 0 0 0;
 }
@@ -990,11 +988,11 @@ h4.title-about.about.text-center span {
 }
 
 .about-bottom-right .ab1-icon {
-    background: #ffffff;
+    background: #F7F5E6;
     text-align: center;
     width: 49px;
     height: 49px;
-    outline: 6px solid rgba(232, 83, 66, 0.2901960784313726);
+    outline: 6px solid #52658F;
 }
 
 .service2 .ab1 {
@@ -1006,7 +1004,7 @@ h4.title-about.about.text-center span {
 }
 
 .ab1-icon span {
-    color: #e85342;
+    color: #52658F;
     font-size: 1.9em;
     line-height: 1.8;
 }
@@ -1085,7 +1083,7 @@ h4.title-about.about.text-center span {
 }
 
 .bott-img:hover {
-    background-color: #e85342;
+    background-color: #52658F;
 }
 
 .bottom-gds:hover h4.mission {
@@ -1098,7 +1096,7 @@ h4.title-about.about.text-center span {
     display: inline-block;
     margin-bottom: 20px;
     padding: 20px 18px;
-    background: #34c663;
+    background: #333A56;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     border-radius: 100%;
@@ -1139,7 +1137,7 @@ h4.title-about.about.text-center span {
 
 .bott-img:hover .icon-holder {
     top: -65px;
-    background: #f7c052;
+    background: #333A56;
     margin-bottom: 2em;
 }
 
@@ -1173,7 +1171,7 @@ h4.title-about.about.text-center span {
 }
 
 .description a:hover {
-    background-color: #f7c052;
+    background-color: #F7F5E6;
     color: #000000;
 }
 
@@ -1722,7 +1720,9 @@ form.form_w3layouts {
     display: inline-block;
     font-family: 'Merriweather Sans', sans-serif;
 }
-
+.single-item{
+    display: inline !important;
+}
 .contact-form input[type="text"]:first-child {
     margin-right: 1em;
 }
@@ -1873,7 +1873,7 @@ footer-social {
 
 .cpy-right {
     padding: 1em;
-    background: #34c663;
+    background: #333A56;
     text-align: center;
 }
 
@@ -2098,15 +2098,15 @@ span.icon_g_plus {
 /** The Spacing **/
 
 li.btn.btn2 {
-    background: #34c663;
+    background: #333A56;
 }
 
 li.btn.btn3 {
-    background: #e85342;
+    background: #52658F;
 }
 
 li.btn.btn4 {
-    background: #f7c052;
+    background: #E8E8E8;
 }
 
 .btn-breadcrumb .btn {
@@ -2115,7 +2115,7 @@ li.btn.btn4 {
 
 .btn-breadcrumb .btn:first-child {
     padding: 6px 6px 6px 10px;
-    border: 1px solid #34c663;
+    border: 1px solid #333A56;
 }
 
 ul.bc-list li a {
@@ -2127,16 +2127,16 @@ ul.bc-list li a {
 
 .btn-info {
     color: #fff;
-    background-color: #34c663;
-    border-color: #34c663;
+    background-color: #333A56;
+    border-color: #333A56;
 }
 
 ul.btn-group.btn-breadcrumb i {
-    color: #e85342;
+    color: #52658F;
 }
 
 li.btn.btn5 {
-    background: #34c663;
+    background: #333A56;
 }
 
 ul.btn-breadcrumb li {
@@ -2160,7 +2160,7 @@ ul.btn-breadcrumb li {
 }
 
 .btn-breadcrumb .btn.btn2:before {
-    border-left: 10px solid #34c663;
+    border-left: 10px solid #333A56;
 }
 
 .btn-breadcrumb .btn:not(:last-child):before {
@@ -2170,7 +2170,7 @@ ul.btn-breadcrumb li {
     height: 0;
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
-    border-left: 10px solid rgb(52, 198, 99);
+    border-left: 10px solid #333A56;
     position: absolute;
     top: 50%;
     margin-top: -17px;
@@ -2186,7 +2186,7 @@ ul.btn-breadcrumb li {
     height: 0;
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
-    border-left: 10px solid #e85342;
+    border-left: 10px solid #52658F;
     position: absolute;
     top: 50%;
     margin-top: -17px;
@@ -2201,7 +2201,7 @@ ul.btn-breadcrumb li {
     height: 0;
     border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
-    border-left: 10px solid #f7c052;
+    border-left: 10px solid #E8E8E8;
     position: absolute;
     top: 50%;
     margin-top: -17px;
@@ -2232,9 +2232,9 @@ ul.btn-breadcrumb li {
 .btn-success:active,
 .btn-success.active,
 .open>.dropdown-toggle.btn-success {
-    color: #fff;
-    background-color: #34c663;
-    border-color: #34c663;
+    color: #F7F5E6;
+    background-color: #333A56;
+    border-color: #333A56;
 }
 
 a#btn-login {
@@ -2243,7 +2243,7 @@ a#btn-login {
 
 button#btn-signup {
     width: 33%;
-    background: #34c663;
+    background: #333A56;
 }
 
 .loginbox {
@@ -2272,12 +2272,12 @@ button#btn-signup {
 
 .input-group-addon {
     color: #fff;
-    background-color: #e85342;
+    background-color: #52658F ;
 }
 
 .btn-success {
-    background-color: #34c663;
-    border-color: #34c663;
+    background-color: #333A56;
+    border-color: #333A56;
 }
 
 /* //signin and signup form */
@@ -2628,7 +2628,7 @@ button#btn-signup {
         text-align: center;
     }
     .dropdown-menu li a {
-        color: #fff !important;
+        color: #F7F5E6 !important;
         text-align: center;
     }
     nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse h1 a.navbar-brand {
@@ -2638,13 +2638,13 @@ button#btn-signup {
     .navbar-default .navbar-collapse,
     .navbar-default .navbar-form {
         width: 100%;
-        background: rgb(52, 198, 99);
+        background: #333A56;
         border: none;
         float: none;
         margin: 0 auto;
     }
     .dropdown-menu li a:hover {
-        color: #fff !important;
+        color: #F7F5E6 !important;
     }
     .navbar-toggle {
         margin-right: 1em;
@@ -2664,7 +2664,7 @@ button#btn-signup {
         background: transparent;
     }
     .navbar-default .navbar-toggle .icon-bar {
-        background: #e85342;
+        background: #52658F;
     }
     .navbar-fixed-top .navbar-collapse,
     .navbar-fixed-bottom .navbar-collapse {
@@ -2686,6 +2686,12 @@ button#btn-signup {
 @media screen and (max-width: 736px) {
     .inner-about2 h4 {
         font-size: 1.8em;
+    }
+    .split-pane > div .text-content .big {
+        font-size: 1.5em;
+    }
+    .split-pane{
+        font-size: 1.5em;
     }
     .banner-text p:before {
         left: 29.3%;
@@ -2736,7 +2742,6 @@ button#btn-signup {
     }
     .bott-img.bott-img1 {
         margin-left: 0;
-        margin-top: 3em;
     }
     .list-inline>li {
         margin: 10px;
@@ -2856,6 +2861,9 @@ button#btn-signup {
     .list-inline>li {
         padding: 4px;
     }
+    .ab1-text{
+        margin-top: 1em;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -2872,9 +2880,8 @@ button#btn-signup {
     .services-w3ls {
         width: 100%;
     }
-    .service2 .ab1 {
+    .service2 {
         margin-left: 0;
-        margin-top: 6px;
     }
     .inner-about2 {
         padding: 2em;
@@ -3350,5 +3357,11 @@ button#btn-signup {
 		font-size: 0.95em;
 	}
 }
-
+@font-face {
+    font-family: 'Fredericka the Great';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Fredericka the Great'), local('FrederickatheGreat'), url(http://fonts.gstatic.com/s/frederickathegreat/v6/9Bt33CxNwt7aOctW2xjbCstzwVKsIBVV--Sjxbc.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 /* -- //Responsive code -- */
