@@ -1,0 +1,320 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Bookshelf | Home :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Chronicle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+
+    <link href="{{url_for('static', filename='css/bootstrap.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- shop css -->
+    <link href="{{url_for('static', filename='css/shop.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="{{url_for('static', filename='css/font-awesome.css')}}" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <!-- logo -->
+    <link href="//fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+    <!-- titles -->
+    <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <!-- body -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen_shop.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/addbook.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
+    <!-- //online-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div id="home">
+        <!-- header -->
+        <!-- navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="main-nav">
+                <div class="container">
+
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Chronicle</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1>
+                            <a class="navbar-brand" href="dashboard.html">Bookshelf</a>
+                        </h1>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse nav-right">
+                        <ul class="nav navbar-nav navbar-left cl-effect-15">
+                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                            <li class="hidden">
+                                <a class="page-scroll" href="#page-top"></a>
+                            </li>
+                            <li>
+                                <a href="dashboard.html">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="genre.html">Action</a></li>
+                                    <li><a href="#">Adventure</a></li>
+                                    <li><a href="#">Biography</a></li>
+                                    <li><a href="#">Drama</a></li>
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">Essay</a></li>
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Horror</a></li>
+                                    <li><a href="#">Journalism</a></li>
+                                    <li><a href="#">Math</a></li>
+                                    <li><a href="#">Mystery</a></li>
+                                    <li><a href="#">Mythology</a></li>
+                                    <li><a href="#">Personal Narrative</a></li>
+                                    <li><a href="#">Reference Book</a></li>
+                                    <li><a href="#">Science</a></li>
+                                    <li><a href="#">Speech</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="addbook.html">Add a book</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop2.html">Browse</a>
+                                    </li>
+                                    <li>
+                                        <a href="single_product.html">Wishlist</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="profile.html" title="Profile">
+                                    <span class="fa fa-user nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Direct Messages">
+                                    <span class="fa fa-envelope nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                            <!-- nofication -->
+                            <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bell nav-icon" aria-hidden="true">
+                                  </span></a>
+                                  <ul class="dropdown-menu notify-drop">
+                                    <div class="notify-drop-title">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 text-right"><a href="" class="rIcon allRead" data-tooltip="tooltip" data-placement="bottom" title="tümü okundu."><i class="fa fa-dot-circle-o"></i></a></div>
+                                        </div>
+                                    </div>
+                                    <!-- end notify title -->
+                                    <!-- notify content -->
+                                    <div class="drop-content">
+                                        <li>
+                                            <div class="col-md-3 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" alt=""></div></div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9 pd-l0">
+                                                <a href="">John</a> commented on your <a href="">post</a> <a href="" class="rIcon">
+                                                <i class="fa fa-dot-circle-o"></i></a>
+
+                                            <hr>
+                                            <p class="time">Now</p>
+                                            </div>
+                                        </li>
+                                    </div>
+                                        <div class="notify-drop-footer text-center">
+                                            <a href="">View all</a>
+                                        </div>
+                                    </ul>
+                                </li>
+                            <!--/ notification -->
+                        </ul>
+                        <!-- search-bar -->
+                        <div class="search-bar-agileits">
+                            <div class="cd-main-header">
+                                <ul class="cd-header-buttons">
+                                    <li>
+                                        <a class="cd-search-trigger" href="#cd-search">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- cd-header-buttons -->
+                            </div>
+                            <div id="cd-search" class="cd-search">
+                                <form action="#" method="post">
+                                    <input name="Search" type="search" placeholder="Type and Hit Enter...">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //search-bar ends here -->
+                        <!-- shopping cart -->
+                        <div class="cart-mainf">
+                            <div class="chrcart chrcart2 cart cart box_1">
+                                <form action="#" method="post" class="last">
+                                    <input type="hidden" name="cmd" value="_cart">
+                                    <input type="hidden" name="display" value="1">
+                                    <button class="top_chr_cart" type="submit" name="submit" value="">
+                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //shopping cart ends here -->
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- /.container -->
+            </div>
+        </nav>
+        <!-- //navbar ends here -->
+        <!-- banner -->
+        <div class='split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side'>
+          <div>
+            <div class='text-content'>
+              <div class='big'>BOOKSHELF</div>
+            </div>
+          </div>
+        </div>
+        <div class='split-pane col-xs-6 col-sm-6 col-lg-6 frontend-side'>
+          <div>
+            <div class='text-content'>
+              <div class="bold"></div>
+            </div>
+          </div>
+        </div>
+        <div id='split-pane-or'>
+          <div>
+          </div>
+        </div>
+        <!-- //banner -->
+        <!-- about -->
+        {% block content %}
+        {% endblock %}
+        <!-- //about ends here -->
+        <!--//about bottom-->
+        <!--//about bottom ends here-->
+        <!-- //footer -->
+        <div class="cpy-right">
+            <p>© 2018 Chronicle. All rights reserved | Design by
+                <a href="http://w3layouts.com"> W3layouts.</a>
+            </p>
+        </div>
+    <!-- //home -->
+    <!-- js -->
+
+    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <!-- //js -->
+    <!--search jQuery-->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <!--search jQuery-->
+    <!-- cart-js -->
+    <script src="{{url_for('static', filename='js/minicart.js')}}"></script>
+    <script>
+        chr.render();
+
+        chr.cart.on('new_checkout', function (evt) {
+            var items, len, i;
+
+            if (this.subtotal() > 0) {
+                items = this.items();
+
+                for (i = 0, len = items.length; i < len; i++) {}
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+    <!-- //fixed-scroll-nav-js -->
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+    <!-- start-smooth-scrolling -->
+    <script src="{{url_for('static', filename='js/move-top.js')}}"></script>
+    <script src="{{url_for('static', filename='js/easing.js')}}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+
+    <script src="{{url_for('static', filename='js/SmoothScroll.min.js')}}"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- about bottom grid Numscroller -->
+
+    <script src="{{url_for('static', filename='js/numscroller-1.0.js')}}"></script>
+    <!-- //about bottom grid Numscroller -->
+    <!-- Bootstrap core JavaScript
+ ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+</body>
+
+</html>
