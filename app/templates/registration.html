@@ -1,0 +1,82 @@
+{% extends "landing.html" %}
+{% block content %}
+<style>
+.login{
+background: gray;
+border-radius: 3px;
+width: 300px;
+padding: 5px;
+margin:auto;
+height: 550px;
+}
+
+form {
+border:2px;
+border-radius:3px;
+}
+
+input{
+text-align:center;
+background:#ecfof1;
+border:2px solid transparent;
+border-radius:3px;
+font-size:14px;
+width: 240px;
+height: 40px;
+font-weight:200;
+padding:10px 0;
+transition:border .5s;
+}
+
+input[type =submit]{
+border:2px solid transparent;
+background:darkslategray;
+color:white;
+font-size:16px;
+line-height:25px;
+padding:10px 0;
+border-radius:3px;
+}
+
+</style>
+
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+
+
+    <div class="login">
+    <center>
+    <h2>Sign Up</h2>
+    <form action="/registration" method=post>
+            <br/>
+            <dt>Username:
+                <dd><input type="text" name="username" placeholder="Username">
+            <dt>Password:
+                <dd><input type="password" name="password" placeholder="Password">
+			<dt>First Name:
+                <dd><input type="text" name="first_name" placeholder="First Name">
+			<dt>Last Name:
+                <dd><input type="text" name="last_name" placeholder="Last Name">
+			<dt>Contact Number:
+                <dd><input type="text" name="contact_number" placeholder="Contact Number">
+			<dt>Birth Date:
+			<dd><center><input type="date" name="birth_date" placeholder=none></center>
+			<dt>Gender:
+                <dd><input type="text" name="gender" placeholder="Gender">
+            <br/>
+            <br/>
+            <p><input type=submit value="Sign Up">
+
+    </form>
+    </div>
+
+    </center>
+</div>
+ </body>
+{% endblock %}

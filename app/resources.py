@@ -1,13 +1,28 @@
 from flask_restful import Resource, reqparse
 from models import UserModel, RevokedTokenModel
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt)
+from flask_jwt_extended import JWTManager
+from flask import Flask, redirect
+
+app = Flask(__name__)
+jwt = JWTManager(app)
 
 
 parser = reqparse.RequestParser()
 parser.add_argument('username', help = 'This field cannot be blank', required = True)
 parser.add_argument('password', help = 'This field cannot be blank', required = True)
+parser.add_argument('first_name')
+parser.add_argument('last_name')
+parser.add_argument('contact_number')
+parser.add_argument('birth_date')
+parser.add_argument('gender')
 
 
+
+@jwt.token_in_blacklist_loader
+def check_if_token_in_blacklist(decrypted_token):
+    jti = decrypted_token['jti']
+    return models.RevokedTokenModel.is_jti_blacklist(jti)
 
 class UserRegistration(Resource):
     def post(self):
@@ -19,9 +34,13 @@ class UserRegistration(Resource):
 
         new_user = UserModel(
             username = data['username'],
-            password = UserModel.generate_hash(data['password'])
+            password = UserModel.generate_hash(data['password']),
+            first_name = data['first_name'],
+            last_name = data['last_name'],
+            contact_number = data['contact_number'],
+            birth_date = data['birth_date'],
+            gender = data['gender']
         )
-
 
         try:
             new_user.save_to_db()
@@ -32,6 +51,7 @@ class UserRegistration(Resource):
                 'access_token': access_token,
                 'refresh_token': refresh_token
             }
+            #return render_template('dashboard.html', access_token=access_token, refresh_token=refresh_token)
         except:
             return {'message': 'Something went wrong'}, 500
 
@@ -88,8 +108,8 @@ class TokenRefresh(Resource):
     @jwt_refresh_token_required
     def post(self):
         current_user = get_jwt_identity()
-        acces_token = create_access_token(identity= current_user)
-        return {'access token': access_token}
+        access_token = create_access_token(identity = current_user)
+        return {'access_token': access_token}
 
 
 class AllUsers(Resource):
