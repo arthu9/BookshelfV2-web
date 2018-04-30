@@ -64,111 +64,22 @@
                                 <div class="wthree_main_grid_right_grid">
                                     <h3>My Books</h3>
                                     <div class="w3_agileits_main_grid_work_grids">
+                                        {% for book in books%}
                                         <div class="agile_main_grid_work_gridl">
 												<div class="product-chr-info chr">
 														<div class="thumbnail">
 															<a href="single_product.html">
-																<img src="images/lib1.jpg" alt="">
+																<img src="{{url_for('static', filename='images/default_book.jpeg')}}" style="height:10.1em; width:9.1em;" alt="">
 															</a>
 														</div>
 														<div class="caption">
-															<h4>online business</h4>
+															<h4>{{book.title}}</h4>
 															<p>Scott Harris</p>
 					
 														</div>
-												</div>
+                                            </div>
                                         </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib2.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>kids</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib2.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>kids</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib3.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>work from home</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib2.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>kids</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib2.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>kids</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib2.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>kids</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
-                                        <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
-															<a href="single_product.html">
-																<img src="images/lib2.jpg" alt="">
-															</a>
-														</div>
-														<div class="caption">
-															<h4>kids</h4>
-															<p>Cordebard</p>
-														</div>
-												</div>
-                                        </div>
+                                        {% endfor %}
                                         <div class="clear"> </div>
                                     </div>
                                 </div>
