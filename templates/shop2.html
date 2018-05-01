@@ -1,993 +1,324 @@
 {% extends 'base/base.html' %}
 {% block content %}
     <!-- about -->
-    <div class="wrapper_top_shop">
-        <h4 class="rad-txt">
-            <a href="shop2.html" class="btn btn-success btn-view pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
-            <span class="abtext">SUGGESTION</span>
-            <ul class="nav nav-tabs">
-                <li class="active btn btn-success btntab"><a data-toggle="tab" href="#toprated">Top Rated</a></li>
-                <li class="btn btn-success btntab"><a data-toggle="tab" href="#menu1">Latest Books</a></li>
-                <li class="btn btn-success btntab"><a data-toggle="tab" href="#menu2">Newly Added</a></li>
-            </ul>
+    <!-- breadcrumbs -->
+		<div class="crumbs text-center">
+			<div class="container">
+				<div class="row">
+					<ul class="btn-group btn-breadcrumb bc-list">
+						<li class="btn btn1">
+							<a href="index.html">
+								<i class="glyphicon glyphicon-home"></i>
+							</a>
+						</li>
+						<li class="btn btn2">
+							<a href="{{ url_for('store') }}">Bookshelf</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--//breadcrumbs ends here-->
+		<!-- Shop -->
+		<div class="innerf-pages section">
+			<div class="container-cart">
+				<!-- product left -->
+				<div class="side-bar col-md-3">
+					<!--preference -->
+					<div class="left-side">
+						<h3 class="shopf-sear-headits-sear-head">
+							Genre</h3>
+						<ul>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Action</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Adventure</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Biography</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Drama</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">English</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Essay</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">History</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Horror</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Journalism</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Math</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Mystery</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Mythology</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Personal Narrative</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Reference Book</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Poetry Book</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Science</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Speech</span>
+							</li>
+							<li>
+						</ul>
+					</div>
+					<!-- // preference -->
+					<div class="search-hotel">
+						<h3 class="shopf-sear-headits-sear-head">
+							<span>author</span> in focus</h3>
+						<form action="#" method="post">
+							<input type="search" placeholder="search here" name="search" required="">
+							<input type="submit" value="Search">
+						</form>
+					</div>
+					<!-- price range -->
+					<!-- //price range -->
+					<!--preference -->
+					<div class="left-side">
+						<h3 class="shopf-sear-headits-sear-head">
+							<span>Newly</span> Added</h3>
+						<ul>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">last 30 days</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">last 90 days</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">last 150 days</span>
+							</li>
+
+						</ul>
+					</div>
+					<!-- // preference -->
+					<!-- Binding -->
+					<div class="left-side">
+						<h3 class="shopf-sear-headits-sear-head">Format</h3>
+						<ul>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Hardbound</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Softbound</span>
+							</li>
+						</ul>
+					</div>
+					<!-- //Binding -->
+					<!-- discounts -->
+					<!-- //discounts -->
+					<!-- reviews -->
+					<div class="customer-rev left-side">
+						<h3 class="shopf-sear-headits-sear-head">Customer Review</h3>
+						<ul>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<span>5.0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>4.0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-half-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>3.5</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>3.0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-half-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>2.5</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //reviews -->
 
 
-        </h4>
-        <div class="tab-content">
-                <!-- product-sec1 -->
-                <div id="toprated" class="product-sec1 tab-pane fade in active">
-                    <!-- row1-->
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>be creative</h4>
-                                <p>Clayton Barton</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 200.00</li>
-                                        <li>$ 100.00</li>
-                                    </ul>
+				</div>
+				<!-- //product left -->
+				<!-- product right -->
+				<div class="left-ads-display col-md-9">
+					<div class="wrapper_top_shop">
+						<!-- product-sec1 -->
+						<div class="product-sec1">
+							<!-- row1-->
+                            {% for book in books %}
+							<div class="col-md-3 product-men">
+								<div class="product-chr-info chr">
+									<div class="thumbnail">
+										<a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
+											<img src="{{url_for('static', filename='images/default_book.jpeg')}}" alt="">
+										</a>
+									</div>
+									<div class="caption">
+										<h4>{{ book.title }}</h4>
+										<p>{{ book.author_fname }} {{ book.author_lname }}</p>
+                                        <p><a href="#" style="margin:auto; color: #777; text-align:center;"> Owner: {{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+										<div class="matrlf-mid">
+											<ul class="rating">
+												<li>
+													<a href="#">
+														<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star gray-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star gray-star" aria-hidden="true"></span>
+													</a>
+												</li>
+											</ul>
 
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
+											<div class="clearfix"> </div>
+										</div>
+										<form action="
+										{{ url_for('add_wishlist', bookshelf_id=book.owner_bookshelfid,
+										book_id=book.book_id, username=book.owner_username) }}"
+                                              method="post" id="shop">
+											<input type="hidden" name="cmd" value="_cart">
+											<input type="hidden" name="add" value="1">
+											<input type="hidden" name="chr_item" value="Book1">
+											<input type="hidden" name="amount" value="0">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
+											<button type="submit" class="chr-cart pchr-book">Rent
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
+											<button type="submit" class="chr-cart pchr-ruble">Purchase
+												<i class="fa fa-ruble" aria-hidden="true"></i>
+											</button>
+											<button type="submit" form="shop" class="chr-cart pchr-cart">Add to wishlist
+												<i class="fa fa-bookmark" aria-hidden="true"></i>
+											</button>
+											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+										</form>
+									</div>
+								</div>
+							</div>
+                            {% endfor %}
+							<!-- //row3 -->
+							<div class="clearfix"></div>
 
-                                    <a href="#" data-toggle="modal" data-target="#myModal1"></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib7.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>marketing</h4>
-                                <p>Niel Fontine</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 200.00</li>
-                                        <li>
-                                            $250.00
-                                        </li>
-                                    </ul>
+						</div>
+                        <nav aria-label="Page navigation example" style="text-align:center;">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+						<!-- //product-sec1 -->
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
 
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>work from home</h4>
-                                <p>Jose portilla</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 80.00</li>
-                                        <li>
-                                            $100.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib6.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>online business</h4>
-                                <p>Clayton Barton</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 120.00</li>
-                                        <li>
-                                            $130.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- //row1 -->
-                    <!-- row2 -->
-                </div>
-                    <!-- //row2 -->
-                    <!-- row3 -->
-
-                <div id="menu1" class="product-sec1 tab-pane">
-                    <!-- row1-->
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib8.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>be creative</h4>
-                                <p>Clayton Barton</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 200.00</li>
-                                        <li>$ 100.00</li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                    <a href="#" data-toggle="modal" data-target="#myModal1"></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib7.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>marketing</h4>
-                                <p>Niel Fontine</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 200.00</li>
-                                        <li>
-                                            $250.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>work from home</h4>
-                                <p>Jose portilla</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 80.00</li>
-                                        <li>
-                                            $100.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib6.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>online business</h4>
-                                <p>Clayton Barton</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 120.00</li>
-                                        <li>
-                                            $130.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="menu2" class="product-sec1 tab-pane fade">
-                    <!-- row1-->
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>be creative</h4>
-                                <p>Clayton Barton</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 200.00</li>
-                                        <li>$ 100.00</li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                    <a href="#" data-toggle="modal" data-target="#myModal1"></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib7.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>marketing</h4>
-                                <p>Niel Fontine</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 200.00</li>
-                                        <li>
-                                            $250.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>work from home</h4>
-                                <p>Jose portilla</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 80.00</li>
-                                        <li>
-                                            $100.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib6.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>online business</h4>
-                                <p>Clayton Barton</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 120.00</li>
-                                        <li>
-                                            $130.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib7.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>marketing</h4>
-                                <p>Scott Harris</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 180.00</li>
-                                        <li>
-                                            $220.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib1.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>online business</h4>
-                                <p>Scott Harris</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 330.00</li>
-                                        <li>
-                                            $560.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>kids</h4>
-                                <p>Cordebard</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 280.00</li>
-                                        <li>
-                                            $500.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 product-men">
-                        <div class="product-chr-info chr">
-                            <div class="thumbnail">
-                                <a href="single_product.html">
-                                    <img src="images/lib3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="caption">
-                                <h4>work from home</h4>
-                                <p>Cordebard</p>
-                                <div class="matrlf-mid">
-                                    <ul class="rating">
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="price-list">
-                                        <li>$ 140.00</li>
-                                        <li>
-                                            $200.00
-                                        </li>
-                                    </ul>
-
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <form action="#" method="post">
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <!-- //row3 -->
-            </div>
-                    <!-- //product-sec1 -->
-                    <div class="clearfix"></div>
-    </div>
+			</div>
+		</div>
     <!-- //about ends here -->
     <!-- about bottom -->
-    <div class="about-bottom section">
-        <div class="container-fluid">
-            <h4 class="rad-txt">
-                <span class="abtxt1">BOOKSHELF</span>
-                <span class="abtext">Genre</span>
-                <a href="genre.html" class="btn btn-success pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
-            </h4>
-            <!-- about-bottom grid1 -->
-            <div class="col-md-12 about-bottom-right">
-                <div class="col-md-6 col-sm-6 col-xs-6 services-w3ls">
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>academics</h5>
-                            <p>An academic book can take many forms. In the past, these forms would generally have
-                                been represented in print, but increasingly print formats are being accompanied or
-                                sometimes replaced by digital versions, and digital formats are becoming
-                                increasingly functional. </p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>action & adventure</h5>
-                            <p>Featuring characters involved in exciting and usually dangerous activities and adventures</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>Art Books</h5>
-                            <p>Books that showcase particular types of art.</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>autobiography</h5>
-                            <p>Autobiography, the biography of oneself narrated by oneself. Autobiographical works
-                                can take many forms, from the intimate writings made during life that were not necessarily
-                                intended for publication (including letters, diaries, journals, memoirs, and
-                                reminiscences) to a formal book-length autobiography.</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6 services-w3ls service2">
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>biography</h5>
-                            <p>A biography (from the Greek words bios meaning "life", and graphos meaning "write")
-                                is an account of a person's life, usually published in the form of a book or essay,
-                                or in some other form, such as a film.</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>children's</h5>
-                            <p>Children's literature is for readers and listeners up to about age 12. It is often
-                                illustrated.</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>classics</h5>
-                            <p>A classic stands the test of time. The work is usually considered to be a
-                                representation of the period in which it was written; and the work merits lasting
-                                recognition. </p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="ab1">
-                        <div class="col-md-3 col-sm-3 col-xs-3 ab1-icon">
-                            <span class="fa fa-book" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                            <h5>Comic Books</h5>
-                            <p>A comic book or comicbook, also called comic magazine or simply comic, is a
-                                publication that consists of comic art in the form of sequential juxtaposed panels
-                                that represent individual scenes.</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
+
         <!-- //about container ends here-->
     </div>
     <!--//about bottom ends here-->

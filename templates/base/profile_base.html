@@ -68,7 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <span class="icon-bar"></span>
                         </button>
                         <h1>
-                            <a class="navbar-brand" href="dashboard.html">Bookshelf</a>
+                            <a class="navbar-brand" href="{{ url_for('home') }}">Bookshelf</a>
                         </h1>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,29 +79,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a class="page-scroll" href="#page-top"></a>
                             </li>
                             <li>
-                                <a href="dashboard.html">Home</a>
+                                <a href="{{ url_for('home') }}">Home</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="genre.html">Action</a></li>
-                                    <li><a href="#">Adventure</a></li>
-                                    <li><a href="#">Biography</a></li>
-                                    <li><a href="#">Drama</a></li>
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Essay</a></li>
-                                    <li><a href="#">History</a></li>
-                                    <li><a href="#">Horror</a></li>
-                                    <li><a href="#">Journalism</a></li>
-                                    <li><a href="#">Math</a></li>
-                                    <li><a href="#">Mystery</a></li>
-                                    <li><a href="#">Mythology</a></li>
-                                    <li><a href="#">Personal Narrative</a></li>
-                                    <li><a href="#">Reference Book</a></li>
-                                    <li><a href="#">Science</a></li>
-                                    <li><a href="#">Speech</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Action') }}">Action</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Adventure') }}">Adventure</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Biography') }}">Biography</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Drama') }}">Drama</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='English') }}">English</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Essay') }}">Essay</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='History') }}">History</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Horror') }}">Horror</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Journalism') }}">Journalism</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Math') }}">Math</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Mystery') }}">Mystery</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Mythology') }}">Mythology</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Personal Narrative') }}">Personal Narrative</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Reference Book') }}">Reference Book</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Science') }}">Science</a></li>
+                                    <li><a href="{{ url_for('view_genre', genre_name='Speech') }}">Speech</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -110,13 +110,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="addbook.html">Add a book</a>
+                                        <a href="{{ url_for('addbook') }}">Add a book</a>
                                     </li>
                                     <li>
-                                        <a href="shop2.html">Browse</a>
+                                        <a href="{{ url_for('store') }}">Browse</a>
                                     </li>
                                     <li>
-                                        <a href="single_product.html">Wishlist</a>
+                                        <a href="{{ url_for('wishlist') }}">Wishlist</a>
                                     </li>
                                 </ul>
                             </li>

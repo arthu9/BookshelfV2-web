@@ -68,13 +68,13 @@
                                         <div class="agile_main_grid_work_gridl">
 												<div class="product-chr-info chr">
 														<div class="thumbnail">
-															<a href="single_product.html">
+															<a href="{{ url_for('viewbook', book_id=book.book_id, username=user) }}">
 																<img src="{{url_for('static', filename='images/default_book.jpeg')}}" style="height:10.1em; width:9.1em;" alt="">
 															</a>
 														</div>
 														<div class="caption">
 															<h4>{{book.title}}</h4>
-															<p>Scott Harris</p>
+															<p>{{book.author_fname}} {{book.author_lname}}</p>
 					
 														</div>
                                             </div>

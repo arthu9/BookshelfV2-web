@@ -260,16 +260,18 @@
 
                     <div id="menu1" class="product-sec1 tab-pane">
                         <!-- row1-->
+                        {% for book in books %}
                         <div class="col-md-3 product-men">
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
-                                    <a href="single_product.html">
-                                        <img src="images/lib8.jpg" alt="">
+                                    <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
+                                        <img src="{{url_for('static', filename='images/default_book.jpeg')}}" alt="" style="max-height:232px;">
                                     </a>
                                 </div>
                                 <div class="caption">
-                                    <h4>be creative</h4>
-                                    <p>Clayton Barton</p>
+                                    <h4>{{ book.title }}</h4>
+                                    <p>{{ book.author_fname }} {{ book.author_lname }}</p>
+                                    <p><a href="#" style="margin:auto; color: #777; text-align:center;"> Owner: {{ book.owner_fname }} {{ book.owner_lname }}</a></p>
                                     <div class="matrlf-mid">
                                         <ul class="rating">
                                             <li>
@@ -298,11 +300,6 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        <ul class="price-list">
-                                            <li>$ 200.00</li>
-                                            <li>$ 100.00</li>
-                                        </ul>
-
                                         <div class="clearfix"> </div>
                                     </div>
                                     <form action="#" method="post">
@@ -312,164 +309,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 product-men">
-                            <div class="product-chr-info chr">
-                                <div class="thumbnail">
-                                    <a href="single_product.html">
-                                        <img src="images/lib7.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="caption">
-                                    <h4>marketing</h4>
-                                    <p>Niel Fontine</p>
-                                    <div class="matrlf-mid">
-                                        <ul class="rating">
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <ul class="price-list">
-                                            <li>$ 200.00</li>
-                                            <li>
-                                                $250.00
-                                            </li>
-                                        </ul>
-
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                    <form action="#" method="post">
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 product-men">
-                            <div class="product-chr-info chr">
-                                <div class="thumbnail">
-                                    <a href="single_product.html">
-                                        <img src="images/lib3.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="caption">
-                                    <h4>work from home</h4>
-                                    <p>Jose portilla</p>
-                                    <div class="matrlf-mid">
-                                        <ul class="rating">
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <ul class="price-list">
-                                            <li>$ 80.00</li>
-                                            <li>
-                                                $100.00
-                                            </li>
-                                        </ul>
-
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                    <form action="#" method="post">
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 product-men">
-                            <div class="product-chr-info chr">
-                                <div class="thumbnail">
-                                    <a href="single_product.html">
-                                        <img src="images/lib6.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="caption">
-                                    <h4>online business</h4>
-                                    <p>Clayton Barton</p>
-                                    <div class="matrlf-mid">
-                                        <ul class="rating">
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star yellow-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <span class="fa fa-star gray-star" aria-hidden="true"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <ul class="price-list">
-                                            <li>$ 120.00</li>
-                                            <li>
-                                                $130.00
-                                            </li>
-                                        </ul>
-
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                    <form action="#" method="post">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div id="menu2" class="product-sec1 tab-pane fade">
                         <!-- row1-->
@@ -683,7 +523,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                     <div class="col-md-3 product-men">
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
@@ -897,8 +737,9 @@
                             </div>
                         </div>
                     </div>
-                        <!-- //row3 -->
                 </div>
+                        <!-- //row3 -->
+            </div>
 						<!-- //product-sec1 -->
 						<div class="clearfix"></div>
         </div>
@@ -919,7 +760,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>action</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='Action') }}">action</a></h5>
                                 <p>Books in the action genre usually put more emphasis on exciting action sequences than deep
                                     themes and character development. </p>
                             </div>
@@ -930,7 +771,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>adventure</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='Adventure') }}">adventure</a></h5>
                                 <p>A genre of fiction in which action is the key element, overshadowing characters, theme and
                                     setting. The conflict in an adventure story is often man against nature. A secondary
                                     plot that reinforces this kind of conflict is sometimes included.</p>
@@ -942,7 +783,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>Biography</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='Biography') }}">biography</a></h5>
                                 <p>A life story documented in history and transformed into fiction through the insight and
                                     imagination of the writer. This type of novel melds the elements of biographical research
                                     and historical truth into the framework of a novel, complete with dialogue, drama and mood</p>
@@ -954,7 +795,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>Drama</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='Drama') }}">drama</a></h5>
                                 <p>Drama film is a genre that relies on the emotional and relational development of realistic
                                     characters. While Drama film relies heavily on this kind of development, dramatic themes
                                     play a large role in the plot as well.</p>
@@ -968,7 +809,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>English</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='English') }}">english</a></h5>
                                 <p>English for academic purposes (EAP) entails training students, usually in a higher education
                                     setting, to use language appropriately for study. It is one of the most common forms of
                                     English for specific purposes (ESP).</p>
@@ -980,7 +821,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>essay</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='Essay') }}">essay</a></h5>
                                 <p>a short literary composition on a particular theme or subject, usually in prose and generally
                                     analytic, speculative, or interpretative.</p>
                             </div>
@@ -991,7 +832,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>history</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='History') }}">history</a></h5>
                                 <p>a continuous, systematic narrative of past events as relating to a particular people,
                                     country, period, person, etc., usually written as a chronological account. </p>
                             </div>
@@ -1002,7 +843,7 @@
                                 <span class="fa fa-book" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-9 ab1-text">
-                                <h5>Horror</h5>
+                                <h5><a style="color:#000" href="{{ url_for('view_genre', genre_name='Horror') }}">horror</a></h5>
                                 <p>Horror fiction is fiction in any medium intended to scare, unsettle, or horrify the audience.
                                     Historically, the cause of the "horror" experience has often been the intrusion of a
                                     supernatural element into everyday human experience.</p>

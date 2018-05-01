@@ -44,7 +44,13 @@
                                     <option value="Hardbound">Hardbound</option>
                                     <option value="Softbound">Softbound</option>
                                 </select>
-                                <!--
+                                <select class="category" name="category" id="category">
+                                    <option selected="selected">Select category..</option>
+                                    <option value="Academics">Academics</option>
+                                    <option value="Fiction">Fiction</option>
+                                    <option value="Non Fiction">Non fiction</option>
+                                </select>
+                                <input type="text" placeholder="Price (Input 0 if the Book is not for sale)" name="price" required pattern="[0-9]">
                                 <select class="genre" name="genre" id="genre">
                                     <option selected="selected">Select genre..</option>
                                     <option value="Action">Action</option>
@@ -65,7 +71,7 @@
                                     <option value="Speech">Speech</option>
                                 </select>
                                 <textarea placeholder="Description" name="description" required=""></textarea>
-                                -->
+                                <br />
                                 <input type="submit" value="Submit">
                             </form>
                     </div>

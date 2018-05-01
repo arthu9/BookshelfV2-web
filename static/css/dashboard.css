@@ -12,10 +12,22 @@
 .rad-txt > .nav-tabs > li{
     left: 2em;
     top: 3em;
-    background-color: #333A56 !important;
+    background-color: #333A56;
     color: #FFFFFF !important;
     border: 0px;
 }
+.rad-txt > .nav-tabs > .tab12{
+    left: 0;
+    top: 0;
+    background-color: transparent !important;
+}
+.tab12{
+    left: 0;
+    top: 0;
+    background-color: transparent !important;
+}
+
+
 .nav-tabs > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     color: #000;
     background-color: #333A56;

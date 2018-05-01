@@ -1,6 +1,7 @@
-{% extends 'base/base.html' %}
-{% block content %}
+	{% extends 'base/base.html' %}
+	{% block content %}
 		<!-- breadcrumbs -->
+	{% for book in books %}
 		<div class="crumbs text-center">
 			<div class="container">
 				<div class="row">
@@ -14,7 +15,7 @@
 							<a href="shop.html">Product Catalogue</a>
 						</li>
 						<li class="btn btn3">
-							<a href="single_product.html">Single product</a>
+							<a href="single_product.html">{{ book.title }}</a>
 						</li>
 					</ul>
 				</div>
@@ -30,15 +31,7 @@
 							<ul class="slides">
 								<li data-thumb="images/s1.jpg">
 									<div class="thumb-image">
-										<img src="images/lib8.jpg" data-imagezoom="true" alt=" " class="img-responsive"> </div>
-								</li>
-								<li data-thumb="images/s2.jpg">
-									<div class="thumb-image">
-										<img src="images/s2.jpg" data-imagezoom="true" alt=" " class="img-responsive"> </div>
-								</li>
-								<li data-thumb="images/s3.png">
-									<div class="thumb-image">
-										<img src="images/s3.png" data-imagezoom="true" alt=" " class="img-responsive"> </div>
+										<img src="{{url_for('static', filename='images/default_book.jpeg')}}" data-imagezoom="true" alt=" " class="img-responsive"> </div>
 								</li>
 							</ul>
 							<div class="clearfix"></div>
@@ -47,11 +40,11 @@
 
 				</div>
 				<div class="col-md-8 single-right-left simpleCart_shelfItem">
-					<h3>Be Creative
-						<span>Hardcover – Feb 2018</span>
+					<h3>{{ book.title }}
+						<span>{{ book.types }} – {{ book.edition }}</span>
 					</h3>
 					<p>by
-						<a href="#">Clayton Barton</a>
+						<a href="#">{{ book.owner }}</a>
 					</p>
 					<div class="caption">
 
@@ -84,35 +77,39 @@
 						</ul>
 						<div class="clearfix"> </div>
 						<h6>
-							$100.00</h6>
+							$0.00</h6>
 					</div>
 					<div class="desc_single">
 						<h5>Description</h5>
-						<p>Pellentesque quis orci sapien. Phasellus at libero in nunc egestas tincidunt. In dictum arcu purus, ultricies tincidunt
-							urna vehicula at. Aenean iaculis urna nec libero scelerisque, ac ullamcorper neque porta.</p>
+						<p>{{ book.description }}</p>
 					</div>
 					<div class="occasional">
 						<h5>Specifications</h5>
 						<ul class="single_specific">
 							<li>
-								<span>Author :</span> Barry Allan</li>
+								<span>Author :</span> {{book.author_fname}} {{book.author_lname}}</li>
 							<li>
 								<span>Genre :</span> Art</li>
 							<li>
-								<span>format :</span> Hardcover</li>
+								<span>format :</span> {{book.types}}</li>
 							<li>
-								<span>publisher :</span> Lorempipsum</li>
+								<span>publisher :</span> {{book.publisher_id}}</li>
 							<li>
-								<span>edition :</span> february 2018</li>
+								<span>edition :</span> {{book.edition}}</li>
 							<li>
-								<span>ISN :</span> 765</li>
+								<span>ISN :</span> {{book.isbn}}</li>
+                            <li>
+								<span>availability :</span> {{book.availability}}</li>
+                            <li>
+								<span>quantity :</span> {{book.quantity}}</li>
 						</ul>
 
 					</div>
 					<div class="clearfix"></div>
 					<div class="occasion-cart">
 						<div class="chr single-item single_page_b">
-							<form action="#" method="post">
+							<form action="{{ url_for('add_wishlist', bookshelf_id= book.owner_bookshelfid,
+										book_id=book.book_id, username=book.username) }}" method="post">
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="add" value="1">
 								<input type="hidden" name="chr_item" value="Single book">
@@ -144,6 +141,7 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+    {% endfor %}
 		<!-- /new_arrivals -->
 		<div class="section singlep_btm">
 			<div class="container">
