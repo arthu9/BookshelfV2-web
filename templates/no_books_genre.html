@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!-- //banner -->
+<!-- breadcrumbs -->
+<div class="crumbs text-center">
+    <div class="container">
+        <div class="row">
+            <ul class="btn-group btn-breadcrumb bc-list">
+                <li class="btn btn1">
+                    <a href="index.html">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+                </li>
+                <li class="btn btn2">
+                    <a href="#">Genre</a>
+                </li>
+                <li class="btn btn3">
+                    <a href="#">{{ genre_name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- about -->
+<div class="wrapper_top_shop" style="margin-bottom:5em;">
+    <h4 class="rad-txt">
+
+        <ul class="nav nav-tabs tab12">
+            <li class="tab12"><span class="abtxt1">GENRE</span></li>
+            <li class="tab12"><span class="abtext">{{ genre_name }}</span></li>
+            <a href="#" class="btn btn-success pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
+        </ul>
+
+    </h4>
+    <div class="tab-content">
+            <!-- product-sec1 -->
+            <div id="toprated" class="product-sec1 tab-pane fade in active">
+                <!-- row1-->
+                <h1 style="text-align:center; font-size:5em; margin:2em;">No books to display</h1>
+                <!-- //row1 -->
+                <!-- row2 -->
+            </div>
+        </div>
+                <!-- //product-sec1 -->
+                <div class="clearfix"></div>
+</div>
+<!-- //about ends here -->
+<!-- about bottom -->
+    <div class="container-fluid">
+        <!-- about-bottom grid1 -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //about container ends here-->
+</div>
+<!--//about bottom ends here-->
+<!-- //footer -->
+{% endblock %}
+
