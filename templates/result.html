@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!-- //banner -->
+<!-- breadcrumbs -->
+<!-- //banner -->
+<!-- about -->
+<div class="wrapper_top_shop" style="margin-bottom:5em;">
+    <div class="container">
+            <div class="alert alert-{{color}} alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{message}}
+            </div>
+    </div>
+    <h4 class="rad-txt">
+        <ul class="nav nav-tabs tab12">
+            <span class="abtext">Result</span>
+        </ul>
+
+    </h4>
+    <div class="tab-content">
+            <!-- product-sec1 -->
+            <div id="toprated" class="product-sec1 tab-pane fade in active">
+                <!-- row1-->
+                {% for book in books %}
+                <div class="col-md-3 product-men">
+                    <div class="product-chr-info chr">
+                        <div class="thumbnail">
+                            <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
+                                <img src="{{url_for('static', filename='images/default_book.jpeg')}}" style="max-height:232px;" alt="">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h4>{{ book.title }}</h4>
+                            <p>{{ book.author_fname }} {{ book.author_lname }}</p>
+                            <p><a href="#" style="margin:auto; color: #777; text-align:center;"> Owner: {{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+                            <div class="matrlf-mid">
+                                <ul class="rating">
+                                    <li>
+                                        <a href="#">
+                                            <span class="fa fa-star yellow-star" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="fa fa-star yellow-star" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="fa fa-star yellow-star" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="fa fa-star gray-star" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="fa fa-star gray-star" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- //row1 -->
+                <!-- row2 -->
+            </div>
+        </div>
+                <!-- //product-sec1 -->
+                <div class="clearfix"></div>
+</div>
+<!-- //about ends here -->
+<!-- about bottom -->
+    <div class="container-fluid">
+        <!-- about-bottom grid1 -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //about container ends here-->
+</div>
+<!--//about bottom ends here-->
+<!-- //footer -->
+{% endblock %}
+

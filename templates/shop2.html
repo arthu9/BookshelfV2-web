@@ -1,0 +1,324 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <!-- about -->
+    <!-- breadcrumbs -->
+		<div class="crumbs text-center">
+			<div class="container">
+				<div class="row">
+					<ul class="btn-group btn-breadcrumb bc-list">
+						<li class="btn btn1">
+							<a href="index.html">
+								<i class="glyphicon glyphicon-home"></i>
+							</a>
+						</li>
+						<li class="btn btn2">
+							<a href="{{ url_for('store') }}">Bookshelf</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--//breadcrumbs ends here-->
+		<!-- Shop -->
+		<div class="innerf-pages section">
+			<div class="container-cart">
+				<!-- product left -->
+				<div class="side-bar col-md-3">
+					<!--preference -->
+					<div class="left-side">
+						<h3 class="shopf-sear-headits-sear-head">
+							Genre</h3>
+						<ul>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Action</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Adventure</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Biography</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Drama</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">English</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Essay</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">History</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Horror</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Journalism</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Math</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Mystery</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Mythology</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Personal Narrative</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Reference Book</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Poetry Book</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Science</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Speech</span>
+							</li>
+							<li>
+						</ul>
+					</div>
+					<!-- // preference -->
+					<div class="search-hotel">
+						<h3 class="shopf-sear-headits-sear-head">
+							<span>author</span> in focus</h3>
+						<form action="#" method="post">
+							<input type="search" placeholder="search here" name="search" required="">
+							<input type="submit" value="Search">
+						</form>
+					</div>
+					<!-- price range -->
+					<!-- //price range -->
+					<!--preference -->
+					<div class="left-side">
+						<h3 class="shopf-sear-headits-sear-head">
+							<span>Newly</span> Added</h3>
+						<ul>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">last 30 days</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">last 90 days</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">last 150 days</span>
+							</li>
+
+						</ul>
+					</div>
+					<!-- // preference -->
+					<!-- Binding -->
+					<div class="left-side">
+						<h3 class="shopf-sear-headits-sear-head">Format</h3>
+						<ul>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Hardbound</span>
+							</li>
+							<li>
+								<input type="checkbox" class="checked">
+								<span class="span">Softbound</span>
+							</li>
+						</ul>
+					</div>
+					<!-- //Binding -->
+					<!-- discounts -->
+					<!-- //discounts -->
+					<!-- reviews -->
+					<div class="customer-rev left-side">
+						<h3 class="shopf-sear-headits-sear-head">Customer Review</h3>
+						<ul>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<span>5.0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>4.0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-half-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>3.5</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>3.0</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-half-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<span>2.5</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //reviews -->
+
+
+				</div>
+				<!-- //product left -->
+				<!-- product right -->
+				<div class="left-ads-display col-md-9">
+					<div class="wrapper_top_shop">
+						<!-- product-sec1 -->
+						<div class="product-sec1">
+							<!-- row1-->
+                            {% for book in books %}
+							<div class="col-md-3 product-men">
+								<div class="product-chr-info chr">
+									<div class="thumbnail">
+										<a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
+											<img src="{{url_for('static', filename='images/default_book.jpeg')}}" alt="">
+										</a>
+									</div>
+									<div class="caption">
+										<h4>{{ book.title }}</h4>
+										<p>{{ book.author_fname }} {{ book.author_lname }}</p>
+                                        <p><a href="#" style="margin:auto; color: #777; text-align:center;"> Owner: {{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+										<div class="matrlf-mid">
+											<ul class="rating">
+												<li>
+													<a href="#">
+														<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star gray-star" aria-hidden="true"></span>
+													</a>
+												</li>
+												<li>
+													<a href="#">
+														<span class="fa fa-star gray-star" aria-hidden="true"></span>
+													</a>
+												</li>
+											</ul>
+
+											<div class="clearfix"> </div>
+										</div>
+										<form action="#" method="post" id="shop">
+											<input type="hidden" name="cmd" value="_cart">
+											<input type="hidden" name="add" value="1">
+											<input type="hidden" name="chr_item" value="Book1">
+											<input type="hidden" name="amount" value="0">
+											<button type="submit" class="chr-cart pchr-book">Borrow
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
+											<button type="submit" class="chr-cart pchr-book">Rent
+												<i class="fa fa-book" aria-hidden="true"></i>
+											</button>
+											<button type="submit" class="chr-cart pchr-ruble">Purchase
+												<i class="fa fa-ruble" aria-hidden="true"></i>
+											</button>
+                                        </form>
+                                        <form action="/bookshelf/wishlist/{{book.owner_bookshelfid}}/{{ book.book_id }}"
+                                                              method="post">
+											<button type="submit" class="chr-cart pchr-cart">Add to wishlist
+												<i class="fa fa-bookmark" aria-hidden="true"></i>
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
+                            {% endfor %}
+							<!-- //row3 -->
+							<div class="clearfix"></div>
+
+						</div>
+                        <nav aria-label="Page navigation example" style="text-align:center;">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+						<!-- //product-sec1 -->
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+    <!-- //about ends here -->
+    <!-- about bottom -->
+
+        <!-- //about container ends here-->
+    </div>
+    <!--//about bottom ends here-->
+{% endblock %}
