@@ -27,6 +27,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="{{url_for('static', filename='css/bootstrap.css')}}" type="text/css" rel="stylesheet" media="all">
     <!-- shop css -->
     <link href="{{url_for('static', filename='css/shop.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/flexslider.css')}}" type="text/css" media="screen" />
     <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
     <!-- font-awesome icons -->
     <link href="{{url_for('static', filename='css/font-awesome.css')}}" rel="stylesheet">
@@ -269,6 +270,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!-- //dropdown nav -->
+    <!-- zoom -->
+	<script src="{{url_for('static', filename='js/imagezoom.js')}}"></script>
+	<!-- zoom-->
+    <!-- FlexSlider -->
+	<script src="{{url_for('static', filename='js/jquery.flexslider.js')}}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider1').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
+    <!-- dropdown nav -->
+	<script>
+		$(document).ready(function () {
+			$(".dropdown").hover(
+				function () {
+					$('.dropdown-menu', this).stop(true, true).slideDown("fast");
+					$(this).toggleClass('open');
+				},
+				function () {
+					$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+					$(this).toggleClass('open');
+				}
+			);
+		});
+	</script>
+	<!-- //dropdown nav -->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
     <!-- start-smooth-scrolling -->
     <script src="{{url_for('static', filename='js/move-top.js')}}"></script>
     <script src="{{url_for('static', filename='js/easing.js')}}"></script>

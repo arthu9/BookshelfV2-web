@@ -1616,6 +1616,21 @@ div#testimonials {
     color: #fff;
 }
 
+.xbox{
+    background: #52658F;
+    color: #fff;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display:block;
+    float: right;
+}
+
+
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
@@ -3356,6 +3371,11 @@ button#btn-signup {
     ul.bc-list li a {
 		font-size: 0.95em;
 	}
+#btn-profile{
+    color:#52658F;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
 }
 @font-face {
     font-family: 'Fredericka the Great';

@@ -25,12 +25,16 @@
                     <span class="abtxt1">Add</span>
                     <span class="abtext">Book</span>
                 </h4>
+                <div class="alert alert-{{color}} alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">{{x}}</a>
+                    {{message}}
+                </div>
+                <form action="{{url_for('addbook')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
                 <div class="contact-form">
                     <div class="col-md-7">
                         <!-- contact form grid -->
                         <div class="contact-top1">
                             <h5>New Book</h5>
-                            <form action="{{url_for('addbook')}}" class="form_w3layouts" method="post">
                                 <input type="text" placeholder="Title" name="title" required="">
                                 <input type="text" placeholder="Author's First Name"  name="author_fname" required="">
                                 <input type="text" placeholder="Author's Last Name"  name="author_lname" required="">
@@ -51,6 +55,7 @@
                                     <option value="Non Fiction">Non fiction</option>
                                 </select>
                                 <input type="text" placeholder="Price (Input 0 if the Book is not for sale)" name="price" required pattern="[0-9]">
+                                <input type="text" placeholder="Quantity" name="quantity" required pattern="[0-9]">
                                 <select class="genre" name="genre" id="genre">
                                     <option selected="selected">Select genre..</option>
                                     <option value="Action">Action</option>
@@ -73,17 +78,18 @@
                                 <textarea placeholder="Description" name="description" required=""></textarea>
                                 <br />
                                 <input type="submit" value="Submit">
-                            </form>
                     </div>
                         <!--  //contact form grid ends here -->
                 </div>
                 <!-- contact map grid -->
                 <div class="col-md-5 map contact-right">
                     <div class="contact-top1">
-                        <a href="shop2.html" class="btn btn-success btnprofile">Upload Photo</a>
-                        <img src="#">
+                            <input type="file" name="photo" style="width: 50%; float:left;">
+                            <input type="submit" value="Upload Photos" style="margin:0; margin-bottom:2em; background:#333A56;">
+                            <img src="{{url_for('static', filename='images/default_book.jpeg')}}" class="img-responsive">
                     </div>
                 </div>
+                </form>
                     <!--//contact map grid ends here-->
                     <div class="clearfix"></div>
                 </div>

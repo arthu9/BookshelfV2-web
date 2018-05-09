@@ -29,9 +29,17 @@
 					<div class="grid images_3_of_2">
 						<div class="flexslider1">
 							<ul class="slides">
-								<li data-thumb="images/s1.jpg">
+								<li  data-thumb="{{url_for('static', filename='images/'+book.book_cover)}}">
 									<div class="thumb-image">
-										<img src="{{url_for('static', filename='images/default_book.jpeg')}}" data-imagezoom="true" alt=" " class="img-responsive"> </div>
+										<img src="{{url_for('static', filename='images/'+book.book_cover)}}"  data-imagezoom="true" alt=" " class="img-responsive"> </div>
+								</li>
+								<li data-thumb="{{url_for('static', filename='images/'+ book.book_pictures2)}}">
+									<div class="thumb-image">
+										<img src="{{url_for('static', filename='images/'+ book.book_pictures2)}}" data-imagezoom="true" alt=" " class="img-responsive"> </div>
+								</li>
+								<li data-thumb="{{url_for('static', filename='images/'+ book.book_pictures3)}}">
+									<div class="thumb-image">
+										<img src="{{url_for('static', filename='images/'+ book.book_pictures3)}}" data-imagezoom="true" alt=" " class="img-responsive"> </div>
 								</li>
 							</ul>
 							<div class="clearfix"></div>

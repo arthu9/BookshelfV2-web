@@ -265,7 +265,7 @@
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
                                     <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
-                                        <img src="{{url_for('static', filename='images/default_book.jpeg')}}" alt="" style="max-height:232px;">
+                                        <img src="{{url_for('static', filename='images/'+book.book_cover)}}" alt="" style="max-height:232px;">
                                     </a>
                                 </div>
                                 <div class="caption">
