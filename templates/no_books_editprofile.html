@@ -7,8 +7,6 @@
                     <div class="w3_main_grid_left_grid">
                         <h2>{{user.first_name}} {{user.last_name}}</h2>
                         <p>{{ user.username}}</p>
-                        <a href="shop2.html" class="btn btn-success pull-right btn-profile" style="margin-left: 1em;">Save Changes</a>
-                        <a href="shop2.html" class="btn btn-success pull-right btn-profile" id="btn-profile">Cancel</a>
                         <div class="w3l_figure">
                             <img src="{{url_for('static', filename='images/'+user.profpic)}}" alt=" " />
                             <form method=POST enctype=multipart/form-data action="{{ url_for('add_profile_pic') }}" style="margin-top:1em;">
@@ -25,6 +23,8 @@
                 </div>
                 <div class="w3layouts_main_grid_right">
                     <div class="w3ls_main_grid_right_grid">
+                        <a href="shop2.html" class="btn btn-success pull-right btn-profile" style="margin-left: 1em;">Save Changes</a>
+                        <a href="shop2.html" class="btn btn-success pull-right btn-profile" id="btn-profile">Cancel</a>
                         <div id="parentHorizontalTab">
                             <ul class="resp-tabs-list hor_1">
                                 <li><i class="fa fa-user" aria-hidden="true"></i>About me</li>

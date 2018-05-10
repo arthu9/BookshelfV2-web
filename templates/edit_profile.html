@@ -7,8 +7,6 @@
                     <div class="w3_main_grid_left_grid">
                         <h2>{{user.first_name}} {{user.last_name}}</h2>
                         <p>{{ user.username}}</p>
-                        <a href="shop2.html" class="btn btn-success pull-right btn-profile" style="margin-left: 1em;">Save Changes</a>
-                        <a href="shop2.html" class="btn btn-success pull-right btn-profile" id="btn-profile">Cancel</a>
                         <div class="w3l_figure">
                             <img src="{{url_for('static', filename='images/'+user.profpic)}}" alt=" " />
                             <form method=POST enctype=multipart/form-data action="{{ url_for('add_profile_pic') }}" style="margin-top:1em;">
@@ -26,13 +24,15 @@
                 <div class="w3layouts_main_grid_right">
                     <div class="w3ls_main_grid_right_grid">
                         <div id="parentHorizontalTab">
-                            <ul class="resp-tabs-list hor_1">
+                            <ul class="resp-tabs-list hor_1 manage">
                                 <li><i class="fa fa-user" aria-hidden="true"></i>About me</li>
                                 <li><i class="fa fa-briefcase" aria-hidden="true"></i>Bookshelf</li>
                                 <li><i class="fa fa-map-marker" aria-hidden="true"></i>Contact me</li>
                             </ul>
                             <div class="resp-tabs-container hor_1">
                                 <div class="agileits_main_grid_right_grid">
+                                    <a href="shop2.html" class="btn btn-success pull-right btn-profile" style="margin-left: 1em;">Save Changes</a>
+                                    <a href="shop2.html" class="btn btn-success pull-right btn-profile" id="btn-profile">Cancel</a>
                                     <p class="agileinfo_para">Aliquam sodales dolor ac lorem vulputate, eu maximus
                                         velit semper. Sed erat lacus, ultrices in iaculis ac,
                                         laoreet quis felis.Vivamus laoreet ultrices mi, quis euismod eros.
@@ -69,17 +69,20 @@
                                 </div>
                                 <div class="wthree_main_grid_right_grid">
                                     <h3>My Books</h3>
+
                                     <div class="w3_agileits_main_grid_work_grids">
                                         {% for book in books%}
                                         <div class="agile_main_grid_work_gridl">
-												<div class="product-chr-info chr">
-														<div class="thumbnail">
+												<div class="product-chr-info chr" style="height:20em;">
+														<div class="thumbnail" style="margin-bottom:1em;">
 															<a href="{{ url_for('viewbook', book_id=book.book_id, username=user.username) }}">
 																<img src="{{url_for('static', filename='images/'+book.book_cover)}}" style="height:10.1em; width:9.1em;" alt="">
 															</a>
 														</div>
-														<div class="caption">
-															<h4>{{book.title}}</h4>
+														<div class="caption" style="max-height:8em;">
+                                                            <div class="title">
+															<h4 style="overflow-y: hidden;  max-height:8em;">{{book.title}}</h4>
+                                                            </div>
 															<p>{{book.author_fname}} {{book.author_lname}}</p>
 					
 														</div>

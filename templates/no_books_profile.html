@@ -5,7 +5,6 @@
             <div class="w3_agile_main_grids">
                 <div class="w3layouts_main_grid_left">	
                     <div class="w3_main_grid_left_grid">
-                        <a href="{{ url_for('edit_profile') }}" class="btn btn-success pull-right btn-profile" id="btn-profile">Edit Profile</a>
                         <h2>{{user.first_name}} {{user.last_name}}</h2>
                         <p>{{ user.username}}</p>
                         <div class="w3l_figure">
@@ -25,6 +24,7 @@
                 </div>
                 <div class="w3layouts_main_grid_right">
                     <div class="w3ls_main_grid_right_grid">
+                        <a href="{{ url_for('edit_profile') }}" class="btn btn-success pull-right btn-profile" id="btn-profile">Edit Profile</a>
                         <div id="parentHorizontalTab">
                             <ul class="resp-tabs-list hor_1">
                                 <li><i class="fa fa-user" aria-hidden="true"></i>About me</li>

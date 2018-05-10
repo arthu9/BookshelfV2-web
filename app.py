@@ -93,8 +93,10 @@ def home():
     if g.user:
         url = 'http://localhost:5000/bookshelf/books/latest'
         books = requests.get(url)
-        if books.text == "no books found":
-            return render_template('dashboard.html', books={})
+        book_dict = json.loads(books.text)
+        print(books.text)
+        if not book_dict['book']:
+            return render_template('dashboard.html', books={}, message='No books to display')
         book_dict = json.loads(books.text)
         return render_template('dashboard.html', books=book_dict['book'], user=session['user'])
     else:
@@ -120,6 +122,7 @@ def interests():
                     url='http://localhost:5000/interests/'+interest
                     response = requests.post(url, json={"current_user": session['user']})
                     print(response.text)
+
             return redirect('home')
 
         return render_template('interest.html')
@@ -327,4 +330,4 @@ def wishlist():
     else:
         return redirect('unauthorized')
 if __name__ == '__main__':
-    app.run(host='localhost', port=8050, debug=True)
+    app.run(host='localhost', port=8080, debug=True)

@@ -75,9 +75,9 @@ input[type="submit"],.agileits_copyright p a,a{
 	height: 58em;
 }
 .btn-profile{
-    color:#52658F;
-    background-color: #ffffff;
-    border-color: #ffffff;
+    color:#FFFFFF;
+    background-color: #333a56;
+    border-color: #333a56;
 }
 .profile_pic {
     position: relative;
@@ -117,7 +117,7 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 
 .w3_agileits_main_grid_work_grids{
-	overflow: scroll;
+	overflow-y: scroll;
 	max-height:33em;
 }
 .caption p, ul.rating {
@@ -164,7 +164,7 @@ input[type="submit"],.agileits_copyright p a,a{
 	max-height: 650px;
 }
 .w3_main_grid_left_grid h2{
-	font-size:2em;
+	font-size:1.5em;
 	color:#fff;
 	text-align:center;
 }
@@ -487,14 +487,28 @@ ul.agileinfo_social_icons {
 	.product-chr-info {
 		width: 50% !important;
 	}
+	ul.resp-tabs-list {
+        top: 55% !important;
+    }
+    .product-chr-info {
+		width: 100% !important;
+	}
+    ul.agileinfo_social_icons{
+        text-align: center;
+        margin-top: 15em;
+    }
 }
 @media (max-width: 900px){
 	.w3_agile_main_grids {
 		width: 90%;
 	}
 	.product-chr-info {
-		width: 50% !important;
+		width: 100% !important;
 	}
+    ul.resp-tabs-list {
+        top: 55%;
+    }
+
 }
 @media (max-width: 800px){
 	.wthree_tab_grid_sub_left {
