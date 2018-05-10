@@ -192,10 +192,82 @@ div#my-cart-modal .close:hover,
 	display: none;
 }
 
+.book-img{
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+.book-overlay{
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top:35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+.button-blue-big{
+	background: #333A56;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    top: 35px;
+    font-size: 16px;
+    position: relative;
+    width: 130px;
+    padding: 7px 0;
+    margin: 0 auto;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.book-text h4{
+	font-size: 25px;
+	margin-top: 1em;
+    position: relative;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-weight: bold;
+    color: #333A56;
+}
+.thumbnail:hover .book-img {
+	opacity: 0.3;
+  }
+
+.thumbnail:hover .book-overlay {
+opacity: 1;
+}
 .thumbnail {
-	padding: 0;
-	border: none;
-	margin-bottom: 10px;
+	max-width: 205px;
+    height: 315px;
+    border: 5px solid #333A56 !important;
+    border-radius: 4px !important;
+	-webkit-border-radius: 4px;
+	margin-bottom: 0px;
+}
+.book-tags a{
+	margin-top: 10px;
+    margin-bottom: 3px;
+    font-size: .85em;
+    padding: 5px 7px;
+	background: #eee;
+    display: inline-block;
+    color: #52658F;
+    font-weight: 700;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    -webkit-transition: color .15s ease-in-out;
 }
 
 #staplesbmincart .sbmincart-closer {
@@ -419,6 +491,8 @@ p.sbmincart-empty-text {
 
 .product-men {
 	padding: 0 6px;
+	max-width: 220px;
+    height: auto;
 }
 
 /*-- Model-Slider --*/
@@ -569,7 +643,6 @@ ul.stars li a:hover {
 }
 
 .product-chr-info {
-	padding: 20px;
 	-webkit-transition: .5s all;
 	-moz-transition: .5s all;
 	transition: .5s all;
@@ -601,20 +674,35 @@ ul.price-list li:last-child {
 }
 
 .product-chr-info .caption h4 {
-	color: #000;
+	color: #333A56;
 	text-transform: capitalize;
 	font-size: 1em;
-	letter-spacing: 0.5px;
-	font-weight: 600;
-	padding: 5px 10px;
-	margin-bottom: 10px;
-	background: #eee;
-	text-align: center;
+	font-weight: 700;
+    display: block;
+    transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    -webkit-transition: color .15s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .caption p,
 ul.rating {
 	text-align: center;
+}
+
+.author{
+    text-align: left !important;
+	font-size: .85em; color: #919191;
+	font-weight: 700;
+	display: block;
+	transition: color .15s ease-in-out;
+	-moz-transition: color .15s ease-in-out;
+	-webkit-transition: color .15s ease-in-out;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 ul.price-list {
@@ -1509,6 +1597,14 @@ ul.single_specific li {
 	}
 	.single-right-left {
 		width: 100%;
+	}
+	.book-overlay {
+        position: relative;
+        top: -55%;
+        left: 50%;
+    }
+	.product-men{
+	    max-width: none;
 	}
 	.responsive_tabs {
 		margin-top: 3em;
