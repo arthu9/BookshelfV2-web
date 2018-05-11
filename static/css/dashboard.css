@@ -8,11 +8,17 @@
     color: #F7F5E6 !important;
 }
 .rad-txt > .nav-tabs > li{
-    left: 2em;
-    top: 3em;
     background-color: #333A56;
-    color: #FFFFFF !important;
-    border: 0px;
+    border: none;
+    line-height: 40px;
+    padding: 0 15px;
+    text-align: center;
+    margin-right:2px;
+    min-width: 80px;
+    border-radius: 3px;
+}
+.dash-head{
+    width:100%;
 }
 .rad-txt > .nav-tabs > .tab12{
     left: 0;
@@ -26,9 +32,24 @@
 }
 
 
+.dashtab > li > a{
+    border: none !important;
+}
+.nav > li > a:hover, .nav > li > a:focus, .nav-tabs > li:hover, .nav-tabs > li:focus {
+    background-color: #474d66 !important;
+    color: #fff !important;
+}
 .nav-tabs > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    color: #000;
-    background-color: #333A56;
+    border: none !important;
+    color: #fff !important;
+    background-color: #474d66 !important;
+    border-radius: 3px !important;
+}
+.nav-tabs > li.active, .nav-pills > li:hover, .nav-pills > li:focus {
+    border: none !important;
+    color: #fff !important;
+    background-color: #474d66 !important;
+    border-radius: 3px !important;
 }
 a {
     color: #fff
@@ -49,7 +70,11 @@ h1 a.navbar-brand {
     text-transform: capitalize;
     font-family: 'Fredericka the Great', cursive !important;
 }
-
+@media(max-width: 740px) {
+    .nav-tabs {
+        float:left;
+    }
+}
 @media(max-width: 530px) {
     .nav > li > a{
         padding: 2.5px 2.5px;
@@ -60,7 +85,6 @@ h1 a.navbar-brand {
 }
 @media(max-width: 450px) {
     .rad-txt > .nav-tabs > li{
-        top: 4em;
     }
     .nav > li > a{
         padding: 0px;
@@ -71,6 +95,5 @@ h1 a.navbar-brand {
 }
 @media(max-width: 375px) {
     .rad-txt > .nav-tabs > li{
-        top: 3em;
     }
 }

@@ -1518,9 +1518,6 @@ ul.single_specific li {
 	background: #eee;
 }
 
-.col-md-3.product-men {
-	background: #fff;
-}
 
 /*-- /Responsive --*/
 
@@ -1580,9 +1577,6 @@ ul.single_specific li {
 }
 
 @media(max-width:1050px) {
-	.product-chr-info {
-		padding: 10px;
-	}
 }
 
 @media(max-width:1024px) {
@@ -1616,7 +1610,6 @@ ul.single_specific li {
 		width: 23.5%;
 		margin: 0.5em;
 		float: left;
-		padding: 15px;
 	}
 	.side-bar {
 		width: 100%;
@@ -1629,12 +1622,29 @@ ul.single_specific li {
 		width: 100%;
 		padding: 0;
 	}
+	.thumbnail > img, .thumbnail a > img{
+        height: 190px !important;
+        width: 205px !important;
+	}
+	.thumbnail{
+        max-width: 205px;
+        height: 200px;
+	}
+	.book-overlay{
+	    display:none;
+	}
+	.book-tags{
+	    display:none;
+	}
 
 }
 
 @media(max-width:900px) {
 	.product-chr-info {
 		width: 23%;
+	}
+	.tab-content{
+	    margin-left:0 !important;
 	}
 }
 
@@ -1654,6 +1664,7 @@ ul.single_specific li {
 		top: 16.9%;
 		width: 343px;
 	}
+
 }
 
 @media(max-width:768px) {
@@ -1682,7 +1693,6 @@ ul.single_specific li {
 
 @media(max-width:640px) {
 	.product-chr-info {
-		padding: 15px;
 		width: 46%;
 		margin: 0.5em;
 		float: left;
@@ -1725,14 +1735,24 @@ ul.single_specific li {
 		font-size: 1.2em;
 	}
 	.product-chr-info {
-		padding: 15px;
-		width: 46%;
+		width: 40%;
 		margin: 0.5em;
 		float: left;
 	}
 	.single-right-left {
 		width: 100%;
 	}
+	.display {
+        width: 40%;
+        margin: 0.5em;
+        float: left;
+        margin-left: 1em !important;
+        font-size: 2em !important;
+    }
+    .row{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 }
 
 @media(max-width:568px) {
@@ -1751,8 +1771,7 @@ ul.single_specific li {
 
 @media(max-width:480px) {
 	.product-chr-info {
-		padding: 13px;
-		width: 45%;
+		width: 40%;
 		margin: 0.5em;
 		float: left;
 	}
@@ -1782,7 +1801,7 @@ ul.single_specific li {
 		left: 16%;
 	}
 	.product-chr-info {
-		width: 100%;
+		width: 40%;
 		margin: 1.2em 0em 0em;
 		float: none;
 	}
@@ -1797,7 +1816,6 @@ ul.single_specific li {
 		font-weight: 700;
 	}
 	.product-chr-info {
-		padding: 13px;
 		width: 47%;
 		margin: 0.3em;
 		float: left;
@@ -1833,7 +1851,6 @@ ul.single_specific li {
 
 @media(max-width:384px) {
 	.product-chr-info {
-		padding: 13px;
 		width: 97%;
 		margin: 0.3em;
 		float: left;
