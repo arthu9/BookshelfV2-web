@@ -151,7 +151,11 @@ div#my-cart-modal .close:hover,
 	overflow-y: scroll;
 	max-height: 300px;
 }
-
+.jumbotron p{
+    margin-bottom: 0px;
+    font-size:1em;
+    font-weight: normal;
+}
 #staplesbmincart {
 	display: none;
 	position: fixed;
@@ -247,7 +251,7 @@ opacity: 1;
 }
 .thumbnail {
 	max-width: 205px;
-    height: 315px;
+    height: 255px;
     border: 5px solid #333A56 !important;
     border-radius: 4px !important;
 	-webkit-border-radius: 4px;
@@ -491,7 +495,7 @@ p.sbmincart-empty-text {
 
 .product-men {
 	padding: 0 6px;
-	max-width: 220px;
+	max-width: 205px;
     height: auto;
 }
 
@@ -687,11 +691,9 @@ ul.price-list li:last-child {
     text-overflow: ellipsis;
 }
 
-.caption p,
-ul.rating {
-	text-align: center;
+.caption p{
+	text-align: none;;
 }
-
 .author{
     text-align: left !important;
 	font-size: .85em; color: #919191;

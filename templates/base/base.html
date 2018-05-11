@@ -117,6 +117,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <span class="fa fa-user nav-icon" aria-hidden="true"></span>
                                 </a>
                             </li>
+                             <li>
+                                <a href="{{ url_for('wishlist') }}" title="Wishlist">
+                                    <span class="fa fa-shopping-cart nav-icon" aria-hidden="true"></span>
+                                </a>
+                            </li>
                             <li>
                                 <a href="#" title="Direct Messages">
                                     <span class="fa fa-envelope nav-icon" aria-hidden="true"></span>
@@ -153,6 +158,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </ul>
                                 </li>
                             <!--/ notification -->
+                            <!-- search-bar -->
+                        <div class="search-bar-agileits">
+                            <div class="cd-main-header">
+                                <ul class="cd-header-buttons">
+                                    <li>
+                                        <a class="cd-search-trigger" href="#cd-search">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- cd-header-buttons -->
+                            </div>
+                            <div id="cd-search" class="cd-search">
+                                <form action="/search" method="post">
+                                    <input name="info" type="search" placeholder="Type and Hit Enter...">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //search-bar ends here -->
                             <!-- logout -->
                             <li class="dropdown">
                                     <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">
@@ -168,38 +192,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
                         <!-- //logout -->
                         </ul>
-                        <!-- search-bar -->
-                        <div class="search-bar-agileits">
-                            <div class="cd-main-header">
-                                <ul class="cd-header-buttons">
-                                    <li>
-                                        <a class="cd-search-trigger" href="#cd-search">
-                                            <span></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- cd-header-buttons -->
-                            </div>
-                            <div id="cd-search" class="cd-search">
-                                <form action="#" method="post">
-                                    <input name="Search" type="search" placeholder="Type and Hit Enter...">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //search-bar ends here -->
+
                         <!-- shopping cart -->
-                        <div class="cart-mainf">
-                            <div class="chrcart chrcart2 cart cart box_1">
-                                <form action="#" method="post" class="last">
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <button class="top_chr_cart" type="submit" name="submit" value="">
-                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //shopping cart ends here -->
 
                     </div>
                     <!-- /.navbar-collapse -->
@@ -270,40 +264,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!-- //dropdown nav -->
-    <!-- zoom -->
-	<script src="{{url_for('static', filename='js/imagezoom.js')}}"></script>
-	<!-- zoom-->
-    <!-- FlexSlider -->
-	<script src="{{url_for('static', filename='js/jquery.flexslider.js')}}"></script>
-	<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function () {
-			$('.flexslider1').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-			});
-		});
-	</script>
-	<!-- //FlexSlider-->
-    <!-- dropdown nav -->
-	<script>
-		$(document).ready(function () {
-			$(".dropdown").hover(
-				function () {
-					$('.dropdown-menu', this).stop(true, true).slideDown("fast");
-					$(this).toggleClass('open');
-				},
-				function () {
-					$('.dropdown-menu', this).stop(true, true).slideUp("fast");
-					$(this).toggleClass('open');
-				}
-			);
-		});
-	</script>
-	<!-- //dropdown nav -->
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
-    <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
-    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
     <!-- start-smooth-scrolling -->
     <script src="{{url_for('static', filename='js/move-top.js')}}"></script>
     <script src="{{url_for('static', filename='js/easing.js')}}"></script>
@@ -319,6 +279,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!-- //end-smooth-scrolling -->
+        <!-- FlexSlider -->
+	<script src="{{url_for('static', filename='js/jquery.flexslider.js')}}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider1').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
     <!-- smooth-scrolling-of-move-up -->
     <script>
         $(document).ready(function () {

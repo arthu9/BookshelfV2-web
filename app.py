@@ -94,11 +94,21 @@ def home():
         url = 'http://localhost:5000/bookshelf/books/latest'
         books = requests.get(url)
         book_dict = json.loads(books.text)
+        action = requests.get('http://localhost:5000/interests/view/Action')
+        action_dict = json.loads(action.text)
+        drama = requests.get('http://localhost:5000/interests/view/Drama')
+        drama_dict = json.loads(drama.text)
+        horror = requests.get('http://localhost:5000/interests/view/Horror')
+        horror_dict = json.loads(horror.text)
         print(books.text)
+        print(drama.text)
+        print('HORROR BOOKS')
+        print(horror.text)
         if not book_dict['book']:
             return render_template('dashboard.html', books={}, message='No books to display')
         book_dict = json.loads(books.text)
-        return render_template('dashboard.html', books=book_dict['book'], user=session['user'])
+        return render_template('dashboard.html', books=book_dict['book'], horrorbooks=horror_dict['book'],
+                               actionbooks=action_dict['book'], dramabooks=drama_dict['book'], user=session['user'])
     else:
         return redirect('unauthorized')
 
