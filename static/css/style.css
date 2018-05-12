@@ -2058,7 +2058,15 @@ footer-social {
 .footer-layouts-top {
     padding-top: 3em;
 }
-
+.cpy-right{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
+.section{
+    padding: 10em 0 !important;
+}
 .footer-main p a {
     color: #ea4c89;
     text-decoration: none;

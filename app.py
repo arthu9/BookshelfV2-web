@@ -67,6 +67,20 @@ def logout():
         session.pop('user', None)
         return redirect('/')
 
+@app.route('/signup/1', methods=['POST', 'GET'])
+def check_username():
+    if request.method == 'POST':
+        username =request.form['username']
+        response = requests.get(
+            'http://localhost:5000/user/info/'+username)
+        print(response.text)
+        if response.text == 'no user found!':
+            return render_template('signup_1.html', username=username, password=request.form['password'])
+        else:
+            return render_template('error_signup.html')
+    else:
+        return render_template('signup_1.html')
+
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
@@ -361,5 +375,29 @@ def wishlist():
         return render_template('wishlist.html', books=book_dict['book'])
     else:
         return redirect('unauthorized')
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == "POST":
+            r = requests.get('http://localhost:5000/search', json={'item': request.form['info'], 'current_user': session['user']})
+            print(r.text)
+            book_dict = json.loads(r.text)
+            return render_template("result.html", books=book_dict['book'])
+    else:
+        return "error"
+
+
+@app.route('/viewresult', methods=['GET'])
+def viewresult():
+    if g.user:
+        book = requests.get('http://localhost:5000/user/bookshelf/', json={'current_user': session['user']})
+        if book.text == "no books found":
+            return render_template('profile.html', books={})
+        book_dict=json.loads(book.text)
+        print(book_dict['book'])
+        return render_template('single_product.html', books=book_dict['book'])
+    else:
+        return redirect('unauthorized')
+
 if __name__ == '__main__':
     app.run(host='localhost', port=8080, debug=True)
