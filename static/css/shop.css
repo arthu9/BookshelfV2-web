@@ -105,7 +105,24 @@ div#my-cart-modal button.btn.btn-primary a {
 div#my-cart-modal button.btn.btn-primary:hover {
 	background-color: #F60B0E;
 }
-
+.breadcrumbtitle{
+    display: block;
+    transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    -webkit-transition: color .15s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ul.bc-list li a.breadcrumbtitle{
+    display: block;
+    transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    -webkit-transition: color .15s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 div#my-cart-modal .alert-danger {
 	color: #FFF;
 	text-align: center;

@@ -12,10 +12,10 @@
 							</a>
 						</li>
 						<li class="btn btn2">
-							<a href="shop.html">Product Catalogue</a>
+							<a href="{{ url_for('store') }}">Product Catalogue</a>
 						</li>
 						<li class="btn btn3">
-							<a href="single_product.html">{{ book.title }}</a>
+							<a class="breadcrumbtitle" href="single_product.html">{{ book.title }}</a>
 						</li>
 					</ul>
 				</div>
@@ -52,7 +52,7 @@
 						<span>{{ book.types }} – {{ book.edition }}</span>
 					</h3>
 					<p>by
-						<a href="#">{{ book.owner }}</a>
+						<a href="{{ url_for('view_profile', username=book.owner_username) }}">{{ book.owner }}</a>
 					</p>
 					<div class="caption">
 
@@ -115,40 +115,37 @@
 					</div>
 					<div class="clearfix"></div>
 					<div class="occasion-cart">
-						<div class="chr single-item single_page_b">
-							<form action="#" method="post">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="add" value="1">
-								<input type="hidden" name="chr_item" value="Single book">
-								<input type="hidden" name="amount" value="100.00">
-								<div class="col-md-4">
-								<button type="submit" class="chr-cart pchr-book pull-left">Borrow
+						<div class="chr single-item single_page_b container">
+
+
+
+								<div class="btn-group btn-grp-med col-md-12" role="group">
+									<form action="#" method="post" style="display: inline-block;">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="chr_item" value="Single book">
+									<input type="hidden" name="amount" value="100.00">
+									<button type="submit" class="btn btn-success">Borrow
+										<i class="fa fa-book" aria-hidden="true"></i>
+									</button>
+									<button type="submit" class="btn btn-success">Rent
 									<i class="fa fa-book" aria-hidden="true"></i>
-								</button>
-								</div>
-								<div class="col-md-4">
-								<button type="submit" class="chr-cart pchr-book pull-right">Rent
-									<i class="fa fa-book" aria-hidden="true"></i>
-								</button>
-								</div>
-								<div class="col-md-4">
-								<button type="submit" class="chr-cart pchr-ruble pull-left">Purchase
-									<i class="fa fa-bitcoin" aria-hidden="true"></i>
-								</button>
-								</div>
-								<div class="col-md-4">
-								<button type="submit" class="chr-cart pchr-cart pull-right">
-									<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
-								</div>
-							</form>
-							<form action="{{ url_for('add_wishlist', bookshelf_id= book.owner_bookshelfid,
+									</button>
+									<button type="submit" class="btn btn-success">Purchase
+										<i class="fa fa-bitcoin" aria-hidden="true"></i>
+									</button>
+									<button type="submit" class="btn btn-success">
+										<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
+									</button>
+									</form>
+									<form style="display: inline-block;" action="{{ url_for('add_wishlist', bookshelf_id= book.owner_bookshelfid,
 										book_id=book.book_id) }}" method="post" id="wishlist">
-								<div class="col-md-4">
-								<button type="submit" form="wishlist" class="chr-cart pchr-cart pull-right">
-									<i class="fa fa-bookmark" aria-hidden="true"></i>Add to Wishlist</button>
+										<button type="submit" form="wishlist" class="btn btn-success">
+											<i class="fa fa-bookmark" aria-hidden="true"></i>Add to Wishlist</button>
+									</form>
 								</div>
-								<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-							</form>
+
+
 						</div>
 					</div>
 				</div>

@@ -200,6 +200,28 @@ def profile():
     else:
         return redirect('unauthorized')
 
+@app.route('/profile/<username>', methods=['GET', 'POST'])
+def view_profile(username):
+    if g.user:
+        if username == session['user']:
+            return redirect('profile')
+        url = 'http://localhost:5000/user/info/'+username
+        user = requests.get(url)
+        print(user.text)
+        user_dict = json.loads(user.text)
+        print(user_dict)
+        book_details = requests.get('http://localhost:5000/user/bookshelf/availability', json={"current_user": username})
+        books = requests.get('http://localhost:5000/user/bookshelf', json={"current_user": username})
+        if books.text == "no books found":
+            return render_template('no_books_profile.html', user=user_dict['user'])
+        book_dict=json.loads(books.text)
+        book_details_dict=json.loads(book_details.text)
+        print(book_dict['book'])
+        print(user_dict['user'])
+        return render_template('user_profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'])
+    else:
+        return redirect('unauthorized')
+
 @app.route('/profile/edit', methods=['POST', 'GET'])
 def edit_profile():
     if g.user:
@@ -286,7 +308,7 @@ def store():
     else:
         return redirect('unauthorized')
 
-@app.route('/bookshelf/wishlist/<bookshelf_id>/<book_id>', methods=['POST'])
+@app.route('/bookshelf/wishlist/<bookshelf_id>/<book_id>', methods=['POST', 'GET'])
 def add_wishlist(bookshelf_id, book_id):
     if g.user:
         if request.method == 'POST':
@@ -316,10 +338,10 @@ def add_wishlist(bookshelf_id, book_id):
     else:
         return redirect('unauthorized')
 
-@app.route('/bookshelf/wishlist/<username>/<book_id>', methods=['GET', 'POST'])
+@app.route('/bookshelf/wishlist/remove/<username>/<book_id>', methods=['GET', 'POST'])
 def remove_wishlist(username, book_id):
     if g.user:
-        url= 'http://localhost:5000/bookshelf/remove-wishlist'
+        url= 'http://localhost:5000/bookshelf/remove_wishlist'
         response = requests.post(url, json={"book_id": book_id, "bookshelf_owner": username, "username": session['user']})
         book_dict = json.loads(response.text)
         return redirect('wishlist')

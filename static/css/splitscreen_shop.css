@@ -29,7 +29,7 @@ html, body {
     min-height: 356px !important;
     margin-top: 4%;
     background:
-            linear-gradient(rgba(247, 245, 230, 0.80), rgba(247,245,230, 0.80)), url("../images/books2.jpg");
+            linear-gradient(rgba(232, 232, 232, 0.80), rgba(232,232,232, 0.80)), url("../images/books2.jpg");
   color: #333A56 !important;
   background-size: cover;
 }

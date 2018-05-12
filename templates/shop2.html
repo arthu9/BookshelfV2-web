@@ -235,7 +235,7 @@
 									<div class="caption">
 										<h4>{{ book.title }}</h4>
 										<p class="author">{{ book.author_fname }} {{ book.author_lname }}</p>
-										<p><a href="#" style="margin:auto; color: #777;">{{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+										<p><a href="{{ url_for('view_profile', username=book.owner_username) }}" style="margin:auto; color: #777;">{{ book.owner_fname }} {{ book.owner_lname }}</a></p>
 										<div class="book-tags">
 											<a href="#">Borrow<i class="fa fa-book" aria-hidden="true"></i></a>
                                         	<a href="#">Buy<i class="fa fa-ruble" aria-hidden="true"></i></a>

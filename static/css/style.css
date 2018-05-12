@@ -546,7 +546,7 @@ ul.dropdown-menu:hover a.s-menu {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    min-height: 794px;
+    min-height: 400px;
 }
 
 .banner-bg-inner {
@@ -2136,6 +2136,7 @@ span.icon_g_plus {
 
 li.btn.btn2 {
     background: #333A56;
+    max-width: 100% !important;
 }
 
 li.btn.btn3 {
@@ -2148,6 +2149,7 @@ li.btn.btn4 {
 
 .btn-breadcrumb .btn {
     padding: 6px 12px 6px 24px;
+    max-width: 60%;
 }
 
 .btn-breadcrumb .btn:first-child {
@@ -2160,6 +2162,14 @@ ul.bc-list li a {
     text-transform: capitalize;
     font-size: 1em;
     letter-spacing: 0.5px;
+    display: block;
+    transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    -webkit-transition: color .15s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .btn-info {

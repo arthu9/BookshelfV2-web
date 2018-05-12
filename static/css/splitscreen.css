@@ -14,7 +14,7 @@ html, body {
   background-size: cover;
   -webkit-background-size: cover;
     -moz-background-size: cover;
-    min-height: 356px;
+    min-height: 400px;
     overflow:visible;
     margin-top: 4%;
     margin-bottom: 3.5%;
@@ -27,7 +27,7 @@ html, body {
     background-size: cover;
   -webkit-background-size: cover;
     -moz-background-size: cover;
-    min-height: 356px;
+    min-height: 400px;
     margin-top: 4%;
     margin-bottom: 3.5%;
     background:
@@ -40,7 +40,7 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  font-size: 2em;
+  font-size: 1.6em;
   color: white;
   font-family: 'Open Sans', sans-serif;
     font-weight:300;
@@ -184,19 +184,7 @@ h1 a.navbar-brand {
   font-family: 'Fredericka the Great', cursive !important;
 }
 @media screen and (max-width: 1290px) {
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
-    .frontend-side {
-        min-height: 550px;
-    }
-    .uiux-side{
-        min-height: 550px;
-    }
 
-    .tab-content{
-        margin-top: 20% !important;
-    }
 }
 @media screen and (max-width: 1100px) {
 
@@ -205,26 +193,8 @@ h1 a.navbar-brand {
     }
 }
 @media screen and (max-width: 1024px) {
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
-    .frontend-side {
-        min-height: 550px;
-    }
-    .uiux-side{
-        min-height: 550px;
-    }
 }
 @media screen and (max-width: 991px) {
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
-    .frontend-side {
-        min-height: 550px;
-    }
-    .uiux-side{
-        min-height: 550px;
-    }
 
     .display{
         margin-top: 4em !important;
@@ -244,26 +214,9 @@ h1 a.navbar-brand {
     }
 }
 @media screen and (max-width: 800px) {
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
-    .frontend-side {
-        min-height: 550px;
-    }
-    .uiux-side{
-        min-height: 550px;
-    }
 }
 @media screen and (max-width: 768px) {
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
-    .frontend-side {
-        min-height: 550px;
-    }
-    .uiux-side{
-        min-height: 550px;
-    }
+
 
 }
 
@@ -277,30 +230,10 @@ h1 a.navbar-brand {
     .split-pane > div .text-content .bold {
         font-size: 1.25em;
     }
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
-    .frontend-side {
-        min-height: 550px;
-    }
-    .uiux-side{
-        min-height: 550px;
-    }
 
 
 }
 
-@media screen and (max-width: 640px) {
-    .banner-bg-agileits {
-        min-height: 500px;
-    }
-    .frontend-side {
-        min-height: 500px;
-    }
-    .uiux-side{
-        min-height: 500px;
-    }
-}
 @media(max-width:600px) {
 	.display {
         width: 40%;
@@ -324,40 +257,10 @@ h1 a.navbar-brand {
     .split-pane > div .text-content .bold {
         font-size: 1em;
     }
-    .banner-bg-agileits {
-        min-height: 470px;
-    }
-    .frontend-side {
-        min-height: 470px;
-    }
-    .uiux-side{
-        min-height: 470px;
-    }
 }
 
-@media screen and (max-width: 480px) {
-    .banner-bg-agileits {
-        min-height: 450px;
-    }
-    .frontend-side {
-        min-height: 450px;
-    }
-    .uiux-side{
-        min-height: 450px;
-    }
-}
-@media screen and (max-width: 414px) {
-    .banner-bg-agileits {
-        min-height: 415px;
-    }
-    .frontend-side {
-        min-height: 415px;
-    }
-    .uiux-side{
-        min-height: 415px;
-    }
 
-}
+
 @media(max-width: 640px) {
     .split-pane {
         font-size:1.5em;

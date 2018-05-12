@@ -40,7 +40,7 @@
                     </h4>
                 </div>
             </div>
-            <div class="tab-content" style="height:500px; margin-top:1em; margin-left:6em;">
+            <div class="tab-content" style="height:500px; margin-top:4em; margin-left:6em;">
                     <!-- product-sec1 -->
                     <div id="toprated" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
@@ -73,11 +73,13 @@
                                 <div class="caption">
                                     <h4>{{ book.title }}</h4>
                                     <p class="author">{{ book.author_fname }} {{ book.author_lname }}</p>
-                                    <p><a href="#" style="margin:auto; color: #777;">{{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+                                    <p><a href="{{ url_for('view_profile', username=book.owner_username) }}" style="margin:auto; color: #777;">{{ book.owner_fname }} {{ book.owner_lname }}</a></p>
                                     <div class="book-tags">
                                         <a href="#">Borrow<i class="fa fa-book" aria-hidden="true"></i></a>
                                         <a href="#">Buy<i class="fa fa-ruble" aria-hidden="true"></i></a>
-                                        <a href="{{ url_for('add_wishlist', book_id=book.book_id, bookshelf_id=book.owner_bookshelfid) }}">Bookmark<i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                                        <form style="display:inline-block;" action="{{ url_for('add_wishlist', book_id=book.book_id, bookshelf_id=book.owner_bookshelfid) }}" method="post">
+                                            <a href="javascript:;" onclick="parentNode.submit();">Bookmark<i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +136,7 @@
                                 <div class="caption">
                                     <h4>{{ abook.title }}</h4>
                                     <p class="author">{{ abook.author_fname }} {{ abook.author_lname }}</p>
-                                    <p><a href="#" style="margin:auto; color: #777;">{{ abook.owner_fname }} {{ abook.owner_lname }}</a></p>
+                                    <p><a href="{{ url_for('view_profile', username=abook.owner_username) }}" style="margin:auto; color: #777;">{{ abook.owner_fname }} {{ abook.owner_lname }}</a></p>
                                     <div class="book-tags">
                                         <a href="#">Borrow<i class="fa fa-book" aria-hidden="true"></i></a>
                                         <a href="#">Buy<i class="fa fa-ruble" aria-hidden="true"></i></a>
@@ -172,7 +174,7 @@
                                 <div class="caption">
                                     <h4>{{ dbook.title }}</h4>
                                     <p class="author">{{ dbook.author_fname }} {{ dbook.author_lname }}</p>
-                                    <p><a href="#" style="margin:auto; color: #777;">{{ dbook.owner_fname }} {{ dbook.owner_lname }}</a></p>
+                                    <p><a href="{{ url_for('view_profile', username=dbook.owner_username) }}" style="margin:auto; color: #777;">{{ dbook.owner_fname }} {{ dbook.owner_lname }}</a></p>
                                     <div class="book-tags">
                                         <a href="#">Borrow<i class="fa fa-book" aria-hidden="true"></i></a>
                                         <a href="#">Buy<i class="fa fa-ruble" aria-hidden="true"></i></a>
@@ -204,7 +206,7 @@
                                 <div class="caption">
                                     <h4>{{ hbook.title }}</h4>
                                     <p class="author">{{ hbook.author_fname }} {{ hbook.author_lname }}</p>
-                                    <p><a href="#" style="margin:auto; color: #777;">{{ hbook.owner_fname }} {{ hbook.owner_lname }}</a></p>
+                                    <p><a href="{{ url_for('view_profile', username=hbook.owner_username) }}" style="margin:auto; color: #777;">{{ hbook.owner_fname }} {{ hbook.owner_lname }}</a></p>
                                     <div class="book-tags">
                                         <a href="#">Borrow<i class="fa fa-book" aria-hidden="true"></i></a>
                                         <a href="#">Buy<i class="fa fa-ruble" aria-hidden="true"></i></a>

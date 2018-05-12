@@ -60,7 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <span class="icon-bar"></span>
                         </button>
                         <h1>
-                            <a class="navbar-brand" href="index.html">Bookshelf</a>
+                            <a class="navbar-brand" href="{{ url_for('index') }}">Bookshelf</a>
                         </h1>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,7 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a class="page-scroll" href="#page-top"></a>
                             </li>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{{ url_for('index') }}">Home</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">books
