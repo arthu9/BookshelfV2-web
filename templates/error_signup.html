@@ -3,7 +3,7 @@
 {% block content %}
         <!-- //navbar ends here -->
         <!-- signin and signup form -->
-        <div class="login-form section text-center">
+        <div class="login-form section text-center" style="min-height:95vh; padding-bottom:60px;">
 
             <div class="container">
                 <h4 class="rad-txt">
@@ -21,9 +21,9 @@
                         <div class="panel-body">
                             <div class="alert alert-danger alert-dismissible fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Username already taken.</strong> Please use a different one and try again.
+                                <strong>{{message}}</strong> {{message2}}
                             </div>
-                            <form id="signupform" class="form-horizontal" action="{{ url_for('signup') }}" method="post">
+                            <form id="signupform" class="form-horizontal" action="{{ url_for('check_username') }}" method="post">
                                 <h3>Account Information</h3>
                                 <br>
                                 <div class="form-group">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <footer class="cpy-right footer" style="bottom:0;">
+    <footer class="cpy-right footer">
                 <p>© 2018 Chronicle. All rights reserved | Design by
                     <a href="http://w3layouts.com"> W3layouts.</a>
                 </p>

@@ -546,7 +546,7 @@ ul.dropdown-menu:hover a.s-menu {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    min-height: 400px;
+    min-height: 430px;
 }
 
 .banner-bg-inner {
@@ -899,7 +899,7 @@ h4.title-about {
     color: #000;
     font-size: 1.8em;
     text-transform: capitalize;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
 }
 
 h4.rad-txt span.abtxt1 {
@@ -2065,7 +2065,10 @@ footer-social {
     line-height: 60px;
 }
 .section{
-    padding: 10em 0 !important;
+    padding: 12em 0 0 !important;
+}
+.jumbotron{
+    padding: 5px 15px;
 }
 .footer-main p a {
     color: #ea4c89;
@@ -2411,9 +2414,6 @@ button#btn-signup {
 }
 
 @media screen and (max-width: 1280px) {
-    .banner-bg-agileits {
-        min-height: 738px;
-    }
     .banner-text {
         padding: 23em 0 0;
     }
@@ -2513,9 +2513,6 @@ button#btn-signup {
     .banner-text {
         padding: 21em 0 0;
     }
-    .banner-bg-agileits {
-        min-height: 683px;
-    }
     .team-text {
         min-height: 413px
     }
@@ -2556,9 +2553,6 @@ button#btn-signup {
     }
     .banner-text {
         padding: 19em 0 0;
-    }
-    .banner-bg-agileits {
-        min-height: 670px;
     }
     .team-text {
         min-height: 398px;
@@ -2612,9 +2606,6 @@ button#btn-signup {
 }
 
 @media screen and (max-width: 800px) {
-    .banner-bg-agileits {
-        min-height: 635px;
-    }
     h2.title {
         font-size: 5em;
     }
@@ -2647,9 +2638,6 @@ button#btn-signup {
 }
 
 @media screen and (max-width: 768px) {
-    .banner-bg-agileits {
-        min-height: 600px;
-    }
     h2.title {
         font-size: 4.5em;
     }
@@ -2760,9 +2748,6 @@ button#btn-signup {
     .ab1 {
         margin: 5px 0 0 0;
     }
-    .banner-bg-agileits {
-        min-height: 550px;
-    }
     .banner-text {
         padding: 16em 0 0;
     }
@@ -2856,9 +2841,6 @@ button#btn-signup {
 }
 
 @media screen and (max-width: 640px) {
-    .banner-bg-agileits {
-        min-height: 530px;
-    }
     .banner-text p:before {
         left: 28.5%;
     }
@@ -2895,9 +2877,6 @@ button#btn-signup {
     }
     .banner-text p {
         font-size: 2.5em;
-    }
-    .banner-bg-agileits {
-        min-height: 500px;
     }
     .banner-text p:before {
         left: 29.3%;
@@ -2972,9 +2951,6 @@ button#btn-signup {
     .banner-bg-inner {
         min-height: 320px;
     }
-    .banner-bg-agileits {
-        min-height: 470px;
-    }
     .banner-text {
         padding: 14em 0 0;
     }
@@ -3040,9 +3016,6 @@ button#btn-signup {
     }
     .banner-text {
         padding: 13em 0 0;
-    }
-    .banner-bg-agileits {
-        min-height: 450px;
     }
     ul.banner-txt li:nth-child(2) {
         margin: 0 0.8em;
@@ -3118,9 +3091,6 @@ button#btn-signup {
 }
 
 @media screen and (max-width: 414px) {
-    .banner-bg-agileits {
-        min-height: 415px;
-    }
     .banner-text p:before {
         left: 26.6%;
     }
@@ -3180,9 +3150,6 @@ button#btn-signup {
 @media screen and (max-width: 384px) {
     .list-inline>li {
         width: 23.5%;
-    }
-    .banner-bg-agileits {
-        min-height: 390px;
     }
     .banner-text p:before {
         left: 25.8%;
@@ -3327,9 +3294,6 @@ button#btn-signup {
     }
     .banner-text {
         padding: 10em 0 0;
-    }
-    .banner-bg-agileits {
-        min-height: 345px;
     }
     .inner-about2 h4 {
         font-size: 1.23em;

@@ -116,46 +116,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </nav>
         <!-- //navbar ends here -->
-        <!-- banner -->
-		<div class='split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side'>
-          <div>
-            <div class='text-content'>
-              <div class='big'>BOOKSHELF</div>
-            </div>
-          </div>
-        </div>
-        <div class='split-pane col-xs-6 col-sm-6 col-lg-6 frontend-side'>
-          <div>
-            <div class='text-content'>
-              <div class="bold"></div>
-            </div>
-          </div>
-        </div>
-        <div id='split-pane-or'>
-          <div>
-          </div>
-        </div>
-		<!-- //banner -->
-        <!-- breadcrumbs -->
-        <div class="crumbs text-center">
-            <div class="container">
-                <div class="row">
-                    <ul class="btn-group btn-breadcrumb bc-list">
-                        <li class="btn btn1">
-                            <a href="index.html">
-                                <i class="glyphicon glyphicon-home"></i>
-                            </a>
-                        </li>
-                        <li class="btn btn2">
-                            <a href="login.html">sign in & sign up</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--//breadcrumbs ends here-->
         <!-- signin and signup form -->
-        <div class="login-form section text-center">
+        <div class="login-form section text-center" style="min-height:95vh; padding-bottom:60px;">
             <div class="container">
                 <h4 class="rad-txt">
                     <span class="abtxt1">Sign in</span>
@@ -254,6 +216,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <div class="col-sm-12 controls">
                                         <a id="btn-login" href="javascript:{}" onClick="document.getElementById('interest').submit();" class="btn btn-success">Finish</a>
                                     </div>
+                                    <div class="col-sm-12 controls" style="margin-left:2em;">
+                                    <a href="{{url_for('home')}}" style="text-align:center;">Skip this</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -266,11 +231,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      <!-- footer -->
 
     <!-- //footer -->
-        <div class="cpy-right">
-            <p>© 2018 Chronicle. All rights reserved | Design by
-                <a href="http://w3layouts.com"> W3layouts.</a>
-            </p>
-        </div>
+        <footer class="cpy-right footer">
+                <p>© 2018 Chronicle. All rights reserved | Design by
+                    <a href="http://w3layouts.com"> W3layouts.</a>
+                </p>
+    </footer>
     <!-- //home -->
     <!-- js -->
 

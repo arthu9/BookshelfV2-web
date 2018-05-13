@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, flash,session,redirect,url_fo
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 import base64
-from datetime import datetime
+from datetime import date, datetime
 import json, urllib2
 
 app = Flask(__name__)
@@ -77,15 +77,28 @@ def check_username():
         if response.text == 'no user found!':
             return render_template('signup_1.html', username=username, password=request.form['password'])
         else:
-            return render_template('error_signup.html')
+            return render_template('error_signup.html', message="Username already taken.",
+                                   message2="Please use a different one.")
     else:
         return render_template('signup_1.html')
+
+def calculate_age(born2):
+    today = date.today()
+    born = datetime.strptime(born2, "%Y-%m-%d")
+    return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
+        print('signup')
         username = request.form['username']
         password = request.form['password']
+        print(request.form['birth_date'])
+        age = calculate_age(request.form['birth_date'])
+        if age <= 18:
+            return render_template('error_signup.html', message='Age Requirement:',
+                                   message2='You must be 18 or above.')
+        print(age)
         response = requests.post(
             'http://localhost:5000/signup',
             json={"first_name": request.form['first_name'], "last_name": request.form['last_name'],
@@ -93,10 +106,7 @@ def signup():
                     "contact_number": request.form['contact_number'], "username": username, "password": password, "profpic": "none.jpeg"},
         )
         resp_dict = json.loads(response.text)
-        if response.text == 'username already used':
-            return render_template('error_signup.html')
-        else:
-            api_login(username, password, response)
+        api_login(username, password, response)
 
         return redirect('interests')
     else:

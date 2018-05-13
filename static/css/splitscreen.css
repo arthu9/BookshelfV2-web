@@ -205,12 +205,9 @@ h1 a.navbar-brand {
 
     .display{
             position: relative !important;
-            margin-top: 10px;
-            margin-left: 4em !important;
-            margin-top: 2em;
-            height: 500px;
-            width: 51%;
-            font-size: 3em !important;
+            width: 100%;
+            font-size: 2em !important;
+            margin: 1.5em 0;
     }
 }
 @media screen and (max-width: 800px) {

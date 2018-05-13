@@ -239,10 +239,10 @@ div#my-cart-modal .close:hover,
     display: block;
     font-weight: bold;
     color: #fff;
-    top: 35px;
+    top: 20px;
     font-size: 16px;
     position: relative;
-    width: 130px;
+    width: 100px;
     padding: 7px 0;
     margin: 0 auto;
     -webkit-transition: all 300ms ease;
@@ -250,7 +250,6 @@ div#my-cart-modal .close:hover,
     transition: all 300ms ease;
 }
 .book-text h4{
-	font-size: 25px;
 	margin-top: 1em;
     position: relative;
     width: 100%;
@@ -267,8 +266,8 @@ div#my-cart-modal .close:hover,
 opacity: 1;
 }
 .thumbnail {
-	max-width: 205px;
-    height: 255px;
+	max-width: 130px;
+    height: 205px;
     border: 5px solid #333A56 !important;
     border-radius: 4px !important;
 	-webkit-border-radius: 4px;
@@ -512,7 +511,7 @@ p.sbmincart-empty-text {
 
 .product-men {
 	padding: 0 6px;
-	max-width: 205px;
+	max-width: 130px;
     height: auto;
 }
 
@@ -1616,19 +1615,11 @@ ul.single_specific li {
         top: -55%;
         left: 50%;
     }
-	.product-men{
-	    max-width: none;
-	}
 	.responsive_tabs {
 		margin-top: 3em;
 	}
 	.product-men.women_two {
 		margin: 0;
-	}
-	.product-chr-info {
-		width: 23.5%;
-		margin: 0.5em;
-		float: left;
 	}
 	.side-bar {
 		width: 100%;
@@ -1643,11 +1634,11 @@ ul.single_specific li {
 	}
 	.thumbnail > img, .thumbnail a > img{
         height: 190px !important;
-        width: 205px !important;
+        width: 130px !important;
 	}
 	.thumbnail{
-        max-width: 205px;
         height: 200px;
+        margin-bottom: 0.5em;
 	}
 	.book-overlay{
 	    display:none;
@@ -1659,18 +1650,12 @@ ul.single_specific li {
 }
 
 @media(max-width:900px) {
-	.product-chr-info {
-		width: 23%;
-	}
 	.tab-content{
 	    margin-left:0 !important;
 	}
 }
 
 @media(max-width:800px) {
-	.product-chr-info {
-		width: 31.5%;
-	}
 	.single_page h6 {
 		font-size: 1.2em;
 		margin: 1em 0;
@@ -1687,9 +1672,6 @@ ul.single_specific li {
 }
 
 @media(max-width:768px) {
-	.product-chr-info {
-		width: 31%;
-	}
 }
 
 @media(max-width:736px) {
@@ -1712,9 +1694,8 @@ ul.single_specific li {
 
 @media(max-width:640px) {
 	.product-chr-info {
-		width: 46%;
 		margin: 0.5em;
-		float: left;
+		max-width: 130px;
 	}
 	#staplesbmincart .sbmincart-submit {
 		font-size: 0.7em;
@@ -1754,9 +1735,7 @@ ul.single_specific li {
 		font-size: 1.2em;
 	}
 	.product-chr-info {
-		width: 40%;
 		margin: 0.5em;
-		float: left;
 	}
 	.single-right-left {
 		width: 100%;
@@ -1790,9 +1769,7 @@ ul.single_specific li {
 
 @media(max-width:480px) {
 	.product-chr-info {
-		width: 40%;
 		margin: 0.5em;
-		float: left;
 	}
 	.product-men {
 		padding-left: 0;
@@ -1820,9 +1797,7 @@ ul.single_specific li {
 		left: 16%;
 	}
 	.product-chr-info {
-		width: 40%;
-		margin: 1.2em 0em 0em;
-		float: none;
+        margin: 1.2em 0.5em 0em;
 	}
 	.shop-f-top img {
 		margin-bottom: 0em;
@@ -1835,9 +1810,7 @@ ul.single_specific li {
 		font-weight: 700;
 	}
 	.product-chr-info {
-		width: 47%;
 		margin: 0.3em;
-		float: left;
 	}
 	.inner-men-cart-pro .link-product-add-cart {
 		width: 80%;
