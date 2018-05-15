@@ -87,6 +87,11 @@ def calculate_age(born2):
     born = datetime.strptime(born2, "%Y-%m-%d")
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
+def get_bday(born2):
+    fmt = "%a, %d %B %Y %H:%M:%S GMT"
+    born = datetime.strptime(born2, fmt).strftime('%B, %d %Y')
+    return born
+
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
@@ -211,16 +216,17 @@ def profile():
         user = requests.get(url)
         print(user.text)
         user_dict = json.loads(user.text)
+        bday = get_bday(user_dict['user']['birth_date'])
         print(user_dict)
         book_details = requests.get('http://localhost:5000/user/bookshelf/availability', json={"current_user": session['user']})
         books = requests.get('http://localhost:5000/user/bookshelf', json={"current_user": session['user']})
         if books.text == "no books found":
-            return render_template('no_books_profile.html', user=user_dict['user'])
+            return render_template('no_books_profile.html', user=user_dict['user'], bday=bday)
         book_dict=json.loads(books.text)
         book_details_dict=json.loads(book_details.text)
         print(book_dict['book'])
         print(user_dict['user'])
-        return render_template('profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'])
+        return render_template('profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'], bday=bday)
     else:
         return redirect('unauthorized')
 
@@ -233,16 +239,17 @@ def view_profile(username):
         user = requests.get(url)
         print(user.text)
         user_dict = json.loads(user.text)
+        bday = get_bday(user_dict['user']['birth_date'])
         print(user_dict)
         book_details = requests.get('http://localhost:5000/user/bookshelf/availability', json={"current_user": username})
         books = requests.get('http://localhost:5000/user/bookshelf', json={"current_user": username})
         if books.text == "no books found":
-            return render_template('no_books_profile.html', user=user_dict['user'])
+            return render_template('no_books_profile.html', user=user_dict['user'], bday=bday)
         book_dict=json.loads(books.text)
         book_details_dict=json.loads(book_details.text)
         print(book_dict['book'])
         print(user_dict['user'])
-        return render_template('user_profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'])
+        return render_template('user_profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'], bday=bday)
     else:
         return redirect('unauthorized')
 

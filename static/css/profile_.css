@@ -154,7 +154,7 @@ input[type="submit"],.agileits_copyright p a,a{
 .product-chr-info {
 	padding: 0px;
 	min-height: 15em;
-
+	max-width:130px;
 }
 .product-chr-info .caption h4 {
 	font-size: 0.75em;
@@ -234,7 +234,7 @@ input[type="submit"],.agileits_copyright p a,a{
     margin-bottom:1em;
 }
 body {
-	color: #52658F;
+	color: #E8E8E8;
 }
 }
 .w3_agileits_skills_grid ul li:last-child{
@@ -321,7 +321,6 @@ ul.agileinfo_social_icons {
 }
 .agile_main_grid_work_gridl{
 	float: left;
-    width: 28%;
     padding: .2em;
 }
 .agile_main_grid_work_gridl img{
@@ -411,21 +410,12 @@ ul.agileinfo_social_icons {
 }
 /*-- start-responsive-design --*/
 @media (max-width:1680px){
-	.agile_main_grid_work_gridl {
-		width: 27%;
-	}
 }
 @media (max-width:1600px){
-	.agile_main_grid_work_gridl {
-		width: 28%;
-	}
 }
 @media (max-width:1440px){
 	.w3_agile_main_grids {
 		width: 70%;
-	}
-	.agile_main_grid_work_gridl {
-		width: 26%;
 	}
 }
 @media (max-width:1366px){
@@ -448,9 +438,6 @@ ul.agileinfo_social_icons {
 	}
 	.wthree_tab_grid_sub {
 		margin: 1.5em 0;
-	}
-	.agile_main_grid_work_gridl {
-		width: 31%;
 	}
 	.wthree_tab_grid_list li {
 		font-size: .85em;
@@ -478,7 +465,6 @@ ul.agileinfo_social_icons {
 		margin: 0;
 	}
 	.agile_main_grid_work_gridl {
-		width: 32.4%;
 		padding: .1em;
 	}
 	.agileits_w3layouts_contact_left input[type="text"], .agileits_w3layouts_contact_left input[type="email"], .agileits_w3layouts_contact_left textarea {
@@ -623,9 +609,6 @@ ul.agileinfo_social_icons {
 	.w3_agileits_skills_grid ul li span {
 		width: 90px;
 	}
-	.agile_main_grid_work_gridl {
-		width: 32.2%;
-	}
 	.agileits_w3layouts_contact_left, .agileits_w3layouts_contact_right {
 		float: none;
 		width: 100%;
@@ -672,9 +655,6 @@ ul.agileinfo_social_icons {
 	.main h1 {
 		letter-spacing: 2px;
 	}
-	.agile_main_grid_work_gridl {
-		width: 32.1%;
-	}
 	.agile_submit input[type="submit"] {
 		width: 45%;
 		padding: 10px 0;
@@ -709,9 +689,6 @@ ul.agileinfo_social_icons {
 	.agileits_skills h3 {
 		font-size: 1.2em;
 		margin-bottom: 1em;
-	}
-	.agile_main_grid_work_gridl {
-		width: 31.9%;
 	}
 	.agileits_w3layouts_contact_left input[type="text"], .agileits_w3layouts_contact_left input[type="email"], .agileits_w3layouts_contact_left textarea {
 		width: 90%;

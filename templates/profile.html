@@ -23,6 +23,7 @@
                     </div>
                 </div>
                 <div class="w3layouts_main_grid_right">
+                    <a href="{{ url_for('edit_profile') }}" class="btn btn-success pull-right btn-profile" style="margin-right: 1em;" id="btn-profile">Edit Profile</a>
                     <div class="w3ls_main_grid_right_grid">
                         <div id="parentHorizontalTab">
 
@@ -32,7 +33,6 @@
                                 <li><i class="fa fa-map-marker" aria-hidden="true"></i>Contact me</li>
                             </ul>
                             <div class="resp-tabs-container hor_1">
-                                <a href="{{ url_for('edit_profile') }}" class="btn btn-success pull-right btn-profile" style="margin-right: 1em;" id="btn-profile">Edit Profile</a>
                                 <div class="agileits_main_grid_right_grid">
                                     <p class="agileinfo_para"></i></p>
                                     <div class="wthree_tab_grid_sub">
@@ -55,7 +55,7 @@
                                         <div class="w3_agileits_skills_grid">
                                             <ul>
                                                 <li><label>Full Name:</label> {{user.first_name}} {{user.last_name}}</li>
-                                                <li><label>Birthdate: </label> {{ user.birth_date}}</li>
+                                                <li><label>Birthdate: </label>{{bday}}</li>
                                                 <li><label>Gender:</label> {{user.gender}}</li>
                                                 <li><label>Contact Number:</label> {{user.contact_number}}</li>
                                             </ul>
