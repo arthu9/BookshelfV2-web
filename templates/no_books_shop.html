@@ -1,23 +1,44 @@
 {% extends 'base/base.html' %}
 {% block content %}
-    <!-- about -->
-    <!-- breadcrumbs -->
-		<div class="crumbs text-center">
-			<div class="container">
-				<div class="row">
-					<ul class="btn-group btn-breadcrumb bc-list">
-						<li class="btn btn1">
-							<a href="index.html">
-								<i class="glyphicon glyphicon-home"></i>
-							</a>
-						</li>
-						<li class="btn btn2">
-							<a href="{{ url_for('store') }}">Bookshelf</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+<!-- banner -->
+<div class="banner-bg-agileits">
+<div class='split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side'>
+  <div>
+	<div class='text-content'>
+	  <div class='big'>BOOKSHELF</div>
+	</div>
+  </div>
+</div>
+<div class='split-pane col-xs-6 col-sm-6 col-lg-6 frontend-side'>
+  <div>
+	<div class='text-content'>
+	  <div class="bold"></div>
+	</div>
+  </div>
+</div>
+<div id='split-pane-or'>
+  <div>
+  </div>
+</div>
+</div>
+<!-- //banner -->
+<!-- breadcrumbs -->
+<div class="crumbs text-center">
+<div class="container">
+	<div class="row">
+		<ul class="btn-group btn-breadcrumb bc-list">
+			<li class="btn btn1">
+				<a href="index.html">
+					<i class="glyphicon glyphicon-home"></i>
+				</a>
+			</li>
+			<li class="btn btn2">
+				<a href="{{ url_for('store') }}">Bookshelf</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>
 		<!--//breadcrumbs ends here-->
 		<!-- Shop -->
 		<div class="innerf-pages section">

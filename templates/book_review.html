@@ -2,7 +2,7 @@
 	{% block content %}
 		<!-- breadcrumbs -->
 	{% for book in books %}
-		<div class="crumbs text-center" style="padding-top:10%;">
+		<div class="crumbs text-center" style="padding-top: 10%;">
 			<div class="container">
 				<div class="row">
 					<ul class="btn-group btn-breadcrumb bc-list">
@@ -12,10 +12,13 @@
 							</a>
 						</li>
 						<li class="btn btn2">
-							<a href="shop.html">Product Catalogue</a>
+							<a href="{{ url_for('store') }}">Books</a>
 						</li>
 						<li class="btn btn3">
-								<a class="breadcrumbtitle" href="single_product.html">{{ book.title }}</a>
+							<a class="breadcrumbtitle" href="single_product.html">{{ book.title }}</a>
+						</li>
+                        <li class="btn btn4">
+							<a class="breadcrumbtitle" href="single_product.html">Book Review</a>
 						</li>
 					</ul>
 				</div>
@@ -52,7 +55,7 @@
 						<span>{{ book.types }} – {{ book.edition }}</span>
 					</h3>
 					<p>by
-						<a href="#">{{ book.owner }}</a>
+						<a href="{{ url_for('view_profile', username=book.owner_username) }}">{{ book.owner }}</a>
 					</p>
 					<div class="caption">
 						<div class="clearfix"> </div>
@@ -87,15 +90,37 @@
 					</div>
 					<div class="clearfix"></div>
 					<div class="occasion-cart">
-						<div class="chr single-item single_page_b" style="margin-top:1em;">
-                            <div class="col-md-4">
-								<a href="{{ url_for('edit_ownbook', book_id=book.book_id, username=book.username ) }}"
-								   style="margin-top:1em; width:15em;" class="btn btn-success pull-right btn-profile"
-								   id="btn-profile">Edit Book</a>
-                            </div>
-                            <div class="col-md-4" >
-                            <a href="{{ url_for('edit_profile') }}" style="margin-top:1em; width:15em;" class="btn btn-success pull-right btn-profile" >Delete Book</a>
-                            </div>
+						<div class="chr single-item single_page_b container">
+
+
+
+								<div class="btn-group btn-grp-med col-md-12" role="group">
+									<form action="#" method="post" style="display: inline-block;">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="chr_item" value="Single book">
+									<input type="hidden" name="amount" value="100.00">
+									<button type="submit" class="btn btn-success">Borrow
+										<i class="fa fa-book" aria-hidden="true"></i>
+									</button>
+									<button type="submit" class="btn btn-success">Rent
+									<i class="fa fa-book" aria-hidden="true"></i>
+									</button>
+									<button type="submit" class="btn btn-success">Purchase
+										<i class="fa fa-bitcoin" aria-hidden="true"></i>
+									</button>
+									<button type="submit" class="btn btn-success">
+										<i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart
+									</button>
+									</form>
+									<form style="display: inline-block;" action="{{ url_for('add_wishlist', bookshelf_id= book.owner_bookshelfid,
+										book_id=book.book_id) }}" method="post" id="wishlist">
+										<button type="submit" form="wishlist" class="btn btn-success">
+											<i class="fa fa-bookmark" aria-hidden="true"></i>Add to Wishlist</button>
+									</form>
+								</div>
+
+
 						</div>
 					</div>
 				</div>
@@ -104,7 +129,7 @@
 		</div>
     {% endfor %}
 	<div class="comments">
-		<h2>Reviews</h2>
+			  <h2>Reviews</h2>
 			  <div class="review">
 			  <div class="caption pull-left">
 					<h2 style="margin-top:10%; text-align:center;">4.0</h2>
@@ -203,74 +228,6 @@
 				</div>
 			</div>
 		  </div>
-	</div>
-	<div class="comments" id="comments" style="display:block;">
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<form action="">
-									<textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
-							</form>
-					</div>
-			</div>
-
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi
-									sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 24, 2014 @ 2:35 PM</div>
-							</div>
-					</div>
-			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-		  	<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-		  	<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-			<div class="readall">
-				<h3 style="font-size:14px;"><a style="color:navy;"  onClick="$('#comments').hide(); $('#allcomments').show()"
-											   href="#">READ ALL REVIEWS</a></h3>
-			</div>
-	</div>
-	<div class="comments" id="allcomments" style="display:none; overflow-y: auto; height:550px;">
 			<div class="comment-wrap">
 					<div class="photo">
 							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
@@ -344,84 +301,9 @@
 							</div>
 					</div>
 			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-			<div class="comment-wrap">
-					<div class="photo">
-							<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-					</div>
-					<div class="comment-block">
-							<p>John Doe</p>
-							<p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-							<div class="bottom-comment">
-									<div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-							</div>
-					</div>
-			</div>
-
 			<div class="readall">
-				<h3 style="font-size:14px;"><a style="color:navy;"  onClick="$('#allcomments').hide(); $('#comments').show()"
-											   href="#">SEE LESS</a></h3>
+				<h3 style="font-size:14px;"><a style="color:navy;" href="#">READ ALL REVIEWS</a></h3>
 			</div>
-
 	</div>
 		<!-- /new_arrivals -->
 		<div class="section singlep_btm">

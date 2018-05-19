@@ -41,12 +41,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen_shop.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
     <link href="{{url_for('static', filename='css/profile_.css')}}" rel="stylesheet" type="text/css" media="all" />
     <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/font-awesome_profile.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/lightcase_profile.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/easy-responsive-tabs_profile.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
+ <link rel="stylesheet" href="{{url_for('static', filename='css/comment.css')}}">
     <link href="//fonts.googleapis.com/css?family=Arsenal:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
 
     <!-- //online-fonts -->
@@ -131,7 +132,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-bell nav-icon" aria-hidden="true">
                                   </span></a>
-                                  <ul class="dropdown-menu notify-drop">
+                                  <ul class="dropdown-menu notify-drop" style="left:auto; right:0;">
                                     <div class="notify-drop-title">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-6">Notifications</div>
@@ -158,6 +159,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </ul>
                                 </li>
                             <!--/ notification -->
+                            <!-- search-bar -->
+                        <div class="search-bar-agileits">
+                            <div class="cd-main-header">
+                                <ul class="cd-header-buttons">
+                                    <li>
+                                        <a class="cd-search-trigger" href="#cd-search">
+                                            <span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- cd-header-buttons -->
+                            </div>
+                            <div id="cd-search" class="cd-search">
+                                <form action="/search" method="post">
+                                    <input name="info" type="search" placeholder="Type and Hit Enter...">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- //search-bar ends here -->
                             <!-- logout -->
                             <li class="dropdown">
                                     <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">
@@ -173,38 +193,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
                         <!-- //logout -->
                         </ul>
-                        <!-- search-bar -->
-                        <div class="search-bar-agileits">
-                            <div class="cd-main-header">
-                                <ul class="cd-header-buttons">
-                                    <li>
-                                        <a class="cd-search-trigger" href="#cd-search">
-                                            <span></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- cd-header-buttons -->
-                            </div>
-                            <div id="cd-search" class="cd-search">
-                                <form action="#" method="post">
-                                    <input name="Search" type="search" placeholder="Type and Hit Enter...">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //search-bar ends here -->
+
                         <!-- shopping cart -->
-                        <div class="cart-mainf">
-                            <div class="chrcart chrcart2 cart cart box_1">
-                                <form action="#" method="post" class="last">
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="display" value="1">
-                                    <button class="top_chr_cart" type="submit" name="submit" value="">
-                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- //shopping cart ends here -->
+
                     </div>
                     <!-- /.navbar-collapse -->
                     <div class="clearfix"></div>

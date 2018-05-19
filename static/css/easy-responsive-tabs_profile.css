@@ -15,6 +15,7 @@ ul.resp-tabs-list, p {
     text-transform: uppercase;
     letter-spacing: 1px;
     border-color: #fff !important;
+    color: #E8E8E8;
 }
 .resp-tabs-list li i{
 	padding-right:1em;
@@ -47,7 +48,7 @@ h2.resp-accordion {
 }
 
 .resp-tab-active {
-    color: #fff;
+    color: #fff !important;
     border-color: #fff !important;
 }
 

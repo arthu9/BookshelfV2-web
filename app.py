@@ -88,7 +88,7 @@ def calculate_age(born2):
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 def get_bday(born2):
-    fmt = "%a, %d %B %Y %H:%M:%S GMT"
+    fmt = "%a, %d %b %Y %H:%M:%S GMT"
     born = datetime.strptime(born2, fmt).strftime('%B, %d %Y')
     return born
 
@@ -217,6 +217,8 @@ def profile():
         print(user.text)
         user_dict = json.loads(user.text)
         bday = get_bday(user_dict['user']['birth_date'])
+        print(user_dict['user']['birth_date'])
+        print(bday)
         print(user_dict)
         book_details = requests.get('http://localhost:5000/user/bookshelf/availability', json={"current_user": session['user']})
         books = requests.get('http://localhost:5000/user/bookshelf', json={"current_user": session['user']})
@@ -259,17 +261,18 @@ def edit_profile():
         url = 'http://localhost:5000/user/info/' + session['user']
         user = requests.get(url)
         user_dict = json.loads(user.text)
+        bday = get_bday(user_dict['user']['birth_date'])
         book_details = requests.get('http://localhost:5000/user/bookshelf/availability',
                                     json={"current_user": session['user']})
         books = requests.get('http://localhost:5000/user/bookshelf', json={"current_user": session['user']})
         if books.text == "no books found":
-            return render_template('no_books_editprofile.html', user=user_dict['user'])
+            return render_template('no_books_editprofile.html', user=user_dict['user'], bday=bday)
         book_dict = json.loads(books.text)
         book_details_dict = json.loads(book_details.text)
         if request.method == 'POST':
             print('HELLO')
         else:
-            return render_template('edit_profile.html', user=user_dict['user'], books=book_dict['book'])
+            return render_template('edit_profile.html', user=user_dict['user'], books=book_dict['book'], bday=bday)
     else:
         return redirect('unauthorized')
 
@@ -352,20 +355,16 @@ def add_wishlist(bookshelf_id, book_id):
             book_dict2 = json.loads(books.text)
             if book_dict['message'] == "You can't add your own book to your wishlist":
                 if not book_dict2['book']:
-                    message = "No books to display"
-                    return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'],
-                                           color='danger', nodisplay=message)
-                return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'], color='danger')
-            elif book_dict['message'] == '"Book is already in wishlist':
-                return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'], color='danger')
+                    return render_template('no_books_wishlist.html', message=book_dict['message'], none='block')
+                return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'],display='block')
+            elif book_dict['message'] == 'Book is already in wishlist':
+                return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'], display='block')
             elif book_dict['message'] == 'Failed to add':
                 if not book_dict2['book']:
-                    message = "No books to display"
-                    return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'],
-                                           color='danger', nodisplay=message)
-                return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'], color='danger')
+                    return render_template('no_books_wishlist.html', message=book_dict['message'],display='block')
+                return render_template('wishlist.html', books=book_dict2['book'], message=book_dict['message'],display='block')
             else:
-                return render_template('wishlist.html', books=book_dict2['book'])
+                return render_template('wishlist.html', books=book_dict2['book'], display='none')
     else:
         return redirect('unauthorized')
 
@@ -387,9 +386,8 @@ def wishlist():
         book_dict = json.loads(books.text)
         print(book_dict['book'])
         if not book_dict['book']:
-            message="No books to display"
-            return render_template('wishlist.html', books={}, nodisplay=message)
-        return render_template('wishlist.html', books=book_dict['book'])
+            return render_template('no_books_wishlist.html', display='none')
+        return render_template('wishlist.html', books=book_dict['book'], display='none')
     else:
         return redirect('unauthorized')
 

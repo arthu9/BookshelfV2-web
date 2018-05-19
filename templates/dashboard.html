@@ -1,7 +1,7 @@
 {% extends 'base/base-dashboard.html' %}
 {% block content %}
 
-            <div class='banner-text split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side'>
+            <div class='banner-text split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side' style="z-index:-10">
               <div>
                 <div class='text-content'>
 
@@ -27,7 +27,7 @@
         </div>
         <!-- //banner -->
         <!-- about -->
-        <div class="about-bottom">
+        <div class="about-bottom" style="z-index:-10;">
             <div class="container-fluid">
                 <div class="jumbotron" style="">
                     <h4 class="rad-txt">
@@ -41,7 +41,7 @@
                     </h4>
                 </div>
             </div>
-            <div class="tab-content" style="margin-left:6em;">
+            <div class="tab-content" style="margin-left:6em; z-index:-10;">
                     <!-- product-sec1 -->
                     <div id="toprated" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
@@ -92,7 +92,7 @@
         </div>
         <!-- //about ends here -->
         <!-- about bottom -->
-        <div class="about-bottom">
+        <div class="about-bottom" style="z-index:-10;">
             <div class="container-fluid">
                 <div class="jumbotron">
                     <h4 class="rad-txt">
@@ -198,7 +198,7 @@
                     </div>
                 </div>
         </div>
-                    <div class="clearfix"></div>
+                    <div class="clearfix" style="z-index:-10;"></div>
             <!-- //about container ends here-->
         <!--//about bottom ends here-->
 {% endblock %}

@@ -72,7 +72,7 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 .main{
 	padding:3em 0;
-	height: 58em;
+	height: 60em;
 }
 .btn-profile{
     color:#FFFFFF;
@@ -175,7 +175,6 @@ input[type="submit"],.agileits_copyright p a,a{
 	text-align:center;
 }
 .w3l_figure{
-	margin:1em 0 16em;
 	text-align: center;
 }
 .w3l_figure img{
@@ -233,10 +232,7 @@ input[type="submit"],.agileits_copyright p a,a{
     vertical-align: middle;
     margin-bottom:1em;
 }
-body {
-	color: #E8E8E8;
-}
-}
+
 .w3_agileits_skills_grid ul li:last-child{
     margin-bottom:0;
 }
@@ -299,7 +295,7 @@ body {
 }
 ul.agileinfo_social_icons {
     text-align: center;
-    margin-top: 15em;
+    margin-top: 1em;
 }
 .wthree_main_grid_right_grid h3{
 	font-size:1.5em;
@@ -502,9 +498,6 @@ ul.agileinfo_social_icons {
 	}
 	.w3_main_grid_left_grid h2 {
 		font-size: 1.7em;
-	}
-	.w3l_figure {
-		margin: 2em 0 15em;
 	}
 }
 @media (max-width: 768px){
