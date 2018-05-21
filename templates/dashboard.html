@@ -54,7 +54,7 @@
 
                     <div id="menu1" class="product-sec1 tab-pane">
                         <!-- row1-->
-                        <h1 style="text-align:center; font-size:5em;">{{message}}</h1>
+                        <h1 class="display" style="display:{{none}};text-align:center; margin:2em;">{{message}}</h1>
                         {% for book in books %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -111,6 +111,7 @@
                     <!-- product-sec1 -->
                     <div id="action" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
+                        <h1 class="display" style="text-align:center; margin:2em;">{{message1}}</h1>
                         {% for abook in actionbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -143,7 +144,7 @@
 
                     <div id="drama" class="product-sec1 tab-pane">
                         <!-- row1-->
-                        <h1 style="text-align:center; font-size:5em;">{{message}}</h1>
+                        <h1 class="display" style="text-align:center; margin:2em;">{{message2}}</h1>
                         {% for dbook in dramabooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -171,6 +172,7 @@
                     </div>
                     <div id="horror" class="product-sec1 tab-pane fade">
                         <!-- row1-->
+                        <h1 class="display" style="text-align:center; margin:2em;">{{message3}}</h1>
                         {% for hbook in horrorbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">

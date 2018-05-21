@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% block content %}
+        <!-- breadcrumbs -->
+        <div class="crumbs text-center">
+            <div class="container">
+                <div class="row">
+                    <ul class="btn-group btn-breadcrumb bc-list">
+                        <li class="btn btn1">
+                            <a href="index.html">
+                                <i class="glyphicon glyphicon-home"></i>
+                            </a>
+                        </li>
+                        <li class="btn btn2">
+                            <a href="addbook.html">Add Book</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--//breadcrumbs ends here-->
+        <!-- contact -->
+        <div class="section contact" id="contact" style="min-height:95vh; padding-bottom:60px;">
+            <div class="container">
+                <h4 class="rad-txt text-center">
+                    <span class="abtxt1">Add</span>
+                    <span class="abtext">Book</span>
+                </h4>
+                <div class="alert alert-{{color}} alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">{{x}}</a>
+                    {{message}}
+                </div>
+                <form action="{{url_for('isbn_search')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
+                <div class="contact-form">
+                    <div class="col-md-7">
+                        <!-- contact form grid -->
+                        <div class="contact-top1">
+                            <h5>New Book</h5>
+                                <input type="text" placeholder="ISBN"  name="isbn" required="">
+                                <input type="submit" value="Submit">
+                    </div>
+                        <!--  //contact form grid ends here -->
+                </div>
+                <!-- contact map grid -->
+                <div class="col-md-5 map contact-right">
+                    <div class="contact-top1">
+                            <input type="file" name="photo" style="width: 50%; float:left;">
+                            <input type="submit" value="Upload Photos" style="margin:0; margin-bottom:2em; background:#333A56;">
+                            <img src="{{url_for('static', filename='images/default_book.jpeg')}}" class="img-responsive">
+                    </div>
+                </div>
+                </form>
+                    <!--//contact map grid ends here-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- //contact -->
+{% endblock %}

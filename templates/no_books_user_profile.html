@@ -9,7 +9,7 @@
                         <p>{{ user.username}}</p>
                         <div class="w3l_figure">
                             <div class="profile_pic">
-                              <img src="{{url_for('static', filename='images/'+user.profpic)}}" alt="Avatar" class="profileimg" alt=" " />
+                              <img src="data:image;base64, {{ profilepic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" alt="Avatar" class="profileimg" alt=" " />
                             </div>
                         </div>
                         <ul class="agileinfo_social_icons">

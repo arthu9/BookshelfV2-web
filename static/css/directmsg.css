@@ -358,11 +358,12 @@
   color: #657786;
 }
 p.directmsg1 {
-  float:left; color: #14171a;
+  display: inline-block;
+  color: #14171a;
   font-size: 18px;
   font-weight: bold;
   line-height: 40px;
-  max-width: 20%;
+  max-width: 50%;
   align-items: center;
 }
 .closebtn {

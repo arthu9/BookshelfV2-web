@@ -8,10 +8,10 @@
                         <h2>{{user.first_name}} {{user.last_name}}</h2>
                         <p>{{ user.username}}</p>
                         <div class="w3l_figure">
-                            <img src="{{url_for('static', filename='images/'+user.profpic)}}" alt=" " />
+                            <img src="data:image;base64, {{ profilepic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" alt="Avatar" class="profileimg" alt=" " />
                             <form method=POST enctype=multipart/form-data action="{{ url_for('add_profile_pic') }}" style="margin-top:1em;">
                                 <input type="file" name="photo" style="width: 60%; float:left; margin-left: 2em; background: #fff;">
-                                <input type="submit" value="Submit">
+                                <input type="submit" value="Submit" style="padding:5px;">
                             </form>
                         </div>
                         <ul class="agileinfo_social_icons">
@@ -230,36 +230,8 @@
                                     </div>
                                 </div>
                                 <div class="wthree_main_grid_right_grid">
-                                    <h3>Contact Me</h3>
-                                    <form action="#" method="post">
-                                        <div class="agileits_w3layouts_contact_left">
-                                            <input type="text" name="Name" placeholder="Name" required="">
-                                            <input type="email" name="Email" placeholder="Email" required="">
-                                            <textarea placeholder="Message..." required=""></textarea>
-                                        </div>
-                                        <div class="agileits_w3layouts_contact_right">
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77944.63844269582!2d4.828574749828488!3d52.37459125089173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c63fb5949a7755%3A0x6600fd4cb7c0af8d!2sAmsterdam%2C+Netherlands!5e0!3m2!1sen!2sin!4v1485595363072" style="border:0"></iframe>
-                                        </div>
-                                        <div class="clear"> </div>
-                                        <div class="agile_submit">
-                                            <input type="submit" value="Send">
-                                        </div>
-                                    </form>
-                                    <div class="wthree_tab_grid">
-                                        <ul class="wthree_tab_grid_list">
-                                            <li><i class="fa fa-mobile" aria-hidden="true"></i></li>
-                                            <li>Mobile<span>+123 234 4342</span></li>
-                                        </ul>
-                                        <ul class="wthree_tab_grid_list">
-                                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i></li>
-                                            <li>Mail Me<span><a href="mailto:info@example.com">info@example.com</a></span></li>
-                                        </ul>
-                                        <ul class="wthree_tab_grid_list">
-                                            <li><i class="fa fa-map-marker" aria-hidden="true"></i></li>
-                                            <li>Address<span>123 Avenue, Amsterdam.</span></li>
-                                        </ul>
-                                        <div class="clear"> </div>
-                                    </div>
+                                    <h3>Books Near You</h3>
+                                    {{ map.html}}
                                 </div>
                             </div>
                         </div>
