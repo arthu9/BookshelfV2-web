@@ -21,7 +21,8 @@
                     </div>
                 </div>
                 <div class="w3layouts_main_grid_right">
-                    <a href="shop2.html" class="btn btn-success pull-right btn-profile" style="margin-right: 1em;">Save Changes</a>
+                    <form class="form-horizontal" action="{{ url_for('edit_profile') }}" method="post">
+                    <button type="submit" class="btn btn-success pull-right btn-profile" style="margin-right: 1em;">Save Changes</button>
                     <a href="{{ url_for('profile') }}" class="btn btn-success pull-right btn-profile" id="btn-profile">Cancel</a>
                     <div class="w3ls_main_grid_right_grid">
                         <div id="parentHorizontalTab">
@@ -34,7 +35,10 @@
                             <div class="resp-tabs-container hor_1">
                                 <div class="agileits_main_grid_right_grid">
                                     <p class="agileinfo_para"></i></p>
-
+                                    <div class="alert alert-danger alert-dismissible fade in" style="margin-top:1em; display:{{display}};">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>You must be 18 or above.</strong>
+                                    </div>
                                     <div class="wthree_tab_grid_sub">
                                         <div class="wthree_tab_grid_sub_left">
                                             <h5>321</h5>
@@ -55,10 +59,30 @@
                                         <h3>Personal Information</h3>
                                         <div class="w3_agileits_skills_grid">
                                             <ul>
-                                                <li><label>Full Name:</label> {{user.first_name}} {{user.last_name}}</li>
-                                                <li><label>Birthdate: </label> {{ bday}}</li>
-                                                <li><label>Gender:</label> {{user.gender}}</li>
-                                                <li><label>Contact Number:</label> {{user.contact_number}}</li>
+                                                <li style="height:50px">
+                                                <div class="form-group" style="width:100%; height:50px;">
+                                                    <div class="" style="float:left;">Full Name</div>
+                                                        <label class="col-md-3 col-sm-3 col-xs-3 control-label"></label>
+                                                        <div class="col-md-4 col-sm-4 col-xs-4" style="float:left;">
+                                                            <input type="text" class="form-control" name="first_name" value="{{user.first_name}}" required="">
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-4 col-xs-4" style="float:left;">
+                                                            <input type="text" class="form-control" name="last_name" value="{{user.last_name}}" required="">
+                                                        </div>
+                                                </div></li>
+                                                <li style="height:50px">Birthdate<div class="col-md-9 col-sm-9 col-xs-9" style="float:right;">
+                                                            <input type="date" class="form-control" name="birth_date" value="{{bday}}" required="">
+                                                        </div></li>
+                                                <li style="height:50px">Gender<div class="col-md-9 col-sm-9 col-xs-9" style="float:right;">
+                                                    <select class="form-control" name="gender" required="">
+                                                      <option value="{{user.gender}}" SELECTED>{{user.gender}}</option>
+                                                        <option value="Male">Male</option>
+                                                      <option value="Female">Female</option>
+                                                    </select>
+                                                </div></li>
+                                                <li style="height:50px">Contact Number<div class="col-md-9 col-sm-9 col-xs-9" style="float:right;">
+                                                    <input type="text" class="form-control" name="contact_number" value="{{user.contact_number}}" required pattern="[0-9]{11}">
+                                                </div></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -72,14 +96,14 @@
 												<div class="product-chr-info chr">
 														<div class="thumbnail" style="margin-bottom:1em;">
 															<a href="{{ url_for('viewbook', book_id=book.book_id, username=user.username) }}">
-																<img src="{{url_for('static', filename='images/'+book.book_cover)}}" style="height:10.1em; width:9.1em;" alt="">
+																<img src="{{book.book_cover}}" style="height:10.1em; width:9.1em;" alt="">
 															</a>
 														</div>
 														<div class="caption">
                                                             <div class="title">
 															<h4 style="overflow-y: hidden;  max-height:8em;">{{book.title}}</h4>
                                                             </div>
-															<p>{{book.author_fname}} {{book.author_lname}}</p>
+															<p>{{book.author_name}}</p>
 					
 														</div>
                                             </div>
@@ -237,6 +261,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
                 </div>
                 <div class="clear"> </div>
 			</div>

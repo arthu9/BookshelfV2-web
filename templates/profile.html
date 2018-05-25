@@ -71,14 +71,14 @@
 												<div class="product-chr-info chr">
 														<div class="thumbnail" style="margin-bottom:1em;">
 															<a href="{{ url_for('viewbook', book_id=book.book_id, username=user.username) }}">
-																<img src="{{url_for('static', filename='images/'+book.book_cover)}}" style="height:10.1em; width:9.1em;" alt="">
+																<img src="{{book.book_cover}}" style="height:10.1em; width:9.1em;" alt="">
 															</a>
 														</div>
 														<div class="caption">
                                                             <div class="title">
 															<h4 style="overflow-y: hidden;  max-height:8em;">{{book.title}}</h4>
                                                             </div>
-															<p>{{book.author_fname}} {{book.author_lname}}</p>
+															<p>{{book.author_name}}</p>
 					
 														</div>
                                             </div>

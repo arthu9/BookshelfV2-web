@@ -139,41 +139,72 @@ def signup():
 def home():
     if g.user:
         url = 'http://localhost:5050/bookshelf/books/latest'
+        url2 = 'http://localhost:5050/bookshelf/books/recent'
+        url3 = 'http://localhost:5050/bookshelf/books/toprated'
         books = requests.get(url)
-        book_dict = json.loads(books.text)
-        action = requests.get('http://localhost:5050/interests/view/Action')
+        books2 = requests.get(url2)
+        books3 = requests.get(url3)
+        action = requests.get('http://localhost:5050/interests/view2/Action')
         action_dict = json.loads(action.text)
-        drama = requests.get('http://localhost:5050/interests/view/Drama')
+        drama = requests.get('http://localhost:5050/interests/view2/Drama')
         drama_dict = json.loads(drama.text)
-        horror = requests.get('http://localhost:5050/interests/view/Horror')
+        horror = requests.get('http://localhost:5050/interests/view2/Horror')
+        fiction = requests.get('http://localhost:5050/category/view/Fiction')
+        nonfiction = requests.get('http://localhost:5050/category/view/Non-Fiction')
+        acads = requests.get('http://localhost:5050/category/view/Educational')
         horror_dict = json.loads(horror.text)
         book_dict = json.loads(books.text)
+        book2_dict = json.loads(books2.text)
+        book3_dict = json.loads(books3.text)
+        fict_dict = json.loads(fiction.text)
+        nonfict_dict = json.loads(nonfiction.text)
+        acad_dict = json.loads(acads.text)
+        print(fict_dict['book'])
+        print(acad_dict['book'])
+        print(book2_dict)
         if not book_dict['book']:
             return render_template('dashboard.html', books={}, none='display', message='No books to display',
-                                   message1='No books to display', message2='No books to display', message3='No books to display')
+                                   message1='No books to display',anone='block', dnone='block', message2='No books to display', message3='No books to display',
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
         elif not action_dict['book'] and (not horror_dict['book'] and not drama_dict['book']):
-            return render_template('dashboard.html', books=book_dict['book'], none='none',
+            return render_template('dashboard.html', books=book_dict['book'], books2=book2_dict['book'], none='none', books3=book3_dict['book'],
                                    message1='No books to display', message2='No books to display',
-                                   message3='No books to display')
+                                   message3='No books to display', hnone='block',anone='block', dnone='block', acadbooks=acad_dict['book'],fictionbooks=fict_dict['book'], nonficbooks=nonfict_dict['book'])
         elif not action_dict['book'] and not drama_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none',
-                                   message1='No books to display', message2='No books to display')
+            return render_template('dashboard.html', books=book_dict['book'], books2=book2_dict['book'], none='none', horrorbooks=horror_dict['book'],
+                                   message1='No books to display', anone='block', dnone='block', message2='No books to display', hnone='none',
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
         elif not action_dict['book'] and not horror_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none',
-                                   message1='No books to display', message3='No books to display')
+            return render_template('dashboard.html', books=book_dict['book'], none='none', books2=book2_dict['book'],
+                                   message1='No books to display', dramabooks=drama_dict['book'], message3='No books to display', dnone='none', anone='block', hnone='block',
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
         elif not drama_dict['book'] and not horror_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none',
-                                   message2='No books to display', message3='No books to display')
+            return render_template('dashboard.html', books=book_dict['book'], none='none', books2=book2_dict['book'], actionbooks=action_dict['book'],
+                                   message2='No books to display', message3='No books to display', anone='none', dnone='block', hnone='block',
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
         elif not action_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none',
-                                   message1='No books to display')
+            return render_template('dashboard.html', books=book_dict['book'], none='none', horrorbooks=horror_dict['book'],
+                                   message1='No books to display', dramabooks=drama_dict['book'], anone='block', dnone='none', hnone='none', books2=book2_dict['book'],
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
         elif not drama_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none',
-                                   message2='No books to display')
+            return render_template('dashboard.html', books=book_dict['book'], none='none', horrorbooks=horror_dict['book'], actionbooks=action_dict['book'],
+                                   message2='No books to display', hnone='none', books2=book2_dict['book'], anone='none', dnone='block',
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
         elif not horror_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none', message3='No books to display')
-        return render_template('dashboard.html', books=book_dict['book'], none='none', horrorbooks=horror_dict['book'],
-                               actionbooks=action_dict['book'], dramabooks=drama_dict['book'], user=session['user'])
+            return render_template('dashboard.html', books=book_dict['book'],dramabooks=drama_dict['book'], books2=book2_dict['book'], actionbooks=action_dict['book'],
+                                   none='none', message3='No books to display', hnone='block', dnone='none', anone='none',
+                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                                   nonficbooks=nonfict_dict['book'])
+        return render_template('dashboard.html', books2=book2_dict['book'], books=book_dict['book'], none='none', horrorbooks=horror_dict['book'],
+                               actionbooks=action_dict['book'], dramabooks=drama_dict['book'], user=session['user'], hnone='none', anone='none', dnone='none',
+                               acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
+                               nonficbooks=nonfict_dict['book'])
     else:
         return redirect('unauthorized')
 
@@ -207,6 +238,42 @@ def interests():
 def addbook():
     if g.user:
         if request.method == 'POST':
+            fiction = {'Action', 'Adventure', 'Drama', 'Horror', 'Mystery', 'Mythology'}
+            non_fiction = {'Biography', 'Essay', 'Journalism', 'Personal Narrative', 'Reference Book', 'Speech'}
+            educational = {'English', 'Math', 'History', 'Science'}
+            genre = request.form['genre']
+            if genre in fiction:
+                category = "Fiction"
+            elif genre in non_fiction:
+                category = "Non-Fiction"
+            else:
+                category = "Educational"
+
+            print(category)
+            response = requests.post(
+                'http://localhost:5050/user/addbook',
+                json={"current_user": session['user'], 'title': request.form['title'],
+                      "year": request.form['year'], "isbn": request.form['isbn'],
+                      "publisher_name": request.form['publisher'], "author_name": request.form['author'],
+                        "category": category, "book_cover": request.form['book_cover'],
+                      "description": request.form['description'], "price": request.form['price'],
+                      "genre": genre, "quantity": request.form['quantity'], "method": request.form.get('methods')}
+            )
+            print(response.text)
+            if response.text == 'The book is already in your bookshelf!':
+                return render_template('addbook_isbn.html', display='block')
+            return redirect('home')
+        else:
+            return render_template('addbook_isbn.html', display='none')
+    else:
+        return redirect('unauthorized')
+
+
+
+@app.route('/add_unpublishedbook', methods=['POST', 'GET'])
+def add_unpublishedbook():
+    if g.user:
+        if request.method == 'POST':
             print(request.form['types'])
             filename="default_book.jpeg"
             if 'photo' in request.files:
@@ -226,7 +293,116 @@ def addbook():
                 return render_template('addbook.html', message=resp['message'], color='danger', x='&times;')
             return redirect('home')
         else:
-            return render_template('addbook_isbn.html')
+            return render_template('addbook_isbn.html', display='none')
+    else:
+        return redirect('unauthorized')
+
+@app.route('/addbook/step-1', methods=['POST', 'GET'])
+def addbook_step1():
+    if g.user:
+        if request.method == 'POST':
+            book = {}
+            book['title'] = request.form['title']
+            book['description'] = request.form['description']
+            book['book_cover'] = request.form['book_cover']
+            book['author_name'] = request.form['author_name']
+            book['publisher'] = request.form['publisher']
+            book['year'] = request.form['year']
+            book['isbn'] = request.form['isbn']
+            print(book)
+
+            return render_template('addbook_step1.html', book=book)
+        else:
+            book = {}
+            book['title'] = request.form['title']
+            book['description'] = request.form['description']
+            book['book_cover'] = request.form['book_cover']
+            book['author_name'] = request.form['author_name']
+            book['publisher'] = request.form['publisher']
+            book['year'] = request.form['year']
+            book['isbn'] = request.form['isbn']
+            print(book)
+
+            return render_template('addbook_step1.html', book=book)
+    else:
+        return redirect('unauthorized')
+
+
+@app.route('/title/search/<search>', methods=['GET'])
+def title_search(search):
+    if g.user:
+        output = []
+        url = "https://www.googleapis.com/books/v1/volumes?q=intitle:{0}&key=AIzaSyAOeYMvF7kPJ7ZcAjOVWiRA8PjCk5E_TsM&maxResults=40".format(search)
+        print(url)
+        response = requests.get(url)
+        resp = json.loads(response.text)
+        print(response.text)
+        response2 = requests.post('http://localhost:5050/book/title', json={"title": search})
+        print(response2.text)
+        print(resp['totalItems'])
+        if int(resp['totalItems']) == 0 and response2.text == 'Book not found':
+            return render_template('addbook_noresult.html')
+        elif int(resp['totalItems']) == 0:
+            resp2 = json.loads(response2.text)
+            return render_template('addbook_results.html', books={}, dbbooks=resp2['books'])
+        else:
+            for book_item in resp['items']:
+                books = {}
+                if((('publisher' in book_item['volumeInfo']) and ('industryIdentifiers' in book_item['volumeInfo']))
+                  and (('imageLinks' in book_item['volumeInfo']) and ('authors' in book_item['volumeInfo'])))\
+                    and ('description' in book_item['volumeInfo'] and 'publishedDate' in book_item['volumeInfo']):
+                    books['title'] = book_item['volumeInfo']['title']
+                    books['publishers'] = book_item['volumeInfo']['publisher']
+                    books['isbn'] = book_item['volumeInfo']['industryIdentifiers'][0]['identifier']
+                    books['book_cover'] = book_item['volumeInfo']['imageLinks']['thumbnail']
+                    books['author_name'] = book_item['volumeInfo']['authors'][0]
+                    books['description'] = book_item['volumeInfo']['description']
+                    books['year'] = book_item['volumeInfo']['publishedDate']
+                    output.append(books)
+                else:
+                    continue
+            if response2.text != 'Book not found':
+                resp2 = json.loads(response2.text)
+                return render_template('addbook_results.html', books=output, dbbooks=resp2['books'])
+            return render_template('addbook_results.html', books=output)
+    else:
+        return redirect('unauthorized')
+
+@app.route('/author/search/<search>', methods=['GET'])
+def author_search(search):
+    if g.user:
+        output = []
+        url = "https://www.googleapis.com/books/v1/volumes?q=inauthor:{0}&key=AIzaSyAOeYMvF7kPJ7ZcAjOVWiRA8PjCk5E_TsM&maxResults=40".format(search)
+        response = requests.get(url)
+        resp = json.loads(response.text)
+        print(response.text)
+        response2 = requests.post('http://localhost:5050/book/author', json={"author_name": search})
+        print(response2.text)
+        if int(resp['totalItems']) == 0 and response2.text == 'Author not found!':
+            return render_template('addbook_noresult.html')
+        elif int(resp['totalItems']) == 0:
+            resp2 = json.loads(response2.text)
+            return render_template('addbook_results.html', books={}, dbbooks=resp2['books'])
+        for book_item in resp['items']:
+            books = {}
+            if ((('publisher' in book_item['volumeInfo']) and ('industryIdentifiers' in book_item['volumeInfo']))
+                and (('imageLinks' in book_item['volumeInfo']) and ('authors' in book_item['volumeInfo'])))\
+                    and ('description' in book_item['volumeInfo'] and 'publishedDate' in book_item['volumeInfo']):
+                books['title'] = book_item['volumeInfo']['title']
+                books['publishers'] = book_item['volumeInfo']['publisher']
+                books['isbn'] = book_item['volumeInfo']['industryIdentifiers'][0]['identifier']
+                books['book_cover'] = book_item['volumeInfo']['imageLinks']['thumbnail']
+                books['author_name'] = book_item['volumeInfo']['authors'][0]
+                books['description'] = book_item['volumeInfo']['description']
+                books['year'] = book_item['volumeInfo']['publishedDate']
+                output.append(books)
+            else:
+                continue
+        if response2.text != 'Author not found!':
+            resp2 = json.loads(response2.text)
+            return render_template('addbook_results.html', books=output, dbbooks=resp2['books'])
+        else:
+            return render_template('addbook_results.html', books=output)
     else:
         return redirect('unauthorized')
 
@@ -234,49 +410,71 @@ def addbook():
 def isbn_search():
     if g.user:
         if request.method == 'POST':
-            isbn = request.form['isbn']
-            response4 = requests.post('http://localhost:5050/book/isbn', json={"isbn": isbn})
-            url3 = "https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=details&format=json".format(isbn)
-            url = "https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=data&format=json".format(isbn)
-            url2 = "https://www.googleapis.com/books/v1/volumes?q=isbn:{0}&key=AIzaSyAOeYMvF7kPJ7ZcAjOVWiRA8PjCk5E_TsM".format(isbn)
-            output = []
-            book = {}
-            response2 = requests.get(url2)
-            resp2 = json.loads(response2.text)
-
-            print(resp2['totalItems'])
-            if response4.text == 'Book not found':
-                response = requests.get(url)
-                resp = json.loads(response.text)
-                print(resp)
-                book['isbn'] = isbn
-                if (resp2['totalItems'] == 0) and (not resp):
-                    print('ERROR')
-                elif not resp:
-                    print(response2.text)
-                    book['title'] = resp2['items'][0]['volumeInfo']['title']
-                    book['publishers'] = resp2['items'][0]['volumeInfo']['publisher']
-                    book['book_cover'] = resp2['items'][0]['volumeInfo']['imageLinks']['thumbnail']
-                    book['author_name'] = resp2['items'][0]['volumeInfo']['authors'][0]
-                    book['description'] = resp2['items'][0]['volumeInfo']['description']
-                    book['year'] = resp2['items'][0]['volumeInfo']['publishedDate']
-                else:
-                    index = "ISBN:{0}".format(isbn)
-                    book['title'] = resp[index]['title']
-                    book['publishers'] = resp[index]['publishers'][0]['name']
-                    book['book_cover'] = resp[index]['cover']['large']
-                    book['author_name'] = resp[index]['authors'][0]['name']
-                    date1 = resp[index]['publish_date']
-                    book['year'] = date1
-                    if resp2['totalItems'] != 0:
+            filter = request.form['searchfilter']
+            search = request.form['search']
+            print(filter)
+            if filter == 'Title':
+                return redirect(url_for('title_search', search=search))
+            elif filter == 'Author':
+                return redirect(url_for('author_search', search=search))
+            else:
+                isbn = request.form['search']
+                response4 = requests.post('http://localhost:5050/book/isbn', json={"isbn": isbn})
+                url3 = "https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=details&format=json".format(isbn)
+                url = "https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=data&format=json".format(isbn)
+                url2 = "https://www.googleapis.com/books/v1/volumes?q=isbn:{0}&key=AIzaSyAOeYMvF7kPJ7ZcAjOVWiRA8PjCk5E_TsM".format(isbn)
+                output = []
+                book = {}
+                response2 = requests.get(url2)
+                resp2 = json.loads(response2.text)
+                print(resp2['totalItems'])
+                print(response4.text)
+                if response4.text == 'Book not found':
+                    response = requests.get(url)
+                    resp = json.loads(response.text)
+                    print(resp)
+                    book['isbn'] = isbn
+                    if (resp2['totalItems'] == 0) and (not resp):
+                        return render_template('addbook_noresult.html')
+                    elif not resp:
+                        print(response2.text)
                         book['title'] = resp2['items'][0]['volumeInfo']['title']
-                        book['publishers'] = resp2['items'][0]['volumeInfo']['publisher']
+                        if 'publisher' in resp2['items'][0]['volumeInfo']:
+                            book['publishers'] = resp2['items'][0]['volumeInfo']['publisher']
+                        else:
+                            book['publishers'] = ''
+                        book['book_cover'] = resp2['items'][0]['volumeInfo']['imageLinks']['thumbnail']
                         book['author_name'] = resp2['items'][0]['volumeInfo']['authors'][0]
                         book['description'] = resp2['items'][0]['volumeInfo']['description']
                         book['year'] = resp2['items'][0]['volumeInfo']['publishedDate']
-                output.append(book)
-                print(output)
-            return render_template('addbook_result.html', book=output[0])
+                    else:
+                        index = "ISBN:{0}".format(isbn)
+                        book['title'] = resp[index]['title']
+                        book['publishers'] = resp[index]['publishers'][0]['name']
+                        if 'cover' in resp[index]:
+                            book['book_cover'] = resp[index]['cover']['large']
+                        else:
+                            book['cover'] = '#'
+                        book['author_name'] = resp[index]['authors'][0]['name']
+                        date1 = resp[index]['publish_date']
+                        book['year'] = date1
+                        if resp2['totalItems'] != 0:
+                            book['title'] = resp2['items'][0]['volumeInfo']['title']
+                            if 'publisher' in resp2['items'][0]['volumeInfo']:
+                                book['publishers'] = resp2['items'][0]['volumeInfo']['publisher']
+                            else:
+                                book['publishers'] = ''
+                            if 'authors' in resp2['items'][0]['volumeInfo']:
+                                book['author_name'] = resp2['items'][0]['volumeInfo']['authors'][0]
+                            book['description'] = resp2['items'][0]['volumeInfo']['description']
+                            book['year'] = resp2['items'][0]['volumeInfo']['publishedDate']
+                    output.append(book)
+                    return render_template('addbook_result.html', book=output[0])
+                else:
+                    resp4 = json.loads(response4.text)
+                    print(resp4)
+                    return render_template('addbook_result.html', book=resp4['book'][0])
+
         else:
             return render_template('addbook_result.html', book={})
     else:
@@ -330,7 +528,7 @@ def profilemap(username):
     user_1['lat'] = user['user'][0]['latitude']
     user_1['lng'] = user['user'][0]['longitude']
     user_1['infobox'] = """<h6 style="text-align:center;">{0}</h6><img src='data:image;base64, {1}' onerror="this.src='{{url_for('static', 
-    filename='images/none.jpeg')}}'" alt="{2}" style="width:80px; height:80px;" alt=" " />""".format(user['user'][0]['username'], profpic, user['user'][0]['username'])
+    filename='images/none.jpeg')}}'" alt="{2}" style="width:80px; height:80px;" alt=" " />""".format('My Current Location', profpic, user['user'][0]['username'])
     output.append(user_1)
 
     for user1 in users1:
@@ -469,19 +667,37 @@ def edit_profile():
         user = requests.get(url)
         user_dict = json.loads(user.text)
         map = profilemap(session['user'])
-        profilepic = (user_dict['user']['profpic'])
         bday = get_bday(user_dict['user']['birth_date'])
+        profilepic = (user_dict['user']['profpic'])
         book_details = requests.get('http://localhost:5050/user/bookshelf/availability',
                                     json={"current_user": session['user']})
         books = requests.get('http://localhost:5050/user/bookshelf', json={"current_user": session['user']})
         if books.text == "no books found":
-            return render_template('no_books_editprofile.html', user=user_dict['user'], bday=bday,map=map, profilepic=profilepic)
+            return render_template('no_books_editprofile.html', user=user_dict['user'], bday=bday,map=map, profilepic=profilepic, display='none')
         book_dict = json.loads(books.text)
         book_details_dict = json.loads(book_details.text)
         if request.method == 'POST':
-            print('HELLO')
+            firstname = request.form['first_name']
+            lastname = request.form['last_name']
+            gender = request.form['gender']
+            bdate = request.form['birth_date']
+            age = calculate_age(bdate)
+            if age < 18:
+                books = requests.get('http://localhost:5050/user/bookshelf', json={"current_user": session['user']})
+                if books.text == "no books found":
+                    return render_template('no_books_editprofile.html', user=user_dict['user'], bday=bday, map=map,
+                                           profilepic=profilepic, display='block')
+                return render_template('edit_profile.html', user=user_dict['user'], books=book_dict['book'], bday=bday,
+                                       map=map, profilepic=profilepic, display='block')
+
+            contact_num = request.form['contact_number']
+            response = requests.post('http://localhost:5050/user/edit', json={"username": session['user'], "first_name": firstname,
+                                                                              "last_name": lastname, "birth_date": bdate, "gender": gender,
+                                                                              "contact_num":contact_num})
+            print(response.text)
+            return redirect('profile')
         else:
-            return render_template('edit_profile.html', user=user_dict['user'], books=book_dict['book'], bday=bday, map=map, profilepic=profilepic)
+            return render_template('edit_profile.html', user=user_dict['user'], books=book_dict['book'], bday=bday, map=map, profilepic=profilepic, display='none')
     else:
         return redirect('unauthorized')
 
@@ -497,31 +713,68 @@ def add_profile_pic():
 
 
 ### END PROFILE ###
+@app.route('/book/rate/<contains_id>/<book_id>/<username>', methods=['POST'])
+def rate_book(contains_id, book_id, username):
+    if g.user:
+        ratings = request.form['stars']
+        print(ratings)
+        response = requests.post('http://localhost:5050/rate-book', json={"ratings":ratings, "username":session['user'], "contains_id":contains_id})
+        print(response.text)
+        return redirect(url_for('viewbook', book_id=book_id, username=username))
+    else:
+        return redirect('unauthorized')
+
+@app.route('/book/comment/<contains_id>/<book_id>/<username>', methods=['POST'])
+def comment_book(contains_id, book_id, username):
+    if g.user:
+        comment = request.form['comment']
+        response = requests.post('http://localhost:5050/comment-book', json={"comment":comment, "username":session['user'], "contains_id":contains_id})
+        print(response.text)
+        return redirect(url_for('viewbook', book_id=book_id, username=username))
+    else:
+        return redirect('unauthorized')
 
 @app.route('/bookshelf/<username>/<book_id>', methods=['GET'])
 def viewbook(book_id, username):
     if g.user:
-        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"current_user": username})
+        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"username": username, "current_user": session['user']})
         book_dict = json.loads(book.text)
-        print(username)
-        print(session['user'])
+        comments = requests.get('http://localhost:5050/bookshelf/comments/book', json={"username": username, "book_id":book_id})
+        comments_dict = json.loads(comments.text)
+        print(len(comments_dict['comments']))
         if username == session['user']:
-            return render_template('own_product.html', books=book_dict['book'])
+            return render_template('own_product.html', books=book_dict['book'], comments=comments_dict['comments'][0:5], total=len(comments_dict['comments']), comments2=comments_dict['comments'])
 
         print(book_dict['book'])
-        return render_template('single_product.html', books=book_dict['book'])
+        return render_template('single_product.html', books=book_dict['book'], comments=comments_dict['comments'][0:5], total=len(comments_dict['comments']), comments2=comments_dict['comments'])
     else:
         return redirect('unauthorized')
 
-@app.route('/bookshelf/<username>/<book_id>/edit', methods=['POST', 'GET'])
-def edit_ownbook(book_id, username):
+@app.route('/bookshelf/edit/<book_id>', methods=['GET', 'POST'])
+def editbook(book_id):
     if g.user:
-        book = requests.get('http://localhost:5050/user/bookshelf/' + book_id, json={"current_user": username})
+        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"current_user": session['user']})
         book_dict = json.loads(book.text)
         if request.method == 'POST':
-            print('HELLO')
+            quantity = request.form['quantity']
+            methods = request.form['methods']
+            price = request.form['price']
+            book = requests.post('http://localhost:5050/user/edit/book', json={"username": session['user'], "quantity":quantity,
+                            "methods": methods, "price": price, "book_id": book_id})
+            print(book.text)
+            return redirect(url_for('viewbook', book_id=book_id, username=session['user']))
         else:
-            return render_template('edit_ownbook.html', books=book_dict['book'])
+            return render_template('edit_ownbook.html', username=session['user'], books=book_dict['book'])
+
+    else:
+        return redirect('unauthorized')
+
+@app.route('/bookshelf/remove/<book_id>', methods=['POST', 'GET'])
+def remove_book(book_id):
+    if g.user:
+        book = requests.post('http://localhost:5050/user/bookshelf/remove/book', json={"book_id":book_id, "username":session['user']})
+        print(book.text)
+        return redirect('home')
     else:
         return redirect('unauthorized')
 

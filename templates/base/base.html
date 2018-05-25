@@ -47,6 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link rel="stylesheet" href="{{url_for('static', filename='css/addbook.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
      <link rel="stylesheet" href="{{url_for('static', filename='css/comment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ratings.css')}}">
     <!-- //online-fonts -->
 </head>
 
@@ -518,7 +519,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         });
     </script>
+    <script>
+          $('#methodlist').change(function(){
+        if( $(this).val() == 'For Sale'){
+            $('#pricing').append('<input placeholder="Price of the Book" name="price" id="sale" type="text" />');
+            $('#rent').remove();
+            $('#borrow').remove();
+        }else if( $(this).val() == 'For Rent'){
+            $('#pricing').append('<input placeholder="Price Rate (Price per day)" name="price" id="rent" type="text" />');
+            $('#sale').remove();
+            $('#borrow').remove();
 
+        }else{
+            $('#pricing').append('<input value="0" style="display:none;" id="borrow" name="price" type="text" />');
+            $('#rent').remove();
+            $('#sale').remove();
+        }
+    });
+    </script>
+    <script>
+          $('#methodList2').change(function(){
+        if( $(this).val() == 'For Sale'){
+            $('#pricing2').append('<input placeholder="Price of the Book" name="price" class="form-control" style="width:45%; height:28px;" id="sale" type="text" />');
+            $('#rent').remove();
+            $('#borrow').remove();
+        }else if( $(this).val() == 'For Rent'){
+            $('#pricing2').append('<input placeholder="Price Rate (Price per day)" class="form-control" style="width:45%; height:28px;" name="price" id="rent" type="text" />');
+            $('#sale').remove();
+            $('#borrow').remove();
+
+        }else{
+            $('#pricing2').append('<input value="0" class="form-control" style="width:45%; height:28px;" name="price" id="borrow" type="text" readonly/>');
+            $('#rent').remove();
+            $('#sale').remove();
+        }
+    });
+    </script>
+    <script src="{{url_for('static', filename='js/ratings.js')}}"></script>
     <script src="{{url_for('static', filename='js/SmoothScroll.min.js')}}"></script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- about bottom grid Numscroller -->

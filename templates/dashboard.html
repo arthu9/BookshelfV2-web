@@ -45,9 +45,31 @@
                     <!-- product-sec1 -->
                     <div id="toprated" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
-                        <h1 class="display" style="text-align:center; margin:2em;">No Books to Display</h1>
-                        <!-- //row1 -->
-                        <!-- row2 -->
+
+                        {% for book3 in books3 %}
+                        <div class="col-md-3 col-xs-12 product-men">
+                            <div class="product-chr-info chr">
+                                <div class="thumbnail">
+                                    <a href="{{ url_for('viewbook', book_id=book3.book_id, username=book3.owner_username) }}">
+                                        <img src="{{book3.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                    </a>
+                                    <div class="book-overlay">
+                                        <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                        <div class="book-text">
+                                            <h4>{{book3.totalRate}}/5.0</h4>
+                                            <h4>{{ book3.genre }}</h4>
+                                            <a href="{{ url_for('viewbook', book_id=book3.book_id, username=book3.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <h4>{{ book3.title }}</h4>
+                                    <p class="author">{{ book3.author_name }}</p>
+                                    <p><a href="{{ url_for('view_profile', username=book3.owner_username) }}" style="margin:auto; color: #777;">{{ book3.owner_fname }} {{ book3.owner_lname }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                         <!-- //row2 -->
                         <!-- row3 -->
@@ -60,12 +82,12 @@
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
                                     <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
-                                        <img src="{{url_for('static', filename='images/'+book.book_cover)}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        <img src="{{book.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
                                     </a>
                                     <div class="book-overlay">
                                         <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
                                         <div class="book-text">
-                                            <h4>3/5</h4>
+                                            <h4>{{book.totalRate}}/5.0</h4>
                                             <h4>{{ book.genre }}</h4>
                                             <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}"><span class="button-blue-big">View Details</span></a>
                                         </div>
@@ -73,7 +95,7 @@
                                 </div>
                                 <div class="caption">
                                     <h4>{{ book.title }}</h4>
-                                    <p class="author">{{ book.author_fname }} {{ book.author_lname }}</p>
+                                    <p class="author">{{ book.author_name }}</p>
                                     <p><a href="{{ url_for('view_profile', username=book.owner_username) }}" style="margin:auto; color: #777;">{{ book.owner_fname }} {{ book.owner_lname }}</a></p>
                                 </div>
                             </div>
@@ -82,7 +104,31 @@
                     </div>
                     <div id="menu2" class="product-sec1 tab-pane fade">
                         <!-- row1-->
-                        <h1 class="display" style="text-align:center; margin:2em;">No Books to Display</h1>
+                        <h1 class="display" style="display:{{none}}; text-align:center; margin:2em;">No Books to Display</h1>
+                        {% for book2 in books2 %}
+                        <div class="col-md-3 col-xs-12 product-men">
+                            <div class="product-chr-info chr">
+                                <div class="thumbnail">
+                                    <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}">
+                                        <img src="{{book2.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                    </a>
+                                    <div class="book-overlay">
+                                        <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                        <div class="book-text">
+                                            <h4>{{book2.totalRate}}/5.0</h4>
+                                            <h4>{{ book2.genre }}</h4>
+                                            <a href="{{ url_for('viewbook', book_id=book2.book_id, username=book2.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <h4>{{ book2.title }}</h4>
+                                    <p class="author">{{ book2.author_name}}</p>
+                                    <p><a href="{{ url_for('view_profile', username=book2.owner_username) }}" style="margin:auto; color: #777;">{{ book2.owner_fname }} {{ book2.owner_lname }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                         <!-- //row3 -->
@@ -92,7 +138,7 @@
         </div>
         <!-- //about ends here -->
         <!-- about bottom -->
-        <div class="about-bottom" style="z-index:-10;">
+        <div class="about-bottom" style="z-index:-10; min-height:300px; height:400px;">
             <div class="container-fluid">
                 <div class="jumbotron">
                     <h4 class="rad-txt">
@@ -111,18 +157,18 @@
                     <!-- product-sec1 -->
                     <div id="action" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
-                        <h1 class="display" style="text-align:center; margin:2em;">{{message1}}</h1>
+                        <h1 class="display" style="display:{{anone}}; text-align:center; margin:2em;">{{message1}}</h1>
                         {% for abook in actionbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
                                     <a href="{{ url_for('viewbook', book_id=abook.book_id, username=abook.owner_username) }}">
-                                        <img src="{{url_for('static', filename='images/'+abook.book_cover)}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        <img src="{{abook.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
                                     </a>
                                     <div class="book-overlay">
                                         <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
                                         <div class="book-text">
-                                            <h4>3/5</h4>
+                                            <h4>{{abook.totalRate}}/5.0</h4>
                                             <h4>{{ abook.genre }}</h4>
                                             <a href="{{ url_for('viewbook', book_id=abook.book_id, username=abook.owner_username) }}"><span class="button-blue-big">View Details</span></a>
                                         </div>
@@ -130,7 +176,7 @@
                                 </div>
                                 <div class="caption">
                                     <h4>{{ abook.title }}</h4>
-                                    <p class="author">{{ abook.author_fname }} {{ abook.author_lname }}</p>
+                                    <p class="author">{{ abook.author_name }}</p>
                                     <p><a href="{{ url_for('view_profile', username=abook.owner_username) }}" style="margin:auto; color: #777;">{{ abook.owner_fname }} {{ abook.owner_lname }}</a></p>
                                 </div>
                             </div>
@@ -144,18 +190,18 @@
 
                     <div id="drama" class="product-sec1 tab-pane">
                         <!-- row1-->
-                        <h1 class="display" style="text-align:center; margin:2em;">{{message2}}</h1>
+                        <h1 class="display" style="display:{{dnone}}; text-align:center; margin:2em;">{{message2}}</h1>
                         {% for dbook in dramabooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
                                     <a href="{{ url_for('viewbook', book_id=dbook.book_id, username=dbook.owner_username) }}">
-                                        <img src="{{url_for('static', filename='images/'+dbook.book_cover)}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        <img src="{{dbook.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
                                     </a>
                                     <div class="book-overlay">
                                         <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
                                         <div class="book-text">
-                                            <h4>3/5</h4>
+                                            <h4>{{dbook.totalRate}}/5.0</h4>
                                             <h4>{{ dbook.genre }}</h4>
                                             <a href="{{ url_for('viewbook', book_id=dbook.book_id, username=dbook.owner_username) }}"><span class="button-blue-big">View Details</span></a>
                                         </div>
@@ -163,7 +209,7 @@
                                 </div>
                                 <div class="caption">
                                     <h4>{{ dbook.title }}</h4>
-                                    <p class="author">{{ dbook.author_fname }} {{ dbook.author_lname }}</p>
+                                    <p class="author">{{ dbook.author_name }}</p>
                                     <p><a href="{{ url_for('view_profile', username=dbook.owner_username) }}" style="margin:auto; color: #777;">{{ dbook.owner_fname }} {{ dbook.owner_lname }}</a></p>
                                 </div>
                             </div>
@@ -172,18 +218,18 @@
                     </div>
                     <div id="horror" class="product-sec1 tab-pane fade">
                         <!-- row1-->
-                        <h1 class="display" style="text-align:center; margin:2em;">{{message3}}</h1>
+                        <h1 class="display" style="text-align:center; margin:2em; display:{{hnone}};">{{message3}}</h1>
                         {% for hbook in horrorbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
                                     <a href="{{ url_for('viewbook', book_id=hbook.book_id, username=hbook.owner_username) }}">
-                                        <img src="{{url_for('static', filename='images/'+hbook.book_cover)}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                        <img src="{{hbook.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
                                     </a>
                                     <div class="book-overlay">
                                         <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
                                         <div class="book-text">
-                                            <h4>3/5</h4>
+                                            <h4>{{hbook.totalRate}}/5.0</h4>
                                             <h4>{{ hbook.genre }}</h4>
                                             <a href="{{ url_for('viewbook', book_id=hbook.book_id, username=hbook.owner_username) }}"><span class="button-blue-big">View Details</span></a>
                                         </div>
@@ -191,8 +237,113 @@
                                 </div>
                                 <div class="caption">
                                     <h4>{{ hbook.title }}</h4>
-                                    <p class="author">{{ hbook.author_fname }} {{ hbook.author_lname }}</p>
+                                    <p class="author">{{ hbook.author_name }}</p>
                                     <p><a href="{{ url_for('view_profile', username=hbook.owner_username) }}" style="margin:auto; color: #777;">{{ hbook.owner_fname }} {{ hbook.owner_lname }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+         <div class="about-bottom" style="z-index:-10; ">
+            <div class="container-fluid">
+                <div class="jumbotron">
+                    <h4 class="rad-txt">
+                        <a href="shop2.html" class="btn btn-success btn-view pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
+                        <span class="big-tab pull-left">Category</span>
+                        <ul class="nav nav-tabs dashtab pull-left">
+                            <li class="active btn btn-success btntab"><a data-toggle="tab" href="#fiction">Fiction</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#nonfiction">Non-Fiction</a></li>
+                            <li class="btn btn-success btntab"><a data-toggle="tab" href="#academics">Academics</a></li>
+                        </ul>
+                    </h4>
+                </div>
+            </div>
+                <!-- about-bottom grid1 -->
+                <div class="tab-content tab2" style="margin-left:6em;">
+                    <!-- product-sec1 -->
+                    <div id="fiction" class="product-sec1 tab-pane fade in active">
+                        <!-- row1-->
+                        {% for fbook in fictionbooks %}
+                        <div class="col-md-3 col-xs-12 product-men">
+                            <div class="product-chr-info chr">
+                                <div class="thumbnail">
+                                    <a href="{{ url_for('viewbook', book_id=fbook.book_id, username=fbook.owner_username) }}">
+                                        <img src="{{fbook.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                    </a>
+                                    <div class="book-overlay">
+                                        <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                        <div class="book-text">
+                                            <h4>{{fbook.totalRate}}/5.0</h4>
+                                            <h4>{{ fbook.genre }}</h4>
+                                            <a href="{{ url_for('viewbook', book_id=fbook.book_id, username=fbook.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <h4>{{ fbook.title }}</h4>
+                                    <p class="author">{{ fbook.author_name }}</p>
+                                    <p><a href="{{ url_for('view_profile', username=fbook.owner_username) }}" style="margin:auto; color: #777;">{{ fbook.owner_fname }} {{ fbook.owner_lname }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- //row1 -->
+                        <!-- row2 -->
+                    </div>
+                        <!-- //row2 -->
+                        <!-- row3 -->
+
+                    <div id="nonfiction" class="product-sec1 tab-pane">
+                        <!-- row1-->
+                        {% for nbook in nonficbooks %}
+                        <div class="col-md-3 col-xs-12 product-men">
+                            <div class="product-chr-info chr">
+                                <div class="thumbnail">
+                                    <a href="{{ url_for('viewbook', book_id=nbook.book_id, username=nbook.owner_username) }}">
+                                        <img src="{{nbook.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                    </a>
+                                    <div class="book-overlay">
+                                        <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                        <div class="book-text">
+                                            <h4>{{nbook.totalRate}}/5.0</h4>
+                                            <h4>{{ nbook.genre }}</h4>
+                                            <a href="{{ url_for('viewbook', book_id=nbook.book_id, username=nbook.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <h4>{{ nbook.title }}</h4>
+                                    <p class="author">{{ nbook.author_name}}</p>
+                                    <p><a href="{{ url_for('view_profile', username=nbook.owner_username) }}" style="margin:auto; color: #777;">{{ nbook.owner_fname }} {{ nbook.owner_lname }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="academics" class="product-sec1 tab-pane fade">
+                        <!-- row1-->
+                        {% for acadbook in acadbooks %}
+                        <div class="col-md-3 col-xs-12 product-men">
+                            <div class="product-chr-info chr">
+                                <div class="thumbnail">
+                                    <a href="{{ url_for('viewbook', book_id=acadbook.book_id, username=acadbook.owner_username) }}">
+                                        <img src="{{acadbook.book_cover}}" class="book-img" style="height:195px; width:130px;"alt="">
+                                    </a>
+                                    <div class="book-overlay">
+                                        <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                        <div class="book-text">
+                                            <h4>{{acadbook.totalRate}}/5.0</h4>
+                                            <h4>{{ acadbook.genre }}</h4>
+                                            <a href="{{ url_for('viewbook', book_id=acadbook.book_id, username=acadbook.owner_username) }}"><span class="button-blue-big">View Details</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <h4>{{ acadbook.title }}</h4>
+                                    <p class="author">{{ acadbook.author_name}}</p>
+                                    <p><a href="{{ url_for('view_profile', username=acadbook.owner_username) }}" style="margin:auto; color: #777;">{{ acadbook.owner_fname }} {{ acadbook.owner_lname }}</a></p>
                                 </div>
                             </div>
                         </div>
