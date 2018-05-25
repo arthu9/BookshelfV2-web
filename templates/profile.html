@@ -15,10 +15,6 @@
                               </div>
                             </div>
                         </div>
-                        <ul class="agileinfo_social_icons">
-                            <li><a href="#" class="w3_agileits_facebook"><i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
-                            <li><a href="#" class="wthree_twitter"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="w3layouts_main_grid_right">
@@ -81,6 +77,31 @@
 															<p>{{book.author_name}}</p>
 					
 														</div>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <div class="wthree_main_grid_right_grid">
+                                        <h3>My Books</h3>
+                                            <div style="overflow: hidden;" class="w3_agileits_main_grid_work_grids">
+                                                <h1 style="color: #333A56; text-align:center; margin:1em; font-weight: 0px;
+                                                            letter-spacing: 0px;">No books to display</h1>
+                                                <a href="{{ url_for('addbook') }}" class='button' style="background:#333A56;
+                                                                                                        font-weight: 800;
+                                                                                                        font-size: 3em;
+                                                                                                        text-align:center;
+                                                                                                        border: 1px solid #333A56;
+                                                                                                        border-radius: 5px;
+                                                                                                        width: 100%;
+                                                                                                        margin: 1em;
+                                                                                                        padding: 0.7em;
+                                                                                                        font-size: 1em;
+                                                                                                        text-decoration: none;
+                                                                                                        color: #333a56;
+                                                                                                        display: inline-block;
+                                                                                                        cursor: pointer;">
+                                                  Add your own Book
+                                                </a>
+                                                <div class="clear"> </div>
                                             </div>
                                         </div>
                                         {% endfor %}

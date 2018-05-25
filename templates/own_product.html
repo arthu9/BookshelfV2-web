@@ -177,7 +177,7 @@
 	<div class="comments" id="comments" style="display:block;">
 			<div class="comment-wrap">
 					<div class="photo">
-							<img src="data:image;base64, {{ book.user_profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+							<img src="data:image;base64, {{ book.viewer_profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
 					</div>
 					<div class="comment-block">
 							<form action="{{url_for('comment_book', username=book.username, book_id=book.book_id, contains_id=book.contains_id)}}" method="POST">
@@ -211,7 +211,7 @@
 	<div class="comments" id="allcomments" style="display:none; overflow-y: auto; height:550px;">
 			<div class="comment-wrap">
 					<div class="photo">
-							<img src="data:image;base64, {{ book.user_profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+							<img src="data:image;base64, {{ book.viewer_profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
 					</div>
 					<div class="comment-block">
 							<form action="{{url_for('comment_book', username=book.username, book_id=book.book_id, contains_id=book.contains_id)}}" method="POST">

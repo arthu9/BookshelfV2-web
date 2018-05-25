@@ -2034,7 +2034,9 @@ footer-social {
     list-style: none;
     margin-top: 20px;
 }
-
+.about-bottom {
+    min-height:370px;
+}
 .thumbnail {
     padding: 0;
     border: none;
@@ -2059,7 +2061,6 @@ footer-social {
     padding-top: 3em;
 }
 .cpy-right{
-    position: absolute;
     width: 100%;
     height: 60px;
     line-height: 60px;

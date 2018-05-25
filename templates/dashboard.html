@@ -45,7 +45,6 @@
                     <!-- product-sec1 -->
                     <div id="toprated" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
-
                         {% for book3 in books3 %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -69,6 +68,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                     </div>
                         <!-- //row2 -->
@@ -76,7 +77,6 @@
 
                     <div id="menu1" class="product-sec1 tab-pane">
                         <!-- row1-->
-                        <h1 class="display" style="display:{{none}};text-align:center; margin:2em;">{{message}}</h1>
                         {% for book in books %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -100,11 +100,12 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                     </div>
                     <div id="menu2" class="product-sec1 tab-pane fade">
                         <!-- row1-->
-                        <h1 class="display" style="display:{{none}}; text-align:center; margin:2em;">No Books to Display</h1>
                         {% for book2 in books2 %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -128,6 +129,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                     </div>
                 </div>
@@ -138,7 +141,7 @@
         </div>
         <!-- //about ends here -->
         <!-- about bottom -->
-        <div class="about-bottom" style="z-index:-10; min-height:300px; height:400px;">
+        <div class="about-bottom" style="z-index:-10;">
             <div class="container-fluid">
                 <div class="jumbotron">
                     <h4 class="rad-txt">
@@ -157,7 +160,6 @@
                     <!-- product-sec1 -->
                     <div id="action" class="product-sec1 tab-pane fade in active">
                         <!-- row1-->
-                        <h1 class="display" style="display:{{anone}}; text-align:center; margin:2em;">{{message1}}</h1>
                         {% for abook in actionbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -181,6 +183,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                         <!-- //row1 -->
                         <!-- row2 -->
@@ -190,7 +194,6 @@
 
                     <div id="drama" class="product-sec1 tab-pane">
                         <!-- row1-->
-                        <h1 class="display" style="display:{{dnone}}; text-align:center; margin:2em;">{{message2}}</h1>
                         {% for dbook in dramabooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -214,11 +217,12 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                     </div>
                     <div id="horror" class="product-sec1 tab-pane fade">
                         <!-- row1-->
-                        <h1 class="display" style="text-align:center; margin:2em; display:{{hnone}};">{{message3}}</h1>
                         {% for hbook in horrorbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
@@ -242,6 +246,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                     </div>
                 </div>
@@ -288,6 +294,8 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                         <!-- //row1 -->
                         <!-- row2 -->
@@ -320,11 +328,13 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
                         {% endfor %}
                     </div>
                     <div id="academics" class="product-sec1 tab-pane fade">
                         <!-- row1-->
-                        {% for acadbook in acadbooks %}
+                            {% for acadbook in acadbooks %}
                         <div class="col-md-3 col-xs-12 product-men">
                             <div class="product-chr-info chr">
                                 <div class="thumbnail">
@@ -347,7 +357,9 @@
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                            {% else %}
+                            <h1 class="display" style="display:block;text-align:center;">No Books to Display</h1>
+                            {% endfor %}
                     </div>
                 </div>
         </div>

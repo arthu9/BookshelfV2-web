@@ -14,7 +14,7 @@ html, body {
   background-size: cover;
   -webkit-background-size: cover;
     -moz-background-size: cover;
-    min-height: 400px;
+    min-height: 330px;
     overflow:visible;
     margin-top: 4%;
     margin-bottom: 3.5%;
@@ -27,7 +27,7 @@ html, body {
     background-size: cover;
   -webkit-background-size: cover;
     -moz-background-size: cover;
-    min-height: 400px;
+    min-height: 330px;
     margin-top: 4%;
     margin-bottom: 3.5%;
     background:
@@ -40,7 +40,7 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  font-size: 1.6em;
+  font-size: 1.3em;
   color: white;
   font-family: 'Open Sans', sans-serif;
     font-weight:300;
@@ -104,6 +104,10 @@ html, body {
 }
 .frontend-side.split-pane button:hover, .split-pane a.button:hover {
   color: #333A56;
+}
+
+.display{
+    margin-top: 3em;
 }
 
 #split-pane-or {
@@ -194,13 +198,7 @@ h1 a.navbar-brand {
 }
 @media screen and (max-width: 1024px) {
 }
-@media screen and (max-width: 991px) {
 
-    .display{
-        margin-top: 4em !important;
-        margin: 0 !important;
-    }
-}
 @media screen and (max-width: 900px) {
 
     .display{
@@ -260,7 +258,10 @@ h1 a.navbar-brand {
 
 @media(max-width: 640px) {
     .split-pane {
-        font-size:1.5em;
+        font-size:1.1em;
+    }
+    .banner-bg-agileits{
+        padding-top:7em;
     }
     .split-pane > div .text-content {
         margin-top: 10em;

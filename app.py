@@ -5,7 +5,8 @@ from flask import Flask, render_template, request, flash,session,redirect,url_fo
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from flask_googlemaps import GoogleMaps, Map, icons
-import base64
+import base64, django
+from werkzeug.contrib.cache import SimpleCache
 from base64 import b64encode, b64decode
 from datetime import date, datetime
 import openlibrary_api
@@ -23,19 +24,19 @@ configure_uploads(app, photos)
 GoogleMaps(app)
 app.secret_key = 'supersecretkey'
 lm.init_app(app)
-
+cache = SimpleCache()
 
 def api_login(username, password, response):
     resp_dict = json.loads(response.text)
     url = 'http://localhost:5050/user/info/'+username
     user = requests.get(url)
-    print(user)
-    print(user.text)
+    print(resp_dict)
     resp_dict2 = json.loads(user.text)
-    print(resp_dict2['user']['username'])
     session['user'] = resp_dict2['user']['username']
+    session['token'] = resp_dict['token']
     g.user = session['user']
-    return resp_dict[0]['token']
+    g.token = session['token']
+    return resp_dict['token']
 
 
 @app.route('/', methods=['GET'])
@@ -45,8 +46,10 @@ def index():
 @app.before_request
 def before_request():
     g.user = None
-    if 'user' in session:
+    g.token = None
+    if 'user' in session and 'token' in session:
         g.user = session['user']
+        g.token = session['token']
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -64,6 +67,7 @@ def login():
         else:
             token = api_login(username, password, response)
         print(token)
+        print(session['token'])
         return redirect(url_for('home'))
     else:
         return render_template('login.html')
@@ -79,6 +83,7 @@ def get_coordinates():
 def logout():
     if g.user:
         session.pop('user', None)
+        session.pop('token', None)
         return redirect('/')
 
 @app.route('/signup/1', methods=['POST', 'GET'])
@@ -141,17 +146,17 @@ def home():
         url = 'http://localhost:5050/bookshelf/books/latest'
         url2 = 'http://localhost:5050/bookshelf/books/recent'
         url3 = 'http://localhost:5050/bookshelf/books/toprated'
-        books = requests.get(url)
-        books2 = requests.get(url2)
-        books3 = requests.get(url3)
-        action = requests.get('http://localhost:5050/interests/view2/Action')
+        books = requests.get(url, headers={'x-access-token': session['token']})
+        books2 = requests.get(url2, headers={'x-access-token': session['token']})
+        books3 = requests.get(url3, headers={'x-access-token': session['token']})
+        action = requests.get('http://localhost:5050/interests/view2/Action', headers={'x-access-token': session['token']})
         action_dict = json.loads(action.text)
-        drama = requests.get('http://localhost:5050/interests/view2/Drama')
+        drama = requests.get('http://localhost:5050/interests/view2/Drama', headers={'x-access-token': session['token']})
         drama_dict = json.loads(drama.text)
-        horror = requests.get('http://localhost:5050/interests/view2/Horror')
-        fiction = requests.get('http://localhost:5050/category/view/Fiction')
-        nonfiction = requests.get('http://localhost:5050/category/view/Non-Fiction')
-        acads = requests.get('http://localhost:5050/category/view/Educational')
+        horror = requests.get('http://localhost:5050/interests/view2/Horror', headers={'x-access-token': session['token']})
+        fiction = requests.get('http://localhost:5050/category/view/Fiction', headers={'x-access-token': session['token']})
+        nonfiction = requests.get('http://localhost:5050/category/view/Non-Fiction', headers={'x-access-token': session['token']})
+        acads = requests.get('http://localhost:5050/category/view/Educational', headers={'x-access-token': session['token']})
         horror_dict = json.loads(horror.text)
         book_dict = json.loads(books.text)
         book2_dict = json.loads(books2.text)
@@ -159,52 +164,10 @@ def home():
         fict_dict = json.loads(fiction.text)
         nonfict_dict = json.loads(nonfiction.text)
         acad_dict = json.loads(acads.text)
-        print(fict_dict['book'])
-        print(acad_dict['book'])
-        print(book2_dict)
-        if not book_dict['book']:
-            return render_template('dashboard.html', books={}, none='display', message='No books to display',
-                                   message1='No books to display',anone='block', dnone='block', message2='No books to display', message3='No books to display',
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        elif not action_dict['book'] and (not horror_dict['book'] and not drama_dict['book']):
-            return render_template('dashboard.html', books=book_dict['book'], books2=book2_dict['book'], none='none', books3=book3_dict['book'],
-                                   message1='No books to display', message2='No books to display',
-                                   message3='No books to display', hnone='block',anone='block', dnone='block', acadbooks=acad_dict['book'],fictionbooks=fict_dict['book'], nonficbooks=nonfict_dict['book'])
-        elif not action_dict['book'] and not drama_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], books2=book2_dict['book'], none='none', horrorbooks=horror_dict['book'],
-                                   message1='No books to display', anone='block', dnone='block', message2='No books to display', hnone='none',
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        elif not action_dict['book'] and not horror_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none', books2=book2_dict['book'],
-                                   message1='No books to display', dramabooks=drama_dict['book'], message3='No books to display', dnone='none', anone='block', hnone='block',
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        elif not drama_dict['book'] and not horror_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none', books2=book2_dict['book'], actionbooks=action_dict['book'],
-                                   message2='No books to display', message3='No books to display', anone='none', dnone='block', hnone='block',
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        elif not action_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none', horrorbooks=horror_dict['book'],
-                                   message1='No books to display', dramabooks=drama_dict['book'], anone='block', dnone='none', hnone='none', books2=book2_dict['book'],
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        elif not drama_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'], none='none', horrorbooks=horror_dict['book'], actionbooks=action_dict['book'],
-                                   message2='No books to display', hnone='none', books2=book2_dict['book'], anone='none', dnone='block',
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        elif not horror_dict['book']:
-            return render_template('dashboard.html', books=book_dict['book'],dramabooks=drama_dict['book'], books2=book2_dict['book'], actionbooks=action_dict['book'],
-                                   none='none', message3='No books to display', hnone='block', dnone='none', anone='none',
-                                   acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                                   nonficbooks=nonfict_dict['book'])
-        return render_template('dashboard.html', books2=book2_dict['book'], books=book_dict['book'], none='none', horrorbooks=horror_dict['book'],
-                               actionbooks=action_dict['book'], dramabooks=drama_dict['book'], user=session['user'], hnone='none', anone='none', dnone='none',
-                               acadbooks=acad_dict['book'], fictionbooks=fict_dict['book'], books3=book3_dict['book'],
-                               nonficbooks=nonfict_dict['book'])
+        return render_template('dashboard.html', books2=book2_dict['book'], books=book_dict['book'],\
+                               horrorbooks=horror_dict['book'], actionbooks=action_dict['book'], \
+                               dramabooks=drama_dict['book'], user=session['user'], acadbooks=acad_dict['book'], \
+                               fictionbooks=fict_dict['book'], books3=book3_dict['book'], nonficbooks=nonfict_dict['book'])
     else:
         return redirect('unauthorized')
 
@@ -251,7 +214,7 @@ def addbook():
 
             print(category)
             response = requests.post(
-                'http://localhost:5050/user/addbook',
+                'http://localhost:5050/user/addbook', headers={'x-access-token': session['token']},
                 json={"current_user": session['user'], 'title': request.form['title'],
                       "year": request.form['year'], "isbn": request.form['isbn'],
                       "publisher_name": request.form['publisher'], "author_name": request.form['author'],
@@ -279,13 +242,13 @@ def add_unpublishedbook():
             if 'photo' in request.files:
                 filename = photos.save(request.files['photo'], session['user']+"/books")
             response = requests.post(
-                'http://localhost:5050/user/addbook',
+                'http://localhost:5050/user/addbook', headers={'x-access-token': session['token']},
                 json={"current_user": session['user'], 'title': request.form['title'], "edition": request.form['edition'],
                       "year": request.form['year'], "isbn": request.form['isbn'], "types": request.form['types'],
                       "publisher_name": request.form['publisher_name'], "author_fname": request.form['author_fname'],
                       "author_lname": request.form['author_lname'], "category": request.form['category'],
                       "description": request.form['description'], "price": request.form['price'],
-                      "genre": request.form['genre'], "quantity": request.form['quantity'], "filename": filename}
+                      "genre": request.form['genre'], "quantity": request.form['quantity'], "filename": filename},
             )
             resp = json.loads(response.text)
             print(resp['message'])
@@ -337,7 +300,7 @@ def title_search(search):
         response = requests.get(url)
         resp = json.loads(response.text)
         print(response.text)
-        response2 = requests.post('http://localhost:5050/book/title', json={"title": search})
+        response2 = requests.post('http://localhost:5050/book/title', json={"title": search}, headers={'x-access-token': session['token']})
         print(response2.text)
         print(resp['totalItems'])
         if int(resp['totalItems']) == 0 and response2.text == 'Book not found':
@@ -376,7 +339,7 @@ def author_search(search):
         response = requests.get(url)
         resp = json.loads(response.text)
         print(response.text)
-        response2 = requests.post('http://localhost:5050/book/author', json={"author_name": search})
+        response2 = requests.post('http://localhost:5050/book/author', json={"author_name": search}, headers={'x-access-token': session['token']})
         print(response2.text)
         if int(resp['totalItems']) == 0 and response2.text == 'Author not found!':
             return render_template('addbook_noresult.html')
@@ -419,7 +382,7 @@ def isbn_search():
                 return redirect(url_for('author_search', search=search))
             else:
                 isbn = request.form['search']
-                response4 = requests.post('http://localhost:5050/book/isbn', json={"isbn": isbn})
+                response4 = requests.post('http://localhost:5050/book/isbn', json={"isbn": isbn}, headers={'x-access-token': session['token']})
                 url3 = "https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=details&format=json".format(isbn)
                 url = "https://openlibrary.org/api/books?bibkeys=ISBN:{0}&jscmd=data&format=json".format(isbn)
                 url2 = "https://www.googleapis.com/books/v1/volumes?q=isbn:{0}&key=AIzaSyAOeYMvF7kPJ7ZcAjOVWiRA8PjCk5E_TsM".format(isbn)
@@ -503,10 +466,10 @@ def profile():
         bday = get_bday(user_dict['user']['birth_date'])
         map = profilemap(session['user'])
         profilepic = user_dict['user']['profpic']
-        book_details = requests.get('http://localhost:5050/user/bookshelf/availability', json={"current_user": session['user']})
-        books = requests.get('http://localhost:5050/user/bookshelf', json={"current_user": session['user']})
+        book_details = requests.get('http://localhost:5050/user/bookshelf/availability', headers={'x-access-token': session['token']}, json={"current_user": session['user']})
+        books = requests.get('http://localhost:5050/user/bookshelf', headers={'x-access-token': session['token']}, json={"current_user": session['user']})
         if books.text == "no books found":
-            return render_template('no_books_profile.html', user=user_dict['user'], bday=bday, map=map,  profilepic=profilepic)
+            return render_template('profile.html', books={}, user=user_dict['user'], bday=bday, map=map,  profilepic=profilepic)
         book_dict=json.loads(books.text)
         book_details_dict=json.loads(book_details.text)
         return render_template('profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'], profilepic=profilepic, bday=bday, map=map)
@@ -640,14 +603,12 @@ def view_profile(username):
         bday = get_bday(user_dict['user']['birth_date'])
         profilepic = user_dict['user']['profpic']
         map = profilemap_user(username)
-        book_details = requests.get('http://localhost:5050/user/bookshelf/availability', json={"current_user": username})
-        books = requests.get('http://localhost:5050/user/bookshelf', json={"current_user": username})
+        book_details = requests.get('http://localhost:5050/user/bookshelf/availability', headers={'x-access-token': session['token']}, json={"current_user": username} )
+        books = requests.get('http://localhost:5050/user/bookshelf', headers={'x-access-token': session['token']}, json={"current_user": username})
         if books.text == "no books found":
-            return render_template('no_books_profile.html', user=user_dict['user'], bday=bday, map=map, profilepic=profilepic)
+            return render_template('user_profile.html', books={}, user=user_dict['user'], bday=bday, map=map, profilepic=profilepic)
         book_dict=json.loads(books.text)
         book_details_dict=json.loads(book_details.text)
-        print(book_dict['book'])
-        print(user_dict['user'])
         return render_template('user_profile.html', books=book_dict['book'], book_details=book_details_dict, user=user_dict['user'], bday=bday, map=map, profilepic=profilepic)
     else:
         return redirect('unauthorized')
@@ -669,11 +630,11 @@ def edit_profile():
         map = profilemap(session['user'])
         bday = get_bday(user_dict['user']['birth_date'])
         profilepic = (user_dict['user']['profpic'])
-        book_details = requests.get('http://localhost:5050/user/bookshelf/availability',
+        book_details = requests.get('http://localhost:5050/user/bookshelf/availability', headers={'x-access-token': session['token']},
                                     json={"current_user": session['user']})
-        books = requests.get('http://localhost:5050/user/bookshelf', json={"current_user": session['user']})
+        books = requests.get('http://localhost:5050/user/bookshelf', headers={'x-access-token': session['token']}, json={"current_user": session['user']})
         if books.text == "no books found":
-            return render_template('no_books_editprofile.html', user=user_dict['user'], bday=bday,map=map, profilepic=profilepic, display='none')
+            return render_template('edit_profile.html', books={}, user=user_dict['user'], bday=bday,map=map, profilepic=profilepic, display='none')
         book_dict = json.loads(books.text)
         book_details_dict = json.loads(book_details.text)
         if request.method == 'POST':
@@ -683,9 +644,9 @@ def edit_profile():
             bdate = request.form['birth_date']
             age = calculate_age(bdate)
             if age < 18:
-                books = requests.get('http://localhost:5050/user/bookshelf', json={"current_user": session['user']})
+                books = requests.get('http://localhost:5050/user/bookshelf', headers={'x-access-token': session['token']}, json={"current_user": session['user']})
                 if books.text == "no books found":
-                    return render_template('no_books_editprofile.html', user=user_dict['user'], bday=bday, map=map,
+                    return render_template('edit_profile.html', user=user_dict['user'], bday=bday, map=map,
                                            profilepic=profilepic, display='block')
                 return render_template('edit_profile.html', user=user_dict['user'], books=book_dict['book'], bday=bday,
                                        map=map, profilepic=profilepic, display='block')
@@ -693,7 +654,7 @@ def edit_profile():
             contact_num = request.form['contact_number']
             response = requests.post('http://localhost:5050/user/edit', json={"username": session['user'], "first_name": firstname,
                                                                               "last_name": lastname, "birth_date": bdate, "gender": gender,
-                                                                              "contact_num":contact_num})
+                                                                              "contact_num":contact_num}, headers={'x-access-token': session['token']})
             print(response.text)
             return redirect('profile')
         else:
@@ -705,7 +666,7 @@ def edit_profile():
 def add_profile_pic():
     if request.method == 'POST' and 'photo' in request.files:
         file = request.files['photo']
-        response = requests.post('http://localhost:5050/profile/picture', json={"current_user": session['user'], "filename": b64encode(file.read())})
+        response = requests.post('http://localhost:5050/profile/picture', json={"current_user": session['user'], "filename": b64encode(file.read())}, headers={'x-access-token': session['token']})
         message = json.loads(response.text)
         return redirect('profile')
     return redirect('profile')
@@ -718,7 +679,7 @@ def rate_book(contains_id, book_id, username):
     if g.user:
         ratings = request.form['stars']
         print(ratings)
-        response = requests.post('http://localhost:5050/rate-book', json={"ratings":ratings, "username":session['user'], "contains_id":contains_id})
+        response = requests.post('http://localhost:5050/rate-book', json={"ratings":ratings, "username":session['user'], "contains_id":contains_id}, headers={'x-access-token': session['token']})
         print(response.text)
         return redirect(url_for('viewbook', book_id=book_id, username=username))
     else:
@@ -728,7 +689,7 @@ def rate_book(contains_id, book_id, username):
 def comment_book(contains_id, book_id, username):
     if g.user:
         comment = request.form['comment']
-        response = requests.post('http://localhost:5050/comment-book', json={"comment":comment, "username":session['user'], "contains_id":contains_id})
+        response = requests.post('http://localhost:5050/comment-book', json={"comment":comment, "username":session['user'], "contains_id":contains_id}, headers={'x-access-token': session['token']})
         print(response.text)
         return redirect(url_for('viewbook', book_id=book_id, username=username))
     else:
@@ -737,9 +698,9 @@ def comment_book(contains_id, book_id, username):
 @app.route('/bookshelf/<username>/<book_id>', methods=['GET'])
 def viewbook(book_id, username):
     if g.user:
-        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"username": username, "current_user": session['user']})
+        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"username": username, "current_user": session['user']}, headers={'x-access-token': session['token']})
         book_dict = json.loads(book.text)
-        comments = requests.get('http://localhost:5050/bookshelf/comments/book', json={"username": username, "book_id":book_id})
+        comments = requests.get('http://localhost:5050/bookshelf/comments/book', json={"username": username, "book_id":book_id}, headers={'x-access-token': session['token']})
         comments_dict = json.loads(comments.text)
         print(len(comments_dict['comments']))
         if username == session['user']:
@@ -753,14 +714,14 @@ def viewbook(book_id, username):
 @app.route('/bookshelf/edit/<book_id>', methods=['GET', 'POST'])
 def editbook(book_id):
     if g.user:
-        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"current_user": session['user']})
+        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"current_user": session['user']}, headers={'x-access-token': session['token']})
         book_dict = json.loads(book.text)
         if request.method == 'POST':
             quantity = request.form['quantity']
             methods = request.form['methods']
             price = request.form['price']
             book = requests.post('http://localhost:5050/user/edit/book', json={"username": session['user'], "quantity":quantity,
-                            "methods": methods, "price": price, "book_id": book_id})
+                            "methods": methods, "price": price, "book_id": book_id}, headers={'x-access-token': session['token']})
             print(book.text)
             return redirect(url_for('viewbook', book_id=book_id, username=session['user']))
         else:
@@ -772,7 +733,7 @@ def editbook(book_id):
 @app.route('/bookshelf/remove/<book_id>', methods=['POST', 'GET'])
 def remove_book(book_id):
     if g.user:
-        book = requests.post('http://localhost:5050/user/bookshelf/remove/book', json={"book_id":book_id, "username":session['user']})
+        book = requests.post('http://localhost:5050/user/bookshelf/remove/book', json={"book_id":book_id, "username":session['user']}, headers={'x-access-token': session['token']})
         print(book.text)
         return redirect('home')
     else:
@@ -781,7 +742,7 @@ def remove_book(book_id):
 @app.route('/genre/<genre_name>', methods=['GET'])
 def view_genre(genre_name):
     if g.user:
-        books = requests.get('http://localhost:5050/interests/view/'+genre_name)
+        books = requests.get('http://localhost:5050/interests/view/'+genre_name, headers={'x-access-token': session['token']})
         print(books.text)
         book_dict = json.loads(books.text)
         if not book_dict['book']:
@@ -794,7 +755,7 @@ def view_genre(genre_name):
 @app.route('/bookstore', methods=['GET'])
 def store():
     if g.user:
-        books = requests.get('http://localhost:5050/bookshelf/books')
+        books = requests.get('http://localhost:5050/bookshelf/books', headers={'x-access-token': session['token']})
         book_dict = json.loads(books.text)
         if not book_dict['book']:
             return render_template('no_books_shop.html', books={})
@@ -808,11 +769,11 @@ def add_wishlist(bookshelf_id, book_id):
     if g.user:
         if request.method == 'POST':
             url = 'http://localhost:5050/bookshelf/wishlist'
-            response= requests.post(url, json={"bookshelf_id": bookshelf_id, "username":session['user'], "book_id":book_id})
+            response= requests.post(url, json={"bookshelf_id": bookshelf_id, "username":session['user'], "book_id":book_id}, headers={'x-access-token': session['token']})
             book_dict=json.loads(response.text)
             print(response.text)
             url2 = 'http://localhost:5050/bookshelf/wishlist/user'
-            books = requests.get(url2, json={"current_user": session['user']})
+            books = requests.get(url2, json={"current_user": session['user']}, headers={'x-access-token': session['token']})
             book_dict2 = json.loads(books.text)
             if book_dict['message'] == "You can't add your own book to your wishlist":
                 if not book_dict2['book']:
@@ -833,7 +794,7 @@ def add_wishlist(bookshelf_id, book_id):
 def remove_wishlist(username, book_id):
     if g.user:
         url= 'http://localhost:5050/bookshelf/remove_wishlist'
-        response = requests.post(url, json={"book_id": book_id, "bookshelf_owner": username, "username": session['user']})
+        response = requests.post(url, json={"book_id": book_id, "bookshelf_owner": username, "username": session['user']}, headers={'x-access-token': session['token']})
         book_dict = json.loads(response.text)
         return redirect('wishlist')
     else:
@@ -843,7 +804,7 @@ def remove_wishlist(username, book_id):
 def wishlist():
     if g.user:
         url = 'http://localhost:5050/bookshelf/wishlist/user'
-        books = requests.get(url, json={"current_user": session['user']})
+        books = requests.get(url, json={"current_user": session['user']}, headers={'x-access-token': session['token']})
         book_dict = json.loads(books.text)
         print(book_dict['book'])
         if not book_dict['book']:
