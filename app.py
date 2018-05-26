@@ -1,5 +1,5 @@
 import requests
-import flask
+import flask, math
 import sys,os
 from flask import Flask, render_template, request, flash,session,redirect,url_for, jsonify, make_response, g
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
@@ -59,7 +59,7 @@ def login():
         password = request.form['password']
         response = requests.post(
             'http://localhost:5050/login',
-            auth=(username, password),
+            json={"username":username, "password":password},
         )
         print(response.text)
         if response.text == "Could not verify":
@@ -698,7 +698,7 @@ def comment_book(contains_id, book_id, username):
 @app.route('/bookshelf/<username>/<book_id>', methods=['GET'])
 def viewbook(book_id, username):
     if g.user:
-        book = requests.get('http://localhost:5050/user/bookshelf/'+book_id, json={"username": username, "current_user": session['user']}, headers={'x-access-token': session['token']})
+        book = requests.get('http://localhost:5050/user/bookshelf/book', json={"book_id": book_id, "username": username, "current_user": session['user']}, headers={'x-access-token': session['token']})
         book_dict = json.loads(book.text)
         comments = requests.get('http://localhost:5050/bookshelf/comments/book', json={"username": username, "book_id":book_id}, headers={'x-access-token': session['token']})
         comments_dict = json.loads(comments.text)
@@ -752,15 +752,16 @@ def view_genre(genre_name):
     else:
         return redirect('unauthorized')
 
-@app.route('/bookstore', methods=['GET'])
-def store():
+@app.route('/bookstore/<page_num>', methods=['GET'])
+def store(page_num):
     if g.user:
-        books = requests.get('http://localhost:5050/bookshelf/books', headers={'x-access-token': session['token']})
+        books = requests.get('http://localhost:5050/bookshelf/books', json={"pagenum": page_num}, headers={'x-access-token': session['token']})
         book_dict = json.loads(books.text)
+        print(book_dict)
         if not book_dict['book']:
             return render_template('no_books_shop.html', books={})
-        print(book_dict['book'])
-        return render_template('shop2.html', books=book_dict['book'])
+        print(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks'])/24))+1)
+        return render_template('shop2.html', books=book_dict['book'], totalbooks=(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks'])/20)))+1)
     else:
         return redirect('unauthorized')
 
