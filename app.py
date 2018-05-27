@@ -10,7 +10,7 @@ from werkzeug.contrib.cache import SimpleCache
 from base64 import b64encode, b64decode
 from datetime import date, datetime
 import openlibrary_api
-import json, urllib2, io
+import json, urllib2, io, jsonpickle
 
 
 app = Flask(__name__)
@@ -761,10 +761,31 @@ def store(page_num):
         if not book_dict['book']:
             return render_template('no_books_shop.html', books={})
         print(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks'])/24))+1)
-        return render_template('shop2.html', books=book_dict['book'], totalbooks=(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks'])/20)))+1)
+        return render_template('shop2.html', books=book_dict['book'], paginate=jsonpickle.decode(book_dict['totalBooks'][0]['paginate']), totalbooks=(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks'])/20)))+1)
     else:
         return redirect('unauthorized')
 
+@app.route('/bookstore/search/<page_num>', methods=['POST'])
+def store_search(page_num):
+    if g.user:
+        genre = request.form.get('genre')
+        time = request.form.get('time')
+        search = request.form.get('search')
+        print(genre)
+        print(time)
+        print(search)
+        books = requests.get('http://localhost:5050/store/search', json={"pagenum": page_num,
+                             "genre": genre, "time": time, "search": search},
+                             headers={'x-access-token': session['token']})
+        if books.text == 'No book found!':
+            return render_template('no_books_shop.html', books={})
+        book_dict = json.loads(books.text)
+        print(book_dict)
+        return render_template('shop2.html', books=book_dict['book'],
+                               paginate=jsonpickle.decode(book_dict['totalBooks'][0]['paginate']),
+                               totalbooks=(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks']) / 20))) + 1)
+    else:
+        return redirect('unauthorized')
 @app.route('/bookshelf/wishlist/<bookshelf_id>/<book_id>', methods=['POST', 'GET'])
 def add_wishlist(bookshelf_id, book_id):
     if g.user:

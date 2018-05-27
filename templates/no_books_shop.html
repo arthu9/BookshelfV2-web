@@ -33,7 +33,7 @@
 				</a>
 			</li>
 			<li class="btn btn2">
-				<a href="{{ url_for('store') }}">Bookshelf</a>
+				<a href="{{ url_for('store', page_num=1) }}">Bookshelf</a>
 			</li>
 		</ul>
 	</div>
@@ -44,79 +44,76 @@
 		<div class="innerf-pages section" style="padding-top:0em !important;">
 			<div class="container-cart">
 				<!-- product left -->
+				<form action="{{ url_for('store_search', page_num=1) }}" method="post">
 				<div class="side-bar col-md-3">
 					<!--preference -->
 					<div class="left-side">
 						<h3 class="shopf-sear-headits-sear-head">
 							Genre</h3>
 						<ul>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Action</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Action" class="checked">
+								<span class="span">Action</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Adventure</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Adventure" class="checked">
+								<span class="span">Adventure</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Biography</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Biography" class="checked">
+								<span class="span">Biography</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Drama</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Drama" class="checked">
+								<span class="span">Drama</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">English</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="English" class="checked">
+								<span class="span">English</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Essay</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Essay" class="checked">
+								<span class="span">Essay</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">History</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="History" class="checked">
+								<span class="span">History</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Horror</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Horror" class="checked">
+								<span class="span">Horror</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Journalism</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Journalism" class="checked">
+								<span class="span">Journalism</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Math</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Math" class="checked">
+								<span class="span">Math</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Mystery</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Mystery" class="checked">
+								<span class="span">Mystery</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Mythology</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Mythology" class="checked">
+								<span class="span">Mythology</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Personal Narrative</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Personal Narrative" class="checked">
+								<span class="span">Personal Narrative</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Reference Book</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Reference Book" class="checked">
+								<span class="span">Reference Book</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Poetry Book</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Science" class="checked">
+								<span class="span">Science</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Science</span>
-							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Speech</span>
+							<li><label>
+								<input type="checkbox" name="genre" value="Speech" class="checked">
+								<span class="span">Speech</span></label>
 							</li>
 							<li>
 						</ul>
@@ -124,11 +121,20 @@
 					<!-- // preference -->
 					<div class="search-hotel">
 						<h3 class="shopf-sear-headits-sear-head">
-							<span>author</span> in focus</h3>
-						<form action="#" method="post">
-							<input type="search" placeholder="search here" name="search" required="">
-							<input type="submit" value="Search">
-						</form>
+							<span>Title</span> in focus</h3>
+							<input type="search" placeholder="search here" name="search">
+							<input type="submit" value="Search" style="width: 100%;
+																		border: none;
+																		padding: 10px;
+																		margin-top: 0;
+																		background: #52658F;
+																		color: #000;
+																		font-size: 1em;
+																		letter-spacing: 1px;
+																		-webkit-transition: .5s all;
+																		-moz-transition: .5s all;
+																		transition: .5s all;
+																		font-family: 'Roboto', sans-serif;">
 					</div>
 					<!-- price range -->
 					<!-- //price range -->
@@ -137,99 +143,30 @@
 						<h3 class="shopf-sear-headits-sear-head">
 							<span>Newly</span> Added</h3>
 						<ul>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">last 30 days</span>
+							<li><label>
+								<input name="time" value="30" type="checkbox" class="checked">
+								<span class="span">last 30 days</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">last 90 days</span>
+							<li><label>
+								<input name="time" value="90" type="checkbox" class="checked">
+								<span class="span">last 90 days</span></label>
 							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">last 150 days</span>
+							<li><label>
+								<input name="time" value="150" type="checkbox" class="checked">
+								<span class="span">last 150 days</span></label>
 							</li>
 
 						</ul>
 					</div>
 					<!-- // preference -->
-					<!-- Binding -->
-					<div class="left-side">
-						<h3 class="shopf-sear-headits-sear-head">Format</h3>
-						<ul>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Hardbound</span>
-							</li>
-							<li>
-								<input type="checkbox" class="checked">
-								<span class="span">Softbound</span>
-							</li>
-						</ul>
-					</div>
-					<!-- //Binding -->
 					<!-- discounts -->
 					<!-- //discounts -->
 					<!-- reviews -->
-					<div class="customer-rev left-side">
-						<h3 class="shopf-sear-headits-sear-head">Customer Review</h3>
-						<ul>
-							<li>
-								<a href="#">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<span>5.0</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<span>4.0</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star-half-o" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<span>3.5</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<span>3.0</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star-half-o" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<span>2.5</span>
-								</a>
-							</li>
-						</ul>
-					</div>
 					<!-- //reviews -->
 
 
 				</div>
+				</form>
 				<!-- //product left -->
 				<!-- product right -->
 				<div class="left-ads-display col-md-9">
