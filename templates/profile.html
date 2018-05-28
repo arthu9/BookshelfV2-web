@@ -60,7 +60,28 @@
                                 </div>
                                 <div class="wthree_main_grid_right_grid">
                                     <h3>My Books</h3>
+                                    <form action="{{url_for('isbn_search')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
+                                        <div>
+                                            <!-- contact form grid -->
+                                            <div style="padding-bottom:1em;">
+                                                    <div class="search-facet">
+                                                      <label class="search-facet-selector" style="float:left">
+                                                        <select name="searchfilter" aria-label="Search by">
+                                                          <option value="ISBN">ISBN</option>
+                                                          <option value="Title">Title</option>
+                                                          <option value="Author">Author</option>
+                                                        </select>
+                                                      </label>
+                                                        <input type="text" placeholder="Search"  name="search" required="" style="float:left; height:24px; margin-bottom:0; width:55%;">
+                                                        <input type="submit" class="btn btn-success" style="padding:3px 12px;" value="Submit">
+                                                    </div>
 
+
+
+                                            </div>
+                                            <!--  //contact form grid ends here -->
+                                        </div>
+                                    </form>
                                     <div class="w3_agileits_main_grid_work_grids">
                                         {% for book in books%}
                                         <div class="agile_main_grid_work_gridl">

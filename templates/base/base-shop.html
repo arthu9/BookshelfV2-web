@@ -29,6 +29,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link rel="stylesheet" href="{{url_for('static', filename='css/reset.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/directmsg.css')}}">
     <link href="{{url_for('static', filename='css/shop.css')}}" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/flexslider.css')}}" type="text/css" media="screen" />
     <link href="{{url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="all">
     <!-- font-awesome icons -->
     <link href="{{url_for('static', filename='css/font-awesome.css')}}" rel="stylesheet">
@@ -40,20 +41,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
     <!-- body -->
     <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/splitscreen_shop.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
-    <link href="{{url_for('static', filename='css/profile_.css')}}" rel="stylesheet" type="text/css" media="all" />
-    <script src="{{url_for('static', filename='js/jquery-2.2.3.min.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/font-awesome_profile.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/lightcase_profile.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/easy-responsive-tabs_profile.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/addbook.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/notification.css')}}">
- <link rel="stylesheet" href="{{url_for('static', filename='css/comment.css')}}">
-    <link href="//fonts.googleapis.com/css?family=Arsenal:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese" rel="stylesheet">
-
+     <link rel="stylesheet" href="{{url_for('static', filename='css/comment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/ratings.css')}}">
     <!-- //online-fonts -->
-    {{map.js}}
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -229,8 +224,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </nav>
         <!-- //navbar ends here -->
-        <!-- banner -->
-        <!-- //banner -->
         <!-- about -->
         <div class="wrappermsg" id="dir_content" style="display:none; z-index: 4000; position:absolute;">
             <div class="containermsg" style="z-index:6000;">
@@ -427,11 +420,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!--//about bottom-->
         <!--//about bottom ends here-->
         <!-- //footer -->
-        <div class="cpy-right">
+        <footer class="cpy-right footer">
             <p>© 2018 Chronicle. All rights reserved | Design by
                 <a href="http://w3layouts.com"> W3layouts.</a>
             </p>
-        </div>
+        </footer>
     <!-- //home -->
     <!-- js -->
 
@@ -441,46 +434,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
     <!--search jQuery-->
     <!-- cart-js -->
-    <script src="{{url_for('static', filename='js/minicart.js')}}"></script>
-    <script>
-        chr.render();
-
-        chr.cart.on('new_checkout', function (evt) {
-            var items, len, i;
-
-            if (this.subtotal() > 0) {
-                items = this.items();
-
-                for (i = 0, len = items.length; i < len; i++) {}
-            }
-        });
-    </script>
     <!-- //cart-js -->
-        <script src="{{url_for('static', filename='js/easyResponsiveTabs_profile.js')}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //Horizontal Tab
-            $('#parentHorizontalTab').easyResponsiveTabs({
-                type: 'default', //Types: default, vertical, accordion
-                width: 'auto', //auto or any width like 600px
-                fit: true, // 100% fit in a container
-                tabidentify: 'hor_1', // The tab groups identifier
-                activate: function(event) { // Callback function if tab is switched
-                    var $tab = $(this);
-                    var $info = $('#nested-tabInfo');
-                    var $name = $('span', $info);
-                    $name.text($tab.text());
-                    $info.show();
-                }
-            });
-        });
-    </script>
-    <!-- light-case -->
-        <script src="{{url_for('static', filename='js/lightcase.js')}}"></script>
-        <script src="{{url_for('static', filename='js/jquery.events.touch.js')}}"></script>
-        <script>
-            $('.showcase').lightcase();
-        </script>
     <!-- Scrolling Nav JavaScript -->
     <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
     <!-- //fixed-scroll-nav-js -->
@@ -515,6 +469,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <!-- //end-smooth-scrolling -->
+        <!-- FlexSlider -->
+	<script src="{{url_for('static', filename='js/jquery.flexslider.js')}}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider1').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
     <!-- smooth-scrolling-of-move-up -->
     <script>
         $(document).ready(function () {
@@ -575,7 +541,67 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         });
     </script>
+    <script>
+          $('#methodlist').change(function(){
+        if( $(this).val() == 'For Sale'){
+            $('#pricing').append('<input placeholder="Price of the Book" name="price" id="sale" type="text" />');
+            $('#rent').remove();
+            $('#borrow').remove();
+        }else if( $(this).val() == 'For Rent'){
+            $('#pricing').append('<input placeholder="Price Rate (Price per day)" name="price" id="rent" type="text" />');
+            $('#sale').remove();
+            $('#borrow').remove();
 
+        }else{
+            $('#pricing').append('<input value="0" style="display:none;" id="borrow" name="price" type="text" />');
+            $('#rent').remove();
+            $('#sale').remove();
+        }
+    });
+    </script>
+    <script>
+          $('#methodList2').change(function(){
+        if( $(this).val() == 'For Sale'){
+            $('#pricing2').append('<input placeholder="Price of the Book" name="price" class="form-control" style="width:45%; height:28px;" id="sale" type="text" />');
+            $('#rent').remove();
+            $('#borrow').remove();
+        }else if( $(this).val() == 'For Rent'){
+            $('#pricing2').append('<input placeholder="Price Rate (Price per day)" class="form-control" style="width:45%; height:28px;" name="price" id="rent" type="text" />');
+            $('#sale').remove();
+            $('#borrow').remove();
+
+        }else{
+            $('#pricing2').append('<input value="0" class="form-control" style="width:45%; height:28px;" name="price" id="borrow" type="text" readonly/>');
+            $('#rent').remove();
+            $('#sale').remove();
+        }
+    });
+    function yesnoCheck() {
+    if (document.getElementById('ForRent').checked) {
+        document.getElementById('pricing').style.display = 'block';
+    }
+    else document.getElementById('pricing').style.display = 'none';
+
+    }
+    $("input:checkbox").on('click', function() {
+      // in the handler, 'this' refers to the box clicked on
+      var $box = $(this);
+      if ($box.is(":checked")) {
+        // the name of the box is retrieved using the .attr() method
+        // as it is assumed and expected to be immutable
+        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+        // the checked state of the group/box on the other hand will change
+        // and the current value is retrieved using .prop() method
+        $(group).prop("checked", false);
+        $box.prop("checked", true);
+      } else {
+        $box.prop("checked", false);
+      }
+    });
+    </script>
+
+
+    <script src="{{url_for('static', filename='js/ratings.js')}}"></script>
     <script src="{{url_for('static', filename='js/SmoothScroll.min.js')}}"></script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- about bottom grid Numscroller -->

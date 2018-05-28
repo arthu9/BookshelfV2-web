@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-shop.html' %}
 {% block content %}
 <!-- banner -->
 <div class="banner-bg-agileits">
@@ -199,6 +199,8 @@
 									</div>
 								</div>
 							</div>
+                            {% else %}
+                            <h1 style="text-align:center; font-size:5em; margin:2em;">No books to display</h1>
                             {% endfor %}
 							<!-- //row3 -->
 							<div class="clearfix"></div>
@@ -241,5 +243,6 @@
 
         <!-- //about container ends here-->
     </div>
+
     <!--//about bottom ends here-->
 {% endblock %}

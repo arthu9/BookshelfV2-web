@@ -76,23 +76,45 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Genres
                                     <b class="caret"></b>
                                 </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url_for('view_genre', genre_name='Action') }}">Action</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Adventure') }}">Adventure</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Biography') }}">Biography</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Drama') }}">Drama</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='English') }}">English</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Essay') }}">Essay</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='History') }}">History</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Horror') }}">Horror</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Journalism') }}">Journalism</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Math') }}">Math</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Mystery') }}">Mystery</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Mythology') }}">Mythology</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Personal Narrative') }}">Personal Narrative</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Reference Book') }}">Reference Book</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Science') }}">Science</a></li>
-                                    <li><a href="{{ url_for('view_genre', genre_name='Speech') }}">Speech</a></li>
+                                <ul class="dropdown-menu multi-column columns-3" style="left: auto;
+                                                right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Action', page_num=1) }}">Action</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Adventure', page_num=1) }}">Adventure</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Drama', page_num=1) }}">Drama</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Horror', page_num=1) }}">Horror</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mystery', page_num=1) }}">Mystery</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Mythology', page_num=1) }}">Mythology</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Non-Fiction</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Biography', page_num=1) }}">Biography</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Essay', page_num=1) }}">Essay</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Journalism', page_num=1) }}">Journalism</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Personal Narrative', page_num=1) }}">Personal Narrative</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Reference Book', page_num=1) }}">Reference Book</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Speech', page_num=1) }}">Speech</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <ul class="multi-column-dropdown">
+                                                <li><a>Educational</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='English', page_num=1) }}">English</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Math', page_num=1) }}">Math</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='History', page_num=1) }}">History</a></li>
+                                                <li><a href="{{ url_for('view_genre', genre_name='Science', page_num=1) }}">Science</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </ul>
                             </li>
                             <li class="dropdown">

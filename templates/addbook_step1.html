@@ -5,7 +5,7 @@
         <!-- contact -->
 <div class="section contact" id="contact" style="min-height:95vh; padding-bottom:60px; padding: 5em 0 !important;">
         <form id="addbook" action="{{url_for('addbook')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
-                <div class="innerf-pages" style="padding-top:3%; display:none;">
+                <div class="innerf-pages" style="spadding-top:3%; display:none;">
                     <div class="container" style="margin-bottom:3em;">
                         <div class="col-md-4 single-right-left ">
                             <div class="grid images_3_of_2">
@@ -74,23 +74,28 @@
                                             <option value="Speech">Speech</option>
                                         </select>
                                         <h6>Quantity</h6>
-                                        <input type="text" placeholder="Quantity" name="quantity" required pattern="[0-9]">
+                                        <input type="text" placeholder="Quantity" name="quantity" value="1" required pattern="[0-9]">
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-12" style="margin-top:3em;">
+                    <div class="col-md-12" style="margin-top:3em; height:auto;">
                         <div class="contact-form">
                             <!-- contact form grid -->
-                            <div class="contact-top1">
+                            <div class="contact-top1 form-control" style="height:auto;">
                                 <h5>method of sharing</h5>
-                                    <select class="genre" name="methods" id="methodlist" style="margin-bottom:2em;">
-                                        <option selected="selected">Select method..</option>
-                                        <option value="For Borrow">For Borrow</option>
-                                        <option value="For Rent">For Rent</option>
-                                        <option value="For Sale">For Sale</option>
-                                    </select>
-                                    <div id="pricing"></div>
-                                <button class="btn btn-success" type="submit" form="addbook">Submit</button>
+                                    <fieldset>
+                                    <input type="checkbox" onclick="yesnoCheck();" style="display:inline-block;" name="methods" id="ForBorrow" value="For Borrow" checked="checked"> <label for="ForBorrow" style="margin-right:1em;">For Borrow</label>
+                                    <input type="checkbox" onclick="yesnoCheck();" style="display:inline-block;" name="methods" id="ForRent" value="For Rent"> <label for="ForRent" style="margin-right:1em;">For Rent</label>
+                                    <input type="checkbox" onclick="yesnoCheck2();" style="display:inline-block;" name="methods" id="ForSale" value="For Sale"> <label for="ForSale" style="margin-right:1em;">For Sale</label>
+                                    </fieldset>
+                                    <br/>
+                                    <div id="pricing" style="display:none;">
+                                        <input placeholder="Price Rate (Price per day)" class="form-control" style="width:45%; height:28px;" name="price" id="rent" type="text" />
+                                    </div>
+                                    <div id="pricing2" style="display:none;">
+                                        <input placeholder="Price" class="form-control" style="width:45%; height:28px;" name="price2" type="text" />
+                                    </div>
+                                <button value="Test Required" id="checkBtn" class="btn btn-success" type="submit" form="addbook">Submit</button>
                             </div>
                             <!--  //contact form grid ends here -->
                         </div>

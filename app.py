@@ -164,6 +164,7 @@ def home():
         fict_dict = json.loads(fiction.text)
         nonfict_dict = json.loads(nonfiction.text)
         acad_dict = json.loads(acads.text)
+        print(horror_dict)
         return render_template('dashboard.html', books2=book2_dict['book'], books=book_dict['book'],\
                                horrorbooks=horror_dict['book'], actionbooks=action_dict['book'], \
                                dramabooks=drama_dict['book'], user=session['user'], acadbooks=acad_dict['book'], \
@@ -212,6 +213,20 @@ def addbook():
             else:
                 category = "Educational"
 
+            methods = request.form.getlist('methods')
+            priceRate = 0
+            price = 0
+            print('methods')
+            print(request.form.getlist('methods'))
+            if len(methods) == 1:
+                methods = request.form.get('methods')
+            print(methods)
+            for x in methods:
+                if x == 'For Sale':
+                    price = request.form.get('price2')
+                if x == 'For Rent':
+                    priceRate = request.form.get('price')
+
             print(category)
             response = requests.post(
                 'http://localhost:5050/user/addbook', headers={'x-access-token': session['token']},
@@ -219,15 +234,15 @@ def addbook():
                       "year": request.form['year'], "isbn": request.form['isbn'],
                       "publisher_name": request.form['publisher'], "author_name": request.form['author'],
                         "category": category, "book_cover": request.form['book_cover'],
-                      "description": request.form['description'], "price": request.form['price'],
-                      "genre": genre, "quantity": request.form['quantity'], "method": request.form.get('methods')}
+                      "description": request.form['description'], "price": price, "price_rate": priceRate,
+                      "genre": genre, "quantity": request.form['quantity'], "method": methods}
             )
             print(response.text)
             if response.text == 'The book is already in your bookshelf!':
-                return render_template('addbook_isbn.html', display='block')
-            return redirect('home')
+                return render_template('addbook_isbn.html', display2='none', display='block')
+            return render_template('addbook_isbn.html', display2='block', display='none')
         else:
-            return render_template('addbook_isbn.html', display='none')
+            return render_template('addbook_isbn.html', display='none', display2='none')
     else:
         return redirect('unauthorized')
 
@@ -478,9 +493,9 @@ def profile():
 
 def profilemap(username):
     user_details = requests.get('http://localhost:5050/user/coordinates',
-                                json={"current_user": username})
+                                json={"current_user": username}, headers={'x-access-token': session['token']})
     users_details = requests.get('http://localhost:5050/users/coordinates',
-                                json={"current_user": username})
+                                json={"current_user": username}, headers={'x-access-token': session['token']})
     user = json.loads(user_details.text)
     users = json.loads(users_details.text)
     users1 =users['users']
@@ -739,16 +754,19 @@ def remove_book(book_id):
     else:
         return redirect('unauthorized')
 
-@app.route('/genre/<genre_name>', methods=['GET'])
-def view_genre(genre_name):
+@app.route('/genre/<genre_name>/<page_num>', methods=['GET'])
+def view_genre(genre_name, page_num):
     if g.user:
-        books = requests.get('http://localhost:5050/interests/view/'+genre_name, headers={'x-access-token': session['token']})
+        books = requests.get('http://localhost:5050/interests/view/'+genre_name, json={'page_num': page_num},headers={'x-access-token': session['token']})
         print(books.text)
         book_dict = json.loads(books.text)
         if not book_dict['book']:
             return render_template('no_books_genre.html', genre_name=genre_name)
         print(book_dict['book'])
-        return render_template('genre.html', books=book_dict['book'], genre_name=genre_name)
+        print(book_dict)
+        return render_template('genre.html', books=book_dict['book'], genre_name=genre_name,
+                               paginate=jsonpickle.decode(book_dict['totalBooks'][0]['paginate']),
+                               totalbooks=(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks']) / 39))) + 1)
     else:
         return redirect('unauthorized')
 
@@ -781,6 +799,7 @@ def store_search(page_num):
             return render_template('no_books_shop.html', books={})
         book_dict = json.loads(books.text)
         print(book_dict)
+        print(books.text)
         return render_template('shop2.html', books=book_dict['book'],
                                paginate=jsonpickle.decode(book_dict['totalBooks'][0]['paginate']),
                                totalbooks=(int(math.ceil(float(book_dict['totalBooks'][0]['totalBooks']) / 20))) + 1)
@@ -859,4 +878,4 @@ def viewresult():
         return redirect('unauthorized')
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host='localhost', port=8090, debug=True)

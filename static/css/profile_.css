@@ -118,7 +118,7 @@ input[type="submit"],.agileits_copyright p a,a{
 
 .w3_agileits_main_grid_work_grids{
 	overflow-y: scroll;
-	max-height:33em;
+	max-height:30em;
 }
 .caption p, ul.rating {
     font-size: 0.7em;
