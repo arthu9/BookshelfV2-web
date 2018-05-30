@@ -1,0 +1,79 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!-- banner -->
+<div class="banner-bg-agileits">
+    <div class='split-pane col-xs-6 col-sm-6 col-lg-6 uiux-side'>
+      <div>
+        <div class='text-content'>
+          <div class='big'>BOOKSHELF</div>
+        </div>
+      </div>
+    </div>
+    <div class='split-pane col-xs-6 col-sm-6 col-lg-6 frontend-side'>
+      <div>
+        <div class='text-content'>
+          <div class="bold"></div>
+        </div>
+      </div>
+    </div>
+    <div id='split-pane-or'>
+      <div>
+      </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- breadcrumbs -->
+<div class="crumbs text-center" style="padding-top:0% !important;">
+    <div class="container">
+        <div class="row">
+            <ul class="btn-group btn-breadcrumb bc-list">
+                <li class="btn btn1">
+                    <a href="index.html">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+                </li>
+                <li class="btn btn2">
+                    <a href="#">Genre</a>
+                </li>
+                <li class="btn btn3">
+                    <a href="#">{{ genre_name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- about -->
+<div class="wrapper_top_shop" style="min-height:55vh; padding-bottom:60px;">
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h4 class="rad-txt">
+                <a href="shop2.html" class="btn btn-success btn-view pull-right">View more <span class="glyphicon glyphicon-triangle-right"></span> </a>
+                <span class="big-tab pull-left">{{ genre_name }}</span>
+            </h4>
+        </div>
+            <!-- product-sec1 -->
+                <!-- row1-->
+                    <h1 style="text-align:center; font-size:3em; margin-top:3em;">No books to display</h1>
+                <!-- //row1 -->
+                <!-- row2 -->
+
+    </div>
+</div>
+                <!-- //product-sec1 -->
+                <div class="clearfix"></div>
+<!-- //about ends here -->
+<!-- about bottom -->
+    <div class="container-fluid">
+        <!-- about-bottom grid1 -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //about container ends here-->
+</div>
+<!--//about bottom ends here-->
+<!-- //footer -->
+{% endblock %}
+
+
+

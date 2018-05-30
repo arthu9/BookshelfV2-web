@@ -1,0 +1,506 @@
+	{% extends 'base/base.html' %}
+	{% block content %}
+		<!-- breadcrumbs -->
+	{% for book in books %}
+		<div class="crumbs text-center" style="padding-top:10%;">
+			<div class="container">
+				<div class="row">
+					<ul class="btn-group btn-breadcrumb bc-list">
+						<li class="btn btn1">
+							<a href="index.html">
+								<i class="glyphicon glyphicon-home"></i>
+							</a>
+						</li>
+						<li class="btn btn2">
+							<a href="shop.html">Books</a>
+						</li>
+						<li class="btn btn3">
+								<a class="breadcrumbtitle" href="single_product.html">{{ book.title }}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--//breadcrumbs ends here-->
+		<!-- Single -->
+		<div class="innerf-pages" style="padding-top:5%;">
+			<div class="container">
+				<div class="col-md-4 single-right-left ">
+					<div class="grid images_3_of_2">
+						<div class="flexslider1">
+							<ul class="slides">
+								<li  data-thumb="{{book.book_cover}}">
+									<div class="thumb-image">
+										<img src="{{book.book_cover}}"  style="width:300px; height:375px;" data-imagezoom="true" alt=" " class="img-responsive"> </div>
+								</li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-8 single-right-left simpleCart_shelfItem">
+					<h3>{{ book.title }}
+					</h3>
+					<p>by
+						<a href="#">{{ book.owner }}</a>
+					</p>
+					<div class="caption">
+						<div class="clearfix"> </div>
+						<h6>
+							&#8369;{{book.price_rate}}.00</h6><h5>-For Rent</h5>
+						<h6>
+							&#8369;{{book.price}}.00</h6><h5>-For Sale</h5>
+						<h6 style="color:green;">
+							{{book.free}}</h6>
+					</div>
+					<div class="desc_single">
+						<h5>Description</h5>
+						<p>{{ book.description }}</p>
+					</div>
+					<div class="occasional">
+						<h5>Specifications</h5>
+						<ul class="single_specific">
+							<li>
+								<span>Author :</span> {{book.author_name }}</li>
+							<li>
+								<span>Genre :</span> {{ book.genre }}</li>
+							<li>
+								<span>publisher :</span> {{book.publisher_id}}</li>
+							<li>
+								<span>Date of Published :</span> {{book.year}}</li>
+							<li>
+								<span>ISBN :</span> {{book.isbn}}</li>
+                            <li>
+								<span>availability :</span> {{book.availability}}</li>
+                            <li>
+								<span>quantity :</span> {{book.quantity}}
+							<li>
+								<span>Method :</span> {{book.methods}}</li>
+						</ul>
+
+					</div>
+					<div class="clearfix"></div>
+					<div class="occasion-cart">
+						<div class="chr single-item single_page_b" style="margin-top:1em;">
+                            <div class="col-md-4" >
+							<a href="{{ url_for('editbook', book_id=book.book_id) }}" style="margin-top:1em; width:15em;" class="btn btn-success pull-right btn-profile" >Edit Book</a>
+                            <a href="{{ url_for('remove_book', book_id=book.book_id) }}" style="margin-top:1em; width:15em;" class="btn btn-success pull-right btn-profile" >Remove from bookshelf</a>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+
+	<div class="comments">
+		<h2>Reviews</h2>
+			  <div class="review">
+			  <div class="caption pull-left">
+					<h2 style="margin-top:10%; text-align:center;">{{book.rating}}</h2>
+					<form method="POST" class="rating" action="{{url_for('rate_book', username=book.username, book_id=book.book_id, contains_id=book.contains_id)}}" id="ratingsform">
+						<label style="font-size:30px;">
+							<input onclick="document.getElementById('ratingsform').submit();" type="radio" name="stars" value="{{book.rating}}"/>
+							<span  class="icon" value="1" data-rate="1">★</span>
+							<span  class="icon" value="2" data-rate="2">★</span>
+							<span  class="icon" value="3" data-rate="3">★</span>
+							<span  class="icon" value="4" data-rate="4">★</span>
+							<span  class="icon" value="5" data-rate="5">★</span>
+						</label>
+					</form>
+				  <div class="bottom" style="display:block;">
+				  <i class="fa fa-user"></i>  {{book.numofRates}} total
+				  </div>
+			  </div>
+			  <div class="col-sm-3" style="max-width:250px; width:250px;">
+				  <h4 class="rtitle">Rating breakdown <h6>(Total Rating: {{book.totalRate}}/5.0)</h6></h4>
+				<div>
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:13px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:13px; margin:8px 0;">
+						  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: {{book.num5}}%; background: #57bb8a;">
+							<span class="sr-only">{{book.num5}}% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:13px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:13px; margin:8px 0;">
+						  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: {{book.num4}}%; background: #9ace6a;">
+							<span class="sr-only">{{book.num4}}% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:13px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:13px; margin:8px 0;">
+						  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: {{book.num3}}%; background: #ffcf02;">
+							<span class="sr-only">{{book.num3}}% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:13px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:13px; margin:8px 0;">
+						  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: {{book.num2}}%; background: #ff9f02;">
+							<span class="sr-only">{{book.num2}}% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:13px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:13px; margin:8px 0;">
+						  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: {{book.num1}}%; background: #ff6f31;">
+							<span class="sr-only">{{book.num1}}% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+	</div>
+	<div class="comments" id="comments" style="display:block;">
+			<div class="comment-wrap">
+					<div class="photo">
+							<img src="data:image;base64, {{ book.viewer_profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+					</div>
+					<div class="comment-block">
+							<form action="{{url_for('comment_book', username=book.username, book_id=book.book_id, contains_id=book.contains_id)}}" method="POST">
+									<textarea style="width:94%; float:left; font-size:1em;" name="comment" cols="30" rows="3" placeholder="Add comment..."></textarea>
+									<button  style="float:right;" type="submit" class="btn btn-success">Submit</button>
+							</form>
+					</div>
+			</div>
+
+			{% for comment in comments %}
+			<div class="comment-wrap">
+					<div class="photo">
+							 <img src="data:image;base64, {{ comment.profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+					</div>
+					<div class="comment-block">
+							<p>{{comment.user_fname}} {{comment.user_lname}}</p>
+							<p class="comment-text">{{comment.comment}}</p>
+							<div class="bottom-comment">
+									<div class="comment-date">{{comment.date}}</div>
+							</div>
+					</div>
+			</div>
+			{% endfor %}
+			{% if total > 5 %}
+			<div class="readall">
+				<h3 style="font-size:14px;"><a style="color:navy;"  onClick="$('#comments').hide(); $('#allcomments').show()"
+											   href="#">READ ALL REVIEWS</a></h3>
+			</div>
+			{% endif %}
+	</div>
+	<div class="comments" id="allcomments" style="display:none; overflow-y: auto; height:550px;">
+			<div class="comment-wrap">
+					<div class="photo">
+							<img src="data:image;base64, {{ book.viewer_profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+					</div>
+					<div class="comment-block">
+							<form action="{{url_for('comment_book', username=book.username, book_id=book.book_id, contains_id=book.contains_id)}}" method="POST">
+									<textarea style="width:94%; float:left; font-size:1em;" name="comment" cols="30" rows="3" placeholder="Add comment..."></textarea>
+									<button  style="float:right;" type="submit" class="btn btn-success">Submit</button>
+							</form>
+					</div>
+			</div>
+			{%for comment in comments2 %}
+			<div class="comment-wrap">
+					<div class="photo">
+							 <img src="data:image;base64, {{ comment.profpic }}" onerror="this.src='{{url_for('static', filename='images/none.jpeg')}}'" class="avatar" class="profileimg" alt=" " />
+					</div>
+					<div class="comment-block">
+							<p>{{comment.user_fname}} {{comment.user_lname}}</p>
+							<p class="comment-text">{{comment.comment}}</p>
+							<div class="bottom-comment">
+									<div class="comment-date">{{comment.date}}</div>
+							</div>
+					</div>
+			</div>
+			{% endfor %}
+			<div class="readall">
+				<h3 style="font-size:14px;"><a style="color:navy;"  onClick="$('#allcomments').hide(); $('#comments').show()"
+											   href="#">SEE LESS</a></h3>
+			</div>
+
+	</div>
+		<!-- /new_arrivals -->
+		<div class="section singlep_btm">
+			<div class="container">
+				<div class="new_arrivals">
+					<h4 class="rad-txt">
+						<span class="abtxt1">featured</span>
+						<span class="abtext"> products</span>
+					</h4>
+					<!-- row3 -->
+					<div class="col-md-3 product-men">
+						<div class="product-chr-info chr">
+							<div class="thumbnail">
+								<a href="single_product.html">
+									<img src="images/lib7.jpg" alt="">
+								</a>
+							</div>
+							<div class="caption">
+								<h4>Marketing</h4>
+								<p>Scott Harris</p>
+								<div class="matrlf-mid">
+									<ul class="rating">
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star gray-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star gray-star" aria-hidden="true"></span>
+											</a>
+										</li>
+									</ul>
+									<ul class="price-list">
+										<li>$ 180.00</li>
+										<li>
+											$220.00
+										</li>
+									</ul>
+
+									<div class="clearfix"> </div>
+								</div>
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="chr_item" value="Book1">
+									<input type="hidden" name="amount" value="180.00">
+									<button type="submit" class="chr-cart pchr-cart">Add to cart
+										<i class="fa fa-cart-plus" aria-hidden="true"></i>
+									</button>
+									<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 product-men">
+						<div class="product-chr-info chr">
+							<div class="thumbnail">
+								<a href="single_product.html">
+									<img src="images/lib1.jpg" alt="">
+								</a>
+							</div>
+							<div class="caption">
+								<h4>online business</h4>
+								<p>Scott Harris</p>
+								<div class="matrlf-mid">
+									<ul class="rating">
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+									</ul>
+									<ul class="price-list">
+										<li>$ 330.00</li>
+										<li>
+											$560.00
+										</li>
+									</ul>
+
+									<div class="clearfix"> </div>
+								</div>
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="chr_item" value="Book2">
+									<input type="hidden" name="amount" value="330.00">
+									<button type="submit" class="chr-cart pchr-cart">Add to cart
+										<i class="fa fa-cart-plus" aria-hidden="true"></i>
+									</button>
+									<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 product-men">
+						<div class="product-chr-info chr">
+							<div class="thumbnail">
+								<a href="single_product.html">
+									<img src="images/lib2.jpg" alt="">
+								</a>
+							</div>
+							<div class="caption">
+								<h4>kids</h4>
+								<p>Cordebard</p>
+								<div class="matrlf-mid">
+									<ul class="rating">
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star gray-star" aria-hidden="true"></span>
+											</a>
+										</li>
+									</ul>
+									<ul class="price-list">
+										<li>$ 280.00</li>
+										<li>
+											$500.00
+										</li>
+									</ul>
+
+									<div class="clearfix"> </div>
+								</div>
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="chr_item" value="Book3">
+									<input type="hidden" name="amount" value="280.00">
+									<button type="submit" class="chr-cart pchr-cart">Add to cart
+										<i class="fa fa-cart-plus" aria-hidden="true"></i>
+									</button>
+									<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 product-men">
+						<div class="product-chr-info chr">
+							<div class="thumbnail">
+								<a href="single_product.html">
+									<img src="images/lib3.jpg" alt="">
+								</a>
+							</div>
+							<div class="caption">
+								<h4>work from home</h4>
+								<p>Cordebard</p>
+								<div class="matrlf-mid">
+									<ul class="rating">
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="fa fa-star yellow-star" aria-hidden="true"></span>
+											</a>
+										</li>
+									</ul>
+									<ul class="price-list">
+										<li>$ 140.00</li>
+										<li>
+											$200.00
+										</li>
+									</ul>
+
+									<div class="clearfix"> </div>
+								</div>
+								<form action="#" method="post">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="chr_item" value="Book4">
+									<input type="hidden" name="amount" value="140.00">
+									<button type="submit" class="chr-cart pchr-cart">Add to cart
+										<i class="fa fa-cart-plus" aria-hidden="true"></i>
+									</button>
+									<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- //row3 -->
+					<div class="clearfix"></div>
+				</div>
+				<!--//new_arrivals-->
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+	{% endfor %}
+		<!--// Single -->
+ {% endblock %}

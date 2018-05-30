@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% block content %}
+        <!-- breadcrumbs -->
+        <!--//breadcrumbs ends here-->
+        <!-- contact -->
+        <div class="section contact" id="contact" style="min-height:95vh; padding-bottom:60px; padding: 5em 0 !important;">
+            <div class="container">
+                <div class="col-md-12">
+
+                    <form action="{{url_for('isbn_search')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
+                            <div class="contact-form" style="height:250px;">
+                                <!-- contact form grid -->
+                                <div class="contact-top1">
+                                    <h5>Add a book to your bookshelf</h5>
+                                        <div class="search-facet">
+                                          <label class="search-facet-selector">
+                                            <select name="searchfilter" aria-label="Search by">
+                                              <option value="ISBN">ISBN</option>
+                                              <option value="Title">Title</option>
+                                              <option value="Author">Author</option>
+                                            </select>
+                                          </label>
+                                            <input type="text" placeholder="Search"  name="search" required="" style="margin-bottom:0; width:80%;">
+                                        </div>
+
+                                        <input type="submit" value="Submit">
+
+                                </div>
+                                <!--  //contact form grid ends here -->
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <div class="innerf-pages" style="padding-top:3%;">
+                <div class="container" style="margin-bottom:3em;">
+                    <h1 class="display" style="text-align:center; margin:2em;">No Books Found. Please Try Again.</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- //contact -->
+{% endblock %}

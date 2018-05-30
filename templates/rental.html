@@ -1,0 +1,96 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!-- //banner -->
+<!-- breadcrumbs -->
+<br>
+<br>
+<div class="crumbs text-center">
+    <div class="container">
+        <div class="row">
+            <ul class="btn-group btn-breadcrumb bc-list">
+                <li class="btn btn1">
+                    <a href="index.html">
+                        <i class="glyphicon glyphicon-home"></i>
+                    </a>
+                </li>
+                <li style="max-width:100%;" class="btn btn2">
+                    <a href="#">Rental</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<!-- about -->
+<div class="wrapper_top_shop" style="margin-bottom:5em;">
+    <div class="container-fluid">
+        <div class="jumbotron" style="height:175px;">
+            <h4 class="rad-txt">
+                <span class="big-tab pull-left">Rental List</span>
+            </h4>
+                <div class="container">
+                    <div class="alert alert-{{color}} alert-dismissible fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{message}}
+                    </div>
+                </div>
+                {% for book in books %}
+                <div class="col-md-3 product-men">
+                    <div class="xbox">
+                      <a href="{{ url_for('remove_rental', username=book.owner_username, book_id=book.book_id)}}">
+                          <i class="fa fa-book" style="font-size:35px;" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                    <div class="product-chr-info chr">
+                        <div class="thumbnail">
+                            <a href="{{ url_for('viewbook', book_id=book.book_id, username=book.owner_username) }}">
+                                <img src=" " class="book-img" style="height:245px; width:205px;"alt="">
+                            </a>
+                            <div class="book-overlay">
+                                <i class="fa fa-star" style="font-size:32px; color:#333A56" aria-hidden="true"></i>
+                                <div class="book-text">
+                                    <h4>3/5</h4>
+                                    <h4>{{ book.genre }}</h4>
+                                    <span class="button-blue-big">View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h4>{{ book.title }}</h4>
+                            <h5>&#8369;{{book.total}}.00</h5>
+                            <!--<p class="author">{{ book.author_fname }} {{ book.author_lname }}</p>-->
+                            <p><a href="{{ url_for('view_profile', username=book.owner_username) }}" style="margin:auto; color: #777;"> Owner: {{ book.owner_fname }} {{ book.owner_lname }}</a></p>
+                            <p>Start: {{ book.start }}</p>
+                            <p>End: {{ book.end }}</p>
+
+                            <!--<div class="book-tags">-->
+                                <!--<a href="#">Borrow<i class="fa fa-book" aria-hidden="true"></i></a>-->
+                                <!--<a href="#">Buy<i class="fa fa-ruble" aria-hidden="true"></i></a>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- //row1 -->
+                <!-- row2 -->
+
+        </div>
+        <h1 style="text-align:center; font-size:5em; margin-bottom: 2em;">{{ nodisplay }}</h1>
+    </div>
+</div>
+                <!-- //product-sec1 -->
+                <div class="clearfix"></div>
+
+<!-- //about ends here -->
+<!-- about bottom -->
+    <div class="container-fluid">
+        <!-- about-bottom grid1 -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //about container ends here-->
+</div>
+<!--//about bottom ends here-->
+<!-- //footer -->
+{% endblock %}
+

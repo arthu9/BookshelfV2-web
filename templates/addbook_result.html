@@ -1,0 +1,95 @@
+{% extends 'base/base.html' %}
+{% block content %}
+        <!-- breadcrumbs -->
+        <!--//breadcrumbs ends here-->
+        <!-- contact -->
+        <div class="section contact" id="contact" style="min-height:95vh; padding-bottom:60px; padding: 5em 0 !important;">
+            <div class="container">
+                <div class="col-md-12">
+
+                    <form action="{{url_for('isbn_search')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
+                            <div class="contact-form" style="height:250px;">
+                                <!-- contact form grid -->
+                                <div class="contact-top1">
+                                    <h5>Add a book to your bookshelf</h5>
+                                        <div class="search-facet">
+                                          <label class="search-facet-selector">
+                                            <select name="searchfilter" aria-label="Search by">
+                                              <option value="ISBN">ISBN</option>
+                                              <option value="Title">Title</option>
+                                              <option value="Author">Author</option>
+                                            </select>
+                                          </label>
+                                            <input type="text" placeholder="Search"  name="search" required="" style="margin-bottom:0; width:80%;">
+                                        </div>
+
+                                        <input type="submit" value="Submit">
+
+                                </div>
+                                <!--  //contact form grid ends here -->
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <form action="{{url_for('addbook_step1')}}" enctype=multipart/form-data class="form_w3layouts" method="post">
+            <div class="innerf-pages" style="padding-top:3%;">
+                <div class="container" style="margin-bottom:3em;">
+                    <div class="col-md-4 single-right-left ">
+                        <div class="grid images_3_of_2">
+                            <div class="flexslider1">
+                                <ul class="slides">
+                                    <li  data-thumb="#">
+                                        <div class="thumb-image">
+                                            <img src="{{book.book_cover}}" data-imagezoom="true" alt=" " class="img-responsive" style="width:300px;"> </div>
+                                            <input style="display:none" type="text" name="book_cover" value="{{book.book_cover}}" readonly>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 single-right-left simpleCart_shelfItem contact-form">
+                        <h3><input type="text" name="title" value="{{book.title}}" readonly>
+                        </h3>
+                        <div class="desc_single">
+                            <h5>Description</h5>
+                            <p><input type="text" name="description" value="{{book.description}}" readonly></p>
+                        </div>
+                        <div class="occasional">
+                            <h5>Specifications</h5>
+                            <ul class="single_specific">
+                                <li>
+                                    <span>Author :</span> <input type="text" name="author_name" value="{{book.author_name}}" readonly></li>
+                                <li>
+                                    <span>publisher :</span><input type="text" name="publisher" value="{{book.publishers}}" readonly></li>
+                                <li>
+                                    <span>year published :</span><input type="text" name="year" value="{{book.year}}" readonly></li>
+                                <li>
+                                    <span>ISBN :</span><input type="text" name="isbn" value="{{book.isbn}}" readonly></li>
+                            </ul>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="occasion-cart">
+                            <div class="chr single-item single_page_b container">
+
+
+
+                                    <div class="btn-group btn-grp-med col-md-12" role="group">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fa fa-bookmark" aria-hidden="true"></i>Add Book</button>
+                                    </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            </form>
+        </div>
+
+        <!-- //contact -->
+{% endblock %}
